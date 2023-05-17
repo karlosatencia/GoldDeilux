@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "GoldManager/1.0.0": {
         "dependencies": {
-          "MetroModernUI": "1.4.0",
+          "DocumentFormat.OpenXml": "2.20.0",
           "MySqlConnector": "2.2.5",
           "MySql.Data": "8.0.32.0"
         },
@@ -16,19 +16,14 @@
           "GoldManager.dll": {}
         }
       },
-      "MetroModernUI/1.4.0": {
+      "DocumentFormat.OpenXml/2.20.0": {
+        "dependencies": {
+          "System.IO.Packaging": "4.7.0"
+        },
         "runtime": {
-          "lib/net/MetroFramework.Design.dll": {
-            "assemblyVersion": "1.4.0.0",
-            "fileVersion": "1.4.0.0"
-          },
-          "lib/net/MetroFramework.Fonts.dll": {
-            "assemblyVersion": "1.4.0.0",
-            "fileVersion": "1.4.0.0"
-          },
-          "lib/net/MetroFramework.dll": {
-            "assemblyVersion": "1.4.0.0",
-            "fileVersion": "1.4.0.0"
+          "lib/net6.0/DocumentFormat.OpenXml.dll": {
+            "assemblyVersion": "2.20.0.0",
+            "fileVersion": "2.20.0.0"
           }
         }
       },
@@ -40,6 +35,7 @@
           }
         }
       },
+      "System.IO.Packaging/4.7.0": {},
       "MySql.Data/8.0.32.0": {
         "runtime": {
           "MySql.Data.dll": {
@@ -104,12 +100,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MetroModernUI/1.4.0": {
+    "DocumentFormat.OpenXml/2.20.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p2F3w8bF1tb0tpkDceEVO65UYMKnJxdQyNxVyl/OjrFZHighicLYZDppKkiqmvBZ10XUi2mqHiIJUzXBP3GElQ==",
-      "path": "metromodernui/1.4.0",
-      "hashPath": "metromodernui.1.4.0.nupkg.sha512"
+      "sha512": "sha512-+oFMsEppo/W6KpGTRXaJl2jTFYn9zeon4FaZuDoCijQ1/0JaPENaCef7d4Y3f8v116eKhVBwd4Ya+/NDglxkjw==",
+      "path": "documentformat.openxml/2.20.0",
+      "hashPath": "documentformat.openxml.2.20.0.nupkg.sha512"
     },
     "MySqlConnector/2.2.5": {
       "type": "package",
@@ -117,6 +113,13 @@
       "sha512": "sha512-6sinY78RvryhHwpup3awdjYO7d5hhWahb5p/1VDODJhSxJggV/sBbYuKK5IQF9TuzXABiddqUbmRfM884tqA3Q==",
       "path": "mysqlconnector/2.2.5",
       "hashPath": "mysqlconnector.2.2.5.nupkg.sha512"
+    },
+    "System.IO.Packaging/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9VV4KAbgRQZ79iEoG40KIeZy38O30oWwewScAST879+oki8g/Wa2HXZQgrhDDxQM4GkP1PnRJll05NMiVPbYAw==",
+      "path": "system.io.packaging/4.7.0",
+      "hashPath": "system.io.packaging.4.7.0.nupkg.sha512"
     },
     "MySql.Data/8.0.32.0": {
       "type": "reference",

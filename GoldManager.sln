@@ -3,23 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GoldManager", "GoldManager\GoldManager.vbproj", "{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "GoldManager", "GoldManager\GoldManager.vbproj", "{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|Default = Debug|Default
 		Release|Any CPU = Release|Any CPU
+		Release|Default = Release|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Debug|Default.ActiveCfg = Debug|Any CPU
+		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Debug|Default.Build.0 = Debug|Any CPU
 		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Release|Default.ActiveCfg = Release|Any CPU
+		{2D7E25E5-C778-4566-ACCC-49C1F5E6CCC0}.Release|Default.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4B48AFE3-F5FE-4CA4-B753-F882A128722E}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Default = Debug|Default
+		Release|Any CPU = Release|Any CPU
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Default = Debug|Default
+		Release|Any CPU = Release|Any CPU
+		Release|Default = Release|Default
 	EndGlobalSection
 EndGlobal
