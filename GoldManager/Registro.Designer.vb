@@ -1,5 +1,7 @@
 ﻿Imports MySqlConnector
 Imports MySql.Data.MySqlClient
+Imports Org.BouncyCastle.Crypto.Engines
+
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Registro
     Inherits System.Windows.Forms.Form
@@ -62,27 +64,56 @@ Partial Class Registro
         rb_hombre = New RadioButton()
         Tab_Consultar = New TabControl()
         TabPage1 = New TabPage()
+        rb_matrimonio = New RadioButton()
+        Label20 = New Label()
+        lst_compra = New ComboBox()
+        lb_talla = New Label()
+        jt_talla = New TextBox()
+        lb_venta_pircing = New Label()
+        jt_venta_pircing = New TextBox()
+        lb_compra_pircing = New Label()
+        jt_compra_pircing = New TextBox()
+        ch_oro_blanco = New CheckBox()
+        ch_oro_rosa = New CheckBox()
+        ch_oro_amarillo = New CheckBox()
+        ch_adicional = New CheckBox()
+        lb_adicional = New Label()
+        jt_adicional = New TextBox()
+        Label21 = New Label()
+        lst_sucursall = New ComboBox()
         jt_compra = New TextBox()
         Label17 = New Label()
         PictureBox1 = New PictureBox()
         TabPage3 = New TabPage()
+        btn_imprimir_reporte = New Button()
+        Label24 = New Label()
+        lst_compra_rep = New ComboBox()
         btn_tarifa_precios = New Button()
         btn_compra = New Button()
         btn_shopify = New Button()
         btn_effy = New Button()
         PictureBox2 = New PictureBox()
         TabPage4 = New TabPage()
+        GroupBox3 = New GroupBox()
+        Label26 = New Label()
+        jt_referencia_traslado = New TextBox()
+        btn_trasladar = New Button()
+        jt_referencia = New TextBox()
+        btn_consultar = New Button()
+        Label23 = New Label()
+        Label22 = New Label()
+        lst_sucursal_consulta = New ComboBox()
+        lst_compra_consulta = New ComboBox()
         GroupBox2 = New GroupBox()
         btn_backup = New Button()
         Label19 = New Label()
         icon_actualizar = New PictureBox()
-        jt_id_consulta = New TextBox()
-        btn_consultar_id = New Button()
         GroupBox1 = New GroupBox()
         Label18 = New Label()
         btn_depurar = New Button()
         tb_productos = New DataGridView()
-        DataGridViewTextBoxColumn1 = New DataGridViewTextBoxColumn()
+        referencia = New DataGridViewTextBoxColumn()
+        idcompra = New DataGridViewTextBoxColumn()
         nombre = New DataGridViewTextBoxColumn()
         marca = New DataGridViewTextBoxColumn()
         cantidad = New DataGridViewTextBoxColumn()
@@ -93,7 +124,18 @@ Partial Class Registro
         costo_total = New DataGridViewTextBoxColumn()
         valor_gramo = New DataGridViewTextBoxColumn()
         valor_unitario_compra = New DataGridViewTextBoxColumn()
+        broche = New DataGridViewTextBoxColumn()
+        vbroche = New DataGridViewTextBoxColumn()
         DataSet1BindingSource = New BindingSource(components)
+        TabPage5 = New TabPage()
+        Label25 = New Label()
+        btn_agregar_compra = New Button()
+        btn_cerrar1 = New Button()
+        tb_compras = New DataGridView()
+        DataGridViewTextBoxColumn2 = New DataGridViewTextBoxColumn()
+        estado = New DataGridViewTextBoxColumn()
+        cantidadproductos = New DataGridViewTextBoxColumn()
+        DataSet1BindingSource1 = New BindingSource(components)
         TabPage2 = New TabPage()
         Panel1 = New Panel()
         btn_cancelar = New Button()
@@ -109,17 +151,22 @@ Partial Class Registro
         OFD_depurar = New OpenFileDialog()
         tt_actualizar = New ToolTip(components)
         tt_depurar = New ToolTip(components)
+        tt_backup = New ToolTip(components)
         Tab_Consultar.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
+        GroupBox3.SuspendLayout()
         GroupBox2.SuspendLayout()
         CType(icon_actualizar, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
         CType(tb_productos, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataSet1BindingSource, ComponentModel.ISupportInitialize).BeginInit()
+        TabPage5.SuspendLayout()
+        CType(tb_compras, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataSet1BindingSource1, ComponentModel.ISupportInitialize).BeginInit()
         TabPage2.SuspendLayout()
         Panel1.SuspendLayout()
         CType(tb_precios, ComponentModel.ISupportInitialize).BeginInit()
@@ -131,22 +178,22 @@ Partial Class Registro
         lst_marca_tabla.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
         lst_marca_tabla.FormattingEnabled = True
         lst_marca_tabla.Items.AddRange(New Object() {"Seleccione", "Nacional", "Italy"})
-        lst_marca_tabla.Location = New Point(322, 57)
+        lst_marca_tabla.Location = New Point(447, 79)
         lst_marca_tabla.Margin = New Padding(4, 3, 4, 3)
         lst_marca_tabla.Name = "lst_marca_tabla"
         lst_marca_tabla.Size = New Size(121, 23)
-        lst_marca_tabla.TabIndex = 1
-        lst_marca_tabla.SelectedIndex = 0
+        lst_marca_tabla.TabIndex = 0
         ' 
         ' lst_tipo_producto
         ' 
         lst_tipo_producto.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_tipo_producto.DropDownWidth = 114
         lst_tipo_producto.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_tipo_producto.FormattingEnabled = True
-        lst_tipo_producto.Location = New Point(161, 84)
+        lst_tipo_producto.Location = New Point(336, 232)
         lst_tipo_producto.Margin = New Padding(4, 3, 4, 3)
         lst_tipo_producto.Name = "lst_tipo_producto"
-        lst_tipo_producto.Size = New Size(121, 28)
+        lst_tipo_producto.Size = New Size(132, 28)
         lst_tipo_producto.TabIndex = 0
         ' 
         ' lst_marca
@@ -155,11 +202,11 @@ Partial Class Registro
         lst_marca.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_marca.FormattingEnabled = True
         lst_marca.Items.AddRange(New Object() {"Seleccione", "Nacional", "Italy"})
-        lst_marca.Location = New Point(162, 119)
+        lst_marca.Location = New Point(605, 311)
         lst_marca.Margin = New Padding(4, 3, 4, 3)
         lst_marca.Name = "lst_marca"
         lst_marca.Size = New Size(121, 28)
-        lst_marca.TabIndex = 3
+        lst_marca.TabIndex = 14
         ' 
         ' lst_categoria_precio
         ' 
@@ -167,128 +214,128 @@ Partial Class Registro
         lst_categoria_precio.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_categoria_precio.FormattingEnabled = True
         lst_categoria_precio.Items.AddRange(New Object() {"Seleccione", "Precio contado", "Recargo +1", "Recargo +2", "Recargo +3", "Recargo +4"})
-        lst_categoria_precio.Location = New Point(161, 242)
+        lst_categoria_precio.Location = New Point(605, 380)
         lst_categoria_precio.Margin = New Padding(4, 3, 4, 3)
         lst_categoria_precio.Name = "lst_categoria_precio"
-        lst_categoria_precio.Size = New Size(121, 28)
-        lst_categoria_precio.TabIndex = 10
+        lst_categoria_precio.Size = New Size(120, 28)
+        lst_categoria_precio.TabIndex = 16
         ' 
         ' lst_broche
         ' 
         lst_broche.DropDownStyle = ComboBoxStyle.DropDownList
         lst_broche.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_broche.FormattingEnabled = True
-        lst_broche.Location = New Point(431, 120)
+        lst_broche.Location = New Point(738, 311)
         lst_broche.Margin = New Padding(4, 3, 4, 3)
         lst_broche.Name = "lst_broche"
         lst_broche.Size = New Size(114, 28)
-        lst_broche.TabIndex = 4
+        lst_broche.TabIndex = 15
         ' 
         ' jt_descripcion
         ' 
         jt_descripcion.Enabled = False
-        jt_descripcion.Location = New Point(162, 155)
+        jt_descripcion.Location = New Point(110, 311)
         jt_descripcion.Margin = New Padding(4, 3, 4, 3)
         jt_descripcion.Name = "jt_descripcion"
-        jt_descripcion.Size = New Size(383, 23)
+        jt_descripcion.Size = New Size(354, 23)
         jt_descripcion.TabIndex = 5
         ' 
         ' jt_peso_total
         ' 
-        jt_peso_total.Location = New Point(436, 242)
+        jt_peso_total.Location = New Point(451, 377)
         jt_peso_total.Margin = New Padding(4, 3, 4, 3)
         jt_peso_total.Name = "jt_peso_total"
-        jt_peso_total.Size = New Size(109, 23)
-        jt_peso_total.TabIndex = 7
+        jt_peso_total.Size = New Size(74, 23)
+        jt_peso_total.TabIndex = 11
         ' 
         ' jt_grosor
         ' 
         jt_grosor.Enabled = False
-        jt_grosor.Location = New Point(162, 184)
+        jt_grosor.Location = New Point(191, 376)
         jt_grosor.Margin = New Padding(4, 3, 4, 3)
         jt_grosor.MaxLength = 5
         jt_grosor.Name = "jt_grosor"
-        jt_grosor.Size = New Size(121, 23)
-        jt_grosor.TabIndex = 6
+        jt_grosor.Size = New Size(85, 23)
+        jt_grosor.TabIndex = 8
         ' 
         ' jt_valor_broche
         ' 
         jt_valor_broche.Enabled = False
-        jt_valor_broche.Location = New Point(565, 126)
+        jt_valor_broche.Location = New Point(738, 377)
         jt_valor_broche.Margin = New Padding(4, 3, 4, 3)
         jt_valor_broche.Name = "jt_valor_broche"
-        jt_valor_broche.Size = New Size(100, 23)
+        jt_valor_broche.Size = New Size(114, 23)
         jt_valor_broche.TabIndex = 11
         ' 
         ' jt_cantidad
         ' 
-        jt_cantidad.Location = New Point(162, 213)
+        jt_cantidad.Location = New Point(110, 376)
         jt_cantidad.Margin = New Padding(4, 3, 4, 3)
         jt_cantidad.MaxLength = 4
         jt_cantidad.Name = "jt_cantidad"
-        jt_cantidad.Size = New Size(119, 23)
-        jt_cantidad.TabIndex = 8
+        jt_cantidad.Size = New Size(74, 23)
+        jt_cantidad.TabIndex = 7
         ' 
         ' jt_peso
         ' 
-        jt_peso.Location = New Point(436, 213)
+        jt_peso.Location = New Point(368, 376)
         jt_peso.Margin = New Padding(4, 3, 4, 3)
         jt_peso.MaxLength = 6
         jt_peso.Name = "jt_peso"
-        jt_peso.Size = New Size(109, 23)
-        jt_peso.TabIndex = 9
+        jt_peso.Size = New Size(74, 23)
+        jt_peso.TabIndex = 10
         ' 
         ' jt_largo
         ' 
         jt_largo.Enabled = False
-        jt_largo.Location = New Point(436, 184)
+        jt_largo.Location = New Point(284, 376)
         jt_largo.Margin = New Padding(4, 3, 4, 3)
         jt_largo.MaxLength = 6
         jt_largo.Name = "jt_largo"
-        jt_largo.Size = New Size(109, 23)
-        jt_largo.TabIndex = 7
+        jt_largo.Size = New Size(74, 23)
+        jt_largo.TabIndex = 9
         ' 
         ' jt_nombre_compuesto
         ' 
         jt_nombre_compuesto.Enabled = False
-        jt_nombre_compuesto.Location = New Point(162, 279)
+        jt_nombre_compuesto.Location = New Point(110, 477)
         jt_nombre_compuesto.Margin = New Padding(4, 3, 4, 3)
         jt_nombre_compuesto.Name = "jt_nombre_compuesto"
-        jt_nombre_compuesto.Size = New Size(383, 23)
+        jt_nombre_compuesto.Size = New Size(469, 23)
         jt_nombre_compuesto.TabIndex = 11
         ' 
         ' jt_valor_gramo
         ' 
         jt_valor_gramo.Enabled = False
-        jt_valor_gramo.Location = New Point(565, 179)
+        jt_valor_gramo.Location = New Point(605, 431)
         jt_valor_gramo.Margin = New Padding(4, 3, 4, 3)
         jt_valor_gramo.Name = "jt_valor_gramo"
-        jt_valor_gramo.Size = New Size(100, 23)
+        jt_valor_gramo.Size = New Size(120, 23)
         jt_valor_gramo.TabIndex = 14
         ' 
         ' jt_costo_total
         ' 
         jt_costo_total.Enabled = False
-        jt_costo_total.Location = New Point(565, 279)
+        jt_costo_total.Location = New Point(738, 477)
         jt_costo_total.Margin = New Padding(4, 3, 4, 3)
         jt_costo_total.Name = "jt_costo_total"
-        jt_costo_total.Size = New Size(100, 23)
+        jt_costo_total.Size = New Size(114, 23)
         jt_costo_total.TabIndex = 13
         ' 
         ' jt_valor_unitario
         ' 
         jt_valor_unitario.Enabled = False
-        jt_valor_unitario.Location = New Point(565, 231)
+        jt_valor_unitario.Location = New Point(605, 477)
         jt_valor_unitario.Margin = New Padding(4, 3, 4, 3)
         jt_valor_unitario.Name = "jt_valor_unitario"
-        jt_valor_unitario.Size = New Size(100, 23)
-        jt_valor_unitario.TabIndex = 12
+        jt_valor_unitario.Size = New Size(121, 23)
+        jt_valor_unitario.TabIndex = 15
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label1.Location = New Point(52, 90)
+        Label1.Location = New Point(335, 212)
         Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(104, 17)
@@ -299,7 +346,7 @@ Partial Class Registro
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label2.Location = New Point(82, 158)
+        Label2.Location = New Point(110, 291)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
         Label2.Size = New Size(75, 17)
@@ -310,7 +357,7 @@ Partial Class Registro
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label3.Location = New Point(112, 122)
+        Label3.Location = New Point(605, 291)
         Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
         Label3.Size = New Size(43, 17)
@@ -321,7 +368,7 @@ Partial Class Registro
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label4.Location = New Point(109, 187)
+        Label4.Location = New Point(191, 359)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
         Label4.Size = New Size(46, 17)
@@ -332,7 +379,7 @@ Partial Class Registro
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label5.Location = New Point(392, 187)
+        Label5.Location = New Point(284, 359)
         Label5.Margin = New Padding(4, 0, 4, 0)
         Label5.Name = "Label5"
         Label5.Size = New Size(41, 17)
@@ -343,7 +390,7 @@ Partial Class Registro
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label6.Location = New Point(379, 126)
+        Label6.Location = New Point(738, 291)
         Label6.Margin = New Padding(4, 0, 4, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(49, 17)
@@ -354,7 +401,7 @@ Partial Class Registro
         ' 
         Label7.AutoSize = True
         Label7.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label7.Location = New Point(96, 216)
+        Label7.Location = New Point(110, 359)
         Label7.Margin = New Padding(4, 0, 4, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(59, 17)
@@ -365,7 +412,7 @@ Partial Class Registro
         ' 
         Label8.AutoSize = True
         Label8.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label8.Location = New Point(396, 216)
+        Label8.Location = New Point(368, 360)
         Label8.Margin = New Padding(4, 0, 4, 0)
         Label8.Name = "Label8"
         Label8.Size = New Size(36, 17)
@@ -376,7 +423,7 @@ Partial Class Registro
         ' 
         Label9.AutoSize = True
         Label9.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label9.Location = New Point(56, 245)
+        Label9.Location = New Point(605, 361)
         Label9.Margin = New Padding(4, 0, 4, 0)
         Label9.Name = "Label9"
         Label9.Size = New Size(103, 17)
@@ -387,7 +434,7 @@ Partial Class Registro
         ' 
         Label10.AutoSize = True
         Label10.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label10.Location = New Point(369, 247)
+        Label10.Location = New Point(451, 359)
         Label10.Margin = New Padding(4, 0, 4, 0)
         Label10.Name = "Label10"
         Label10.Size = New Size(66, 17)
@@ -398,7 +445,7 @@ Partial Class Registro
         ' 
         Label11.AutoSize = True
         Label11.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label11.Location = New Point(565, 108)
+        Label11.Location = New Point(738, 359)
         Label11.Margin = New Padding(4, 0, 4, 0)
         Label11.Name = "Label11"
         Label11.Size = New Size(80, 17)
@@ -409,7 +456,7 @@ Partial Class Registro
         ' 
         Label13.AutoSize = True
         Label13.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label13.Location = New Point(565, 161)
+        Label13.Location = New Point(605, 414)
         Label13.Margin = New Padding(4, 0, 4, 0)
         Label13.Name = "Label13"
         Label13.Size = New Size(77, 17)
@@ -420,7 +467,7 @@ Partial Class Registro
         ' 
         Label14.AutoSize = True
         Label14.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label14.Location = New Point(565, 213)
+        Label14.Location = New Point(605, 459)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
         Label14.Size = New Size(84, 17)
@@ -431,18 +478,18 @@ Partial Class Registro
         ' 
         Label15.AutoSize = True
         Label15.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label15.Location = New Point(565, 262)
+        Label15.Location = New Point(738, 460)
         Label15.Margin = New Padding(4, 0, 4, 0)
         Label15.Name = "Label15"
-        Label15.Size = New Size(71, 17)
+        Label15.Size = New Size(67, 17)
         Label15.TabIndex = 30
-        Label15.Text = "Costo total"
+        Label15.Text = "Valor total"
         ' 
         ' Label16
         ' 
         Label16.AutoSize = True
         Label16.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label16.Location = New Point(46, 282)
+        Label16.Location = New Point(110, 457)
         Label16.Margin = New Padding(4, 0, 4, 0)
         Label16.Name = "Label16"
         Label16.Size = New Size(111, 17)
@@ -451,12 +498,12 @@ Partial Class Registro
         ' 
         ' btn_registrar
         ' 
-        btn_registrar.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_registrar.Location = New Point(291, 332)
+        btn_registrar.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_registrar.Location = New Point(409, 517)
         btn_registrar.Margin = New Padding(4, 3, 4, 3)
         btn_registrar.Name = "btn_registrar"
         btn_registrar.Size = New Size(142, 35)
-        btn_registrar.TabIndex = 12
+        btn_registrar.TabIndex = 18
         btn_registrar.Text = ">> Registrar <<"
         btn_registrar.UseVisualStyleBackColor = True
         ' 
@@ -464,11 +511,11 @@ Partial Class Registro
         ' 
         rb_mujer.AutoSize = True
         rb_mujer.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        rb_mujer.Location = New Point(299, 86)
+        rb_mujer.Location = New Point(335, 288)
         rb_mujer.Margin = New Padding(4, 3, 4, 3)
         rb_mujer.Name = "rb_mujer"
         rb_mujer.Size = New Size(57, 21)
-        rb_mujer.TabIndex = 1
+        rb_mujer.TabIndex = 3
         rb_mujer.TabStop = True
         rb_mujer.Text = "Mujer"
         rb_mujer.UseVisualStyleBackColor = True
@@ -477,11 +524,11 @@ Partial Class Registro
         ' 
         rb_hombre.AutoSize = True
         rb_hombre.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        rb_hombre.Location = New Point(299, 111)
+        rb_hombre.Location = New Point(395, 288)
         rb_hombre.Margin = New Padding(4, 3, 4, 3)
         rb_hombre.Name = "rb_hombre"
         rb_hombre.Size = New Size(72, 21)
-        rb_hombre.TabIndex = 2
+        rb_hombre.TabIndex = 4
         rb_hombre.TabStop = True
         rb_hombre.Text = "Hombre"
         rb_hombre.UseVisualStyleBackColor = True
@@ -491,6 +538,7 @@ Partial Class Registro
         Tab_Consultar.Controls.Add(TabPage1)
         Tab_Consultar.Controls.Add(TabPage3)
         Tab_Consultar.Controls.Add(TabPage4)
+        Tab_Consultar.Controls.Add(TabPage5)
         Tab_Consultar.Controls.Add(TabPage2)
         Tab_Consultar.Dock = DockStyle.Fill
         Tab_Consultar.Font = New Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -498,13 +546,30 @@ Partial Class Registro
         Tab_Consultar.Margin = New Padding(4, 3, 4, 3)
         Tab_Consultar.Name = "Tab_Consultar"
         Tab_Consultar.SelectedIndex = 0
-        Tab_Consultar.Size = New Size(720, 429)
+        Tab_Consultar.Size = New Size(982, 600)
         Tab_Consultar.TabIndex = 32
         ' 
         ' TabPage1
         ' 
         TabPage1.BackgroundImage = CType(resources.GetObject("TabPage1.BackgroundImage"), Image)
         TabPage1.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage1.Controls.Add(rb_matrimonio)
+        TabPage1.Controls.Add(Label20)
+        TabPage1.Controls.Add(lst_compra)
+        TabPage1.Controls.Add(lb_talla)
+        TabPage1.Controls.Add(jt_talla)
+        TabPage1.Controls.Add(lb_venta_pircing)
+        TabPage1.Controls.Add(jt_venta_pircing)
+        TabPage1.Controls.Add(lb_compra_pircing)
+        TabPage1.Controls.Add(jt_compra_pircing)
+        TabPage1.Controls.Add(ch_oro_blanco)
+        TabPage1.Controls.Add(ch_oro_rosa)
+        TabPage1.Controls.Add(ch_oro_amarillo)
+        TabPage1.Controls.Add(ch_adicional)
+        TabPage1.Controls.Add(lb_adicional)
+        TabPage1.Controls.Add(jt_adicional)
+        TabPage1.Controls.Add(Label21)
+        TabPage1.Controls.Add(lst_sucursall)
         TabPage1.Controls.Add(jt_compra)
         TabPage1.Controls.Add(Label17)
         TabPage1.Controls.Add(btn_registrar)
@@ -545,34 +610,207 @@ Partial Class Registro
         TabPage1.Margin = New Padding(4, 3, 4, 3)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(4, 3, 4, 3)
-        TabPage1.Size = New Size(712, 401)
+        TabPage1.Size = New Size(974, 572)
         TabPage1.TabIndex = 0
         TabPage1.Text = "Registro"
         TabPage1.UseVisualStyleBackColor = True
         ' 
+        ' rb_matrimonio
+        ' 
+        rb_matrimonio.AutoSize = True
+        rb_matrimonio.Location = New Point(239, 289)
+        rb_matrimonio.Name = "rb_matrimonio"
+        rb_matrimonio.Size = New Size(86, 19)
+        rb_matrimonio.TabIndex = 59
+        rb_matrimonio.TabStop = True
+        rb_matrimonio.Text = "Matrimonio"
+        rb_matrimonio.UseVisualStyleBackColor = True
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label20.Location = New Point(416, 156)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(59, 19)
+        Label20.TabIndex = 58
+        Label20.Text = "Compra"
+        ' 
+        ' lst_compra
+        ' 
+        lst_compra.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_compra.FormattingEnabled = True
+        lst_compra.Location = New Point(416, 181)
+        lst_compra.Name = "lst_compra"
+        lst_compra.Size = New Size(121, 23)
+        lst_compra.TabIndex = 57
+        ' 
+        ' lb_talla
+        ' 
+        lb_talla.AutoSize = True
+        lb_talla.Enabled = False
+        lb_talla.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_talla.Location = New Point(479, 292)
+        lb_talla.Name = "lb_talla"
+        lb_talla.Size = New Size(35, 17)
+        lb_talla.TabIndex = 56
+        lb_talla.Text = "Talla"
+        ' 
+        ' jt_talla
+        ' 
+        jt_talla.Enabled = False
+        jt_talla.Location = New Point(479, 311)
+        jt_talla.Name = "jt_talla"
+        jt_talla.Size = New Size(100, 23)
+        jt_talla.TabIndex = 6
+        ' 
+        ' lb_venta_pircing
+        ' 
+        lb_venta_pircing.AutoSize = True
+        lb_venta_pircing.Enabled = False
+        lb_venta_pircing.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_venta_pircing.Location = New Point(368, 410)
+        lb_venta_pircing.Name = "lb_venta_pircing"
+        lb_venta_pircing.Size = New Size(131, 17)
+        lb_venta_pircing.TabIndex = 54
+        lb_venta_pircing.Text = "Precio Venta Piercing"
+        ' 
+        ' jt_venta_pircing
+        ' 
+        jt_venta_pircing.Enabled = False
+        jt_venta_pircing.Location = New Point(368, 428)
+        jt_venta_pircing.Name = "jt_venta_pircing"
+        jt_venta_pircing.Size = New Size(110, 23)
+        jt_venta_pircing.TabIndex = 13
+        ' 
+        ' lb_compra_pircing
+        ' 
+        lb_compra_pircing.AutoSize = True
+        lb_compra_pircing.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_compra_pircing.Location = New Point(220, 410)
+        lb_compra_pircing.Name = "lb_compra_pircing"
+        lb_compra_pircing.Size = New Size(143, 17)
+        lb_compra_pircing.TabIndex = 52
+        lb_compra_pircing.Text = "Precio Compra Piercing"
+        ' 
+        ' jt_compra_pircing
+        ' 
+        jt_compra_pircing.Enabled = False
+        jt_compra_pircing.Location = New Point(220, 428)
+        jt_compra_pircing.Name = "jt_compra_pircing"
+        jt_compra_pircing.Size = New Size(122, 23)
+        jt_compra_pircing.TabIndex = 12
+        ' 
+        ' ch_oro_blanco
+        ' 
+        ch_oro_blanco.AutoSize = True
+        ch_oro_blanco.Enabled = False
+        ch_oro_blanco.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_blanco.Location = New Point(284, 337)
+        ch_oro_blanco.Name = "ch_oro_blanco"
+        ch_oro_blanco.Size = New Size(80, 19)
+        ch_oro_blanco.TabIndex = 50
+        ch_oro_blanco.Text = "Oro Blanco"
+        ch_oro_blanco.UseVisualStyleBackColor = True
+        ' 
+        ' ch_oro_rosa
+        ' 
+        ch_oro_rosa.AutoSize = True
+        ch_oro_rosa.Enabled = False
+        ch_oro_rosa.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_rosa.Location = New Point(203, 337)
+        ch_oro_rosa.Name = "ch_oro_rosa"
+        ch_oro_rosa.Size = New Size(70, 19)
+        ch_oro_rosa.TabIndex = 49
+        ch_oro_rosa.Text = "Oro Rosa"
+        ch_oro_rosa.UseVisualStyleBackColor = True
+        ' 
+        ' ch_oro_amarillo
+        ' 
+        ch_oro_amarillo.AutoSize = True
+        ch_oro_amarillo.Enabled = False
+        ch_oro_amarillo.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_amarillo.Location = New Point(110, 337)
+        ch_oro_amarillo.Name = "ch_oro_amarillo"
+        ch_oro_amarillo.Size = New Size(87, 19)
+        ch_oro_amarillo.TabIndex = 48
+        ch_oro_amarillo.Text = "Oro Amarillo"
+        ch_oro_amarillo.UseVisualStyleBackColor = True
+        ' 
+        ' ch_adicional
+        ' 
+        ch_adicional.AutoSize = True
+        ch_adicional.Location = New Point(336, 263)
+        ch_adicional.Name = "ch_adicional"
+        ch_adicional.Size = New Size(63, 19)
+        ch_adicional.TabIndex = 47
+        ch_adicional.Text = "Prenda"
+        ch_adicional.UseVisualStyleBackColor = True
+        ' 
+        ' lb_adicional
+        ' 
+        lb_adicional.AutoSize = True
+        lb_adicional.Enabled = False
+        lb_adicional.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_adicional.Location = New Point(110, 410)
+        lb_adicional.Name = "lb_adicional"
+        lb_adicional.Size = New Size(91, 17)
+        lb_adicional.TabIndex = 46
+        lb_adicional.Text = "Valor adicional"
+        ' 
+        ' jt_adicional
+        ' 
+        jt_adicional.Enabled = False
+        jt_adicional.Location = New Point(110, 428)
+        jt_adicional.Name = "jt_adicional"
+        jt_adicional.Size = New Size(100, 23)
+        jt_adicional.TabIndex = 11
+        ' 
+        ' Label21
+        ' 
+        Label21.AutoSize = True
+        Label21.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label21.Location = New Point(479, 212)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(58, 17)
+        Label21.TabIndex = 41
+        Label21.Text = "Sucursal"
+        ' 
+        ' lst_sucursall
+        ' 
+        lst_sucursall.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_sucursall.DropDownWidth = 114
+        lst_sucursall.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_sucursall.FormattingEnabled = True
+        lst_sucursall.Location = New Point(483, 232)
+        lst_sucursall.Margin = New Padding(4, 3, 4, 3)
+        lst_sucursall.Name = "lst_sucursall"
+        lst_sucursall.Size = New Size(132, 28)
+        lst_sucursall.TabIndex = 1
+        ' 
         ' jt_compra
         ' 
-        jt_compra.Location = New Point(565, 82)
+        jt_compra.Location = New Point(738, 431)
         jt_compra.Margin = New Padding(4, 3, 4, 3)
         jt_compra.Name = "jt_compra"
-        jt_compra.Size = New Size(100, 23)
-        jt_compra.TabIndex = 11
+        jt_compra.Size = New Size(114, 23)
+        jt_compra.TabIndex = 17
         ' 
         ' Label17
         ' 
         Label17.AutoSize = True
         Label17.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label17.Location = New Point(565, 64)
+        Label17.Location = New Point(738, 414)
         Label17.Margin = New Padding(4, 0, 4, 0)
         Label17.Name = "Label17"
-        Label17.Size = New Size(106, 17)
+        Label17.Size = New Size(131, 17)
         Label17.TabIndex = 32
-        Label17.Text = "Valor gr (Compra)"
+        Label17.Text = "Precio de compra (Gr)"
         ' 
         ' PictureBox1
         ' 
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(259, -36)
+        PictureBox1.Location = New Point(368, 3)
         PictureBox1.Margin = New Padding(4, 3, 4, 3)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(204, 172)
@@ -584,6 +822,9 @@ Partial Class Registro
         ' 
         TabPage3.BackgroundImage = CType(resources.GetObject("TabPage3.BackgroundImage"), Image)
         TabPage3.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage3.Controls.Add(btn_imprimir_reporte)
+        TabPage3.Controls.Add(Label24)
+        TabPage3.Controls.Add(lst_compra_rep)
         TabPage3.Controls.Add(btn_tarifa_precios)
         TabPage3.Controls.Add(btn_compra)
         TabPage3.Controls.Add(btn_shopify)
@@ -593,59 +834,88 @@ Partial Class Registro
         TabPage3.Margin = New Padding(4, 3, 4, 3)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(4, 3, 4, 3)
-        TabPage3.Size = New Size(712, 401)
+        TabPage3.Size = New Size(974, 572)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Reportes"
         TabPage3.UseVisualStyleBackColor = True
         ' 
+        ' btn_imprimir_reporte
+        ' 
+        btn_imprimir_reporte.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_imprimir_reporte.Location = New Point(415, 441)
+        btn_imprimir_reporte.Name = "btn_imprimir_reporte"
+        btn_imprimir_reporte.Size = New Size(153, 69)
+        btn_imprimir_reporte.TabIndex = 6
+        btn_imprimir_reporte.Text = "Imprimir id's"
+        btn_imprimir_reporte.UseVisualStyleBackColor = True
+        ' 
+        ' Label24
+        ' 
+        Label24.AutoSize = True
+        Label24.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label24.Location = New Point(415, 152)
+        Label24.Name = "Label24"
+        Label24.Size = New Size(160, 19)
+        Label24.TabIndex = 5
+        Label24.Text = "Seleccione una compra"
+        ' 
+        ' lst_compra_rep
+        ' 
+        lst_compra_rep.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_compra_rep.FormattingEnabled = True
+        lst_compra_rep.Location = New Point(432, 174)
+        lst_compra_rep.Name = "lst_compra_rep"
+        lst_compra_rep.Size = New Size(121, 23)
+        lst_compra_rep.TabIndex = 4
+        ' 
         ' btn_tarifa_precios
         ' 
         btn_tarifa_precios.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_tarifa_precios.Location = New Point(394, 228)
+        btn_tarifa_precios.Location = New Point(530, 330)
         btn_tarifa_precios.Margin = New Padding(4, 3, 4, 3)
         btn_tarifa_precios.Name = "btn_tarifa_precios"
         btn_tarifa_precios.Size = New Size(201, 70)
-        btn_tarifa_precios.TabIndex = 2
+        btn_tarifa_precios.TabIndex = 3
         btn_tarifa_precios.Text = "Reporte Actualizar Precios"
         btn_tarifa_precios.UseVisualStyleBackColor = True
         ' 
         ' btn_compra
         ' 
         btn_compra.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_compra.Location = New Point(394, 110)
+        btn_compra.Location = New Point(530, 212)
         btn_compra.Margin = New Padding(4, 3, 4, 3)
         btn_compra.Name = "btn_compra"
         btn_compra.Size = New Size(201, 72)
-        btn_compra.TabIndex = 1
+        btn_compra.TabIndex = 2
         btn_compra.Text = "Generar Reporte Compra"
         btn_compra.UseVisualStyleBackColor = True
         ' 
         ' btn_shopify
         ' 
         btn_shopify.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_shopify.Location = New Point(118, 228)
+        btn_shopify.Location = New Point(254, 330)
         btn_shopify.Margin = New Padding(4, 3, 4, 3)
         btn_shopify.Name = "btn_shopify"
         btn_shopify.Size = New Size(201, 72)
-        btn_shopify.TabIndex = 0
+        btn_shopify.TabIndex = 1
         btn_shopify.Text = "Generar Reporte Shopy"
         btn_shopify.UseVisualStyleBackColor = True
         ' 
         ' btn_effy
         ' 
         btn_effy.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_effy.Location = New Point(118, 110)
+        btn_effy.Location = New Point(254, 212)
         btn_effy.Margin = New Padding(4, 3, 4, 3)
         btn_effy.Name = "btn_effy"
         btn_effy.Size = New Size(201, 72)
         btn_effy.TabIndex = 0
-        btn_effy.Text = "Generar Reporte Effy"
+        btn_effy.Text = "Generar Reporte Effi"
         btn_effy.UseVisualStyleBackColor = True
         ' 
         ' PictureBox2
         ' 
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(259, -36)
+        PictureBox2.Location = New Point(389, -37)
         PictureBox2.Margin = New Padding(4, 3, 4, 3)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(204, 172)
@@ -657,83 +927,166 @@ Partial Class Registro
         ' 
         TabPage4.BackgroundImage = CType(resources.GetObject("TabPage4.BackgroundImage"), Image)
         TabPage4.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage4.Controls.Add(GroupBox3)
+        TabPage4.Controls.Add(jt_referencia)
+        TabPage4.Controls.Add(btn_consultar)
+        TabPage4.Controls.Add(Label23)
+        TabPage4.Controls.Add(Label22)
+        TabPage4.Controls.Add(lst_sucursal_consulta)
+        TabPage4.Controls.Add(lst_compra_consulta)
         TabPage4.Controls.Add(GroupBox2)
         TabPage4.Controls.Add(Label19)
         TabPage4.Controls.Add(icon_actualizar)
-        TabPage4.Controls.Add(jt_id_consulta)
-        TabPage4.Controls.Add(btn_consultar_id)
         TabPage4.Controls.Add(GroupBox1)
         TabPage4.Controls.Add(tb_productos)
         TabPage4.Location = New Point(4, 24)
         TabPage4.Margin = New Padding(4, 3, 4, 3)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(4, 3, 4, 3)
-        TabPage4.Size = New Size(712, 401)
+        TabPage4.Size = New Size(974, 572)
         TabPage4.TabIndex = 3
         TabPage4.Text = "Consultar productos"
         TabPage4.UseVisualStyleBackColor = True
         ' 
+        ' GroupBox3
+        ' 
+        GroupBox3.Controls.Add(Label26)
+        GroupBox3.Controls.Add(jt_referencia_traslado)
+        GroupBox3.Controls.Add(btn_trasladar)
+        GroupBox3.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        GroupBox3.Location = New Point(770, 6)
+        GroupBox3.Name = "GroupBox3"
+        GroupBox3.Size = New Size(175, 112)
+        GroupBox3.TabIndex = 16
+        GroupBox3.TabStop = False
+        GroupBox3.Text = "Trasladar Producto"
+        ' 
+        ' Label26
+        ' 
+        Label26.AutoSize = True
+        Label26.Location = New Point(37, 27)
+        Label26.Name = "Label26"
+        Label26.Size = New Size(70, 17)
+        Label26.TabIndex = 16
+        Label26.Text = "Referencia"
+        ' 
+        ' jt_referencia_traslado
+        ' 
+        jt_referencia_traslado.Location = New Point(37, 45)
+        jt_referencia_traslado.Name = "jt_referencia_traslado"
+        jt_referencia_traslado.Size = New Size(100, 23)
+        jt_referencia_traslado.TabIndex = 14
+        ' 
+        ' btn_trasladar
+        ' 
+        btn_trasladar.Location = New Point(48, 74)
+        btn_trasladar.Name = "btn_trasladar"
+        btn_trasladar.Size = New Size(77, 23)
+        btn_trasladar.TabIndex = 15
+        btn_trasladar.Text = "Trasladar"
+        btn_trasladar.UseVisualStyleBackColor = True
+        ' 
+        ' jt_referencia
+        ' 
+        jt_referencia.Location = New Point(295, 142)
+        jt_referencia.Name = "jt_referencia"
+        jt_referencia.Size = New Size(100, 23)
+        jt_referencia.TabIndex = 13
+        ' 
+        ' btn_consultar
+        ' 
+        btn_consultar.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_consultar.Location = New Point(427, 142)
+        btn_consultar.Name = "btn_consultar"
+        btn_consultar.Size = New Size(95, 23)
+        btn_consultar.TabIndex = 12
+        btn_consultar.Text = "Consultar"
+        btn_consultar.UseVisualStyleBackColor = True
+        ' 
+        ' Label23
+        ' 
+        Label23.AutoSize = True
+        Label23.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label23.Location = New Point(152, 124)
+        Label23.Name = "Label23"
+        Label23.Size = New Size(58, 17)
+        Label23.TabIndex = 11
+        Label23.Text = "Sucursal"
+        ' 
+        ' Label22
+        ' 
+        Label22.AutoSize = True
+        Label22.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label22.Location = New Point(7, 124)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(53, 17)
+        Label22.TabIndex = 10
+        Label22.Text = "Compra"
+        ' 
+        ' lst_sucursal_consulta
+        ' 
+        lst_sucursal_consulta.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_sucursal_consulta.FormattingEnabled = True
+        lst_sucursal_consulta.Items.AddRange(New Object() {"Bodega", "Detal", "Todas"})
+        lst_sucursal_consulta.Location = New Point(154, 142)
+        lst_sucursal_consulta.Name = "lst_sucursal_consulta"
+        lst_sucursal_consulta.Size = New Size(121, 23)
+        lst_sucursal_consulta.TabIndex = 9
+        ' 
+        ' lst_compra_consulta
+        ' 
+        lst_compra_consulta.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_compra_consulta.FormattingEnabled = True
+        lst_compra_consulta.Location = New Point(9, 142)
+        lst_compra_consulta.Name = "lst_compra_consulta"
+        lst_compra_consulta.Size = New Size(121, 23)
+        lst_compra_consulta.TabIndex = 8
+        ' 
         ' GroupBox2
         ' 
         GroupBox2.Controls.Add(btn_backup)
-        GroupBox2.Location = New Point(370, 6)
+        GroupBox2.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        GroupBox2.Location = New Point(605, 6)
         GroupBox2.Name = "GroupBox2"
-        GroupBox2.Size = New Size(149, 112)
+        GroupBox2.Size = New Size(159, 112)
         GroupBox2.TabIndex = 7
         GroupBox2.TabStop = False
         GroupBox2.Text = "Backup"
         ' 
         ' btn_backup
         ' 
-        btn_backup.Location = New Point(33, 42)
+        btn_backup.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_backup.Location = New Point(37, 40)
         btn_backup.Name = "btn_backup"
         btn_backup.Size = New Size(85, 32)
-        btn_backup.TabIndex = 0
+        btn_backup.TabIndex = 1
         btn_backup.Text = "Backup"
+        tt_backup.SetToolTip(btn_backup, "Descargar backup de productos registrados")
         btn_backup.UseVisualStyleBackColor = True
         ' 
         ' Label19
         ' 
         Label19.AutoSize = True
         Label19.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label19.Location = New Point(546, 30)
+        Label19.Location = New Point(295, 124)
         Label19.Margin = New Padding(4, 0, 4, 0)
         Label19.Name = "Label19"
-        Label19.Size = New Size(102, 17)
+        Label19.Size = New Size(70, 17)
         Label19.TabIndex = 6
-        Label19.Text = "Consultar por Id:"
+        Label19.Text = "Referencia"
         ' 
         ' icon_actualizar
         ' 
         icon_actualizar.Cursor = Cursors.Hand
         icon_actualizar.Image = CType(resources.GetObject("icon_actualizar.Image"), Image)
-        icon_actualizar.Location = New Point(670, 6)
+        icon_actualizar.Location = New Point(532, 138)
         icon_actualizar.Margin = New Padding(4, 3, 4, 3)
         icon_actualizar.Name = "icon_actualizar"
         icon_actualizar.Size = New Size(34, 27)
         icon_actualizar.SizeMode = PictureBoxSizeMode.StretchImage
         icon_actualizar.TabIndex = 5
         icon_actualizar.TabStop = False
-        tt_actualizar.SetToolTip(icon_actualizar, "Actualizar consulta")
-        ' 
-        ' jt_id_consulta
-        ' 
-        jt_id_consulta.Location = New Point(550, 48)
-        jt_id_consulta.Margin = New Padding(4, 3, 4, 3)
-        jt_id_consulta.Name = "jt_id_consulta"
-        jt_id_consulta.Size = New Size(100, 23)
-        jt_id_consulta.TabIndex = 4
-        ' 
-        ' btn_consultar_id
-        ' 
-        btn_consultar_id.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_consultar_id.Location = New Point(558, 73)
-        btn_consultar_id.Margin = New Padding(4, 3, 4, 3)
-        btn_consultar_id.Name = "btn_consultar_id"
-        btn_consultar_id.Size = New Size(85, 29)
-        btn_consultar_id.TabIndex = 3
-        btn_consultar_id.Text = "Consultar"
-        btn_consultar_id.UseVisualStyleBackColor = True
+        tt_actualizar.SetToolTip(icon_actualizar, "Limpiar selección")
         ' 
         ' GroupBox1
         ' 
@@ -743,7 +1096,7 @@ Partial Class Registro
         GroupBox1.Margin = New Padding(4, 3, 4, 3)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Padding = New Padding(4, 3, 4, 3)
-        GroupBox1.Size = New Size(354, 112)
+        GroupBox1.Size = New Size(557, 112)
         GroupBox1.TabIndex = 1
         GroupBox1.TabStop = False
         GroupBox1.Text = "Depurar productos registrados"
@@ -754,18 +1107,18 @@ Partial Class Registro
         Label18.Location = New Point(6, 19)
         Label18.Margin = New Padding(4, 0, 4, 0)
         Label18.Name = "Label18"
-        Label18.Size = New Size(342, 53)
+        Label18.Size = New Size(507, 53)
         Label18.TabIndex = 2
-        Label18.Text = "Si desea depurar la lista de productos registrados, cargue un archivo excel con una única columna llamada ID en la cual estén los id de los productos que desea eliminar."
+        Label18.Text = "Si desea depurar la lista de productos registrados, debe cargar un archivo excel con una única columna llamada Referencia en la cual estén las referencias de los productos que desea eliminar."
         ' 
         ' btn_depurar
         ' 
         btn_depurar.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_depurar.Location = New Point(82, 73)
+        btn_depurar.Location = New Point(211, 74)
         btn_depurar.Margin = New Padding(4, 3, 4, 3)
         btn_depurar.Name = "btn_depurar"
         btn_depurar.Size = New Size(159, 33)
-        btn_depurar.TabIndex = 1
+        btn_depurar.TabIndex = 0
         btn_depurar.Text = "Depurar"
         tt_depurar.SetToolTip(btn_depurar, "Cargar archivo excel")
         btn_depurar.UseVisualStyleBackColor = True
@@ -776,23 +1129,29 @@ Partial Class Registro
         tb_productos.AllowUserToResizeColumns = False
         tb_productos.AutoGenerateColumns = False
         tb_productos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        tb_productos.Columns.AddRange(New DataGridViewColumn() {DataGridViewTextBoxColumn1, nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, valor_unitario_compra})
+        tb_productos.Columns.AddRange(New DataGridViewColumn() {referencia, idcompra, nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, valor_unitario_compra, broche, vbroche})
         tb_productos.DataSource = DataSet1BindingSource
-        tb_productos.Location = New Point(4, 124)
+        tb_productos.Location = New Point(4, 171)
         tb_productos.Margin = New Padding(4, 3, 4, 3)
         tb_productos.Name = "tb_productos"
         tb_productos.ReadOnly = True
         tb_productos.RowHeadersVisible = False
         tb_productos.RowTemplate.Height = 25
         tb_productos.RowTemplate.Resizable = DataGridViewTriState.False
-        tb_productos.Size = New Size(704, 270)
+        tb_productos.Size = New Size(962, 405)
         tb_productos.TabIndex = 0
         ' 
-        ' DataGridViewTextBoxColumn1
+        ' referencia
         ' 
-        DataGridViewTextBoxColumn1.HeaderText = "id"
-        DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        DataGridViewTextBoxColumn1.ReadOnly = True
+        referencia.HeaderText = "referencia"
+        referencia.Name = "referencia"
+        referencia.ReadOnly = True
+        ' 
+        ' idcompra
+        ' 
+        idcompra.HeaderText = "idcompra"
+        idcompra.Name = "idcompra"
+        idcompra.ReadOnly = True
         ' 
         ' nombre
         ' 
@@ -854,10 +1213,109 @@ Partial Class Registro
         valor_unitario_compra.Name = "valor_unitario_compra"
         valor_unitario_compra.ReadOnly = True
         ' 
+        ' broche
+        ' 
+        broche.HeaderText = "broche"
+        broche.Name = "broche"
+        broche.ReadOnly = True
+        ' 
+        ' vbroche
+        ' 
+        vbroche.HeaderText = "vbroche"
+        vbroche.Name = "vbroche"
+        vbroche.ReadOnly = True
+        ' 
         ' DataSet1BindingSource
         ' 
         DataSet1BindingSource.DataSource = GetType(GoldManager.DataSet1)
         DataSet1BindingSource.Position = 0
+        ' 
+        ' TabPage5
+        ' 
+        TabPage5.BackgroundImage = CType(resources.GetObject("TabPage5.BackgroundImage"), Image)
+        TabPage5.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage5.Controls.Add(Label25)
+        TabPage5.Controls.Add(btn_agregar_compra)
+        TabPage5.Controls.Add(btn_cerrar1)
+        TabPage5.Controls.Add(tb_compras)
+        TabPage5.Location = New Point(4, 24)
+        TabPage5.Name = "TabPage5"
+        TabPage5.Padding = New Padding(3)
+        TabPage5.Size = New Size(974, 572)
+        TabPage5.TabIndex = 4
+        TabPage5.Text = "Gestionar Compras"
+        TabPage5.UseVisualStyleBackColor = True
+        ' 
+        ' Label25
+        ' 
+        Label25.AutoSize = True
+        Label25.Font = New Font("Barlow Light", 21.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Label25.Location = New Point(428, 74)
+        Label25.Name = "Label25"
+        Label25.Size = New Size(128, 36)
+        Label25.TabIndex = 3
+        Label25.Text = "Compras"
+        ' 
+        ' btn_agregar_compra
+        ' 
+        btn_agregar_compra.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_agregar_compra.Location = New Point(357, 446)
+        btn_agregar_compra.Name = "btn_agregar_compra"
+        btn_agregar_compra.Size = New Size(124, 34)
+        btn_agregar_compra.TabIndex = 2
+        btn_agregar_compra.Text = "Agregar compra"
+        btn_agregar_compra.UseVisualStyleBackColor = True
+        ' 
+        ' btn_cerrar1
+        ' 
+        btn_cerrar1.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_cerrar1.Location = New Point(487, 446)
+        btn_cerrar1.Name = "btn_cerrar1"
+        btn_cerrar1.Size = New Size(124, 34)
+        btn_cerrar1.TabIndex = 1
+        btn_cerrar1.Text = "Cerrar compra"
+        btn_cerrar1.UseVisualStyleBackColor = True
+        ' 
+        ' tb_compras
+        ' 
+        tb_compras.AllowUserToAddRows = False
+        tb_compras.AllowUserToDeleteRows = False
+        tb_compras.AutoGenerateColumns = False
+        tb_compras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        tb_compras.Columns.AddRange(New DataGridViewColumn() {DataGridViewTextBoxColumn2, estado, cantidadproductos})
+        tb_compras.DataSource = DataSet1BindingSource1
+        tb_compras.Location = New Point(336, 124)
+        tb_compras.Name = "tb_compras"
+        tb_compras.ReadOnly = True
+        tb_compras.RowTemplate.Height = 25
+        tb_compras.Size = New Size(297, 316)
+        tb_compras.TabIndex = 0
+        ' 
+        ' DataGridViewTextBoxColumn2
+        ' 
+        DataGridViewTextBoxColumn2.Frozen = True
+        DataGridViewTextBoxColumn2.HeaderText = "id"
+        DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        DataGridViewTextBoxColumn2.ReadOnly = True
+        ' 
+        ' estado
+        ' 
+        estado.Frozen = True
+        estado.HeaderText = "estado"
+        estado.Name = "estado"
+        estado.ReadOnly = True
+        ' 
+        ' cantidadproductos
+        ' 
+        cantidadproductos.Frozen = True
+        cantidadproductos.HeaderText = "Cantidad de productos"
+        cantidadproductos.Name = "cantidadproductos"
+        cantidadproductos.ReadOnly = True
+        ' 
+        ' DataSet1BindingSource1
+        ' 
+        DataSet1BindingSource1.DataSource = GetType(GoldManager.DataSet1)
+        DataSet1BindingSource1.Position = 0
         ' 
         ' TabPage2
         ' 
@@ -872,7 +1330,7 @@ Partial Class Registro
         TabPage2.Margin = New Padding(4, 3, 4, 3)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(4, 3, 4, 3)
-        TabPage2.Size = New Size(712, 401)
+        TabPage2.Size = New Size(974, 572)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Tabla de precios"
         TabPage2.UseVisualStyleBackColor = True
@@ -881,42 +1339,44 @@ Partial Class Registro
         ' 
         Panel1.Controls.Add(btn_cancelar)
         Panel1.Controls.Add(btn_actualizar)
-        Panel1.Location = New Point(579, 103)
+        Panel1.Location = New Point(700, 103)
         Panel1.Margin = New Padding(4, 3, 4, 3)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(106, 77)
+        Panel1.Size = New Size(116, 77)
         Panel1.TabIndex = 4
         ' 
         ' btn_cancelar
         ' 
+        btn_cancelar.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         btn_cancelar.Location = New Point(13, 42)
         btn_cancelar.Margin = New Padding(4, 3, 4, 3)
         btn_cancelar.Name = "btn_cancelar"
-        btn_cancelar.Size = New Size(75, 23)
-        btn_cancelar.TabIndex = 1
+        btn_cancelar.Size = New Size(89, 23)
+        btn_cancelar.TabIndex = 3
         btn_cancelar.Text = "Cancelar"
         btn_cancelar.UseVisualStyleBackColor = True
         btn_cancelar.Visible = False
         ' 
         ' btn_actualizar
         ' 
+        btn_actualizar.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_actualizar.Location = New Point(13, 13)
         btn_actualizar.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar.Name = "btn_actualizar"
-        btn_actualizar.Size = New Size(75, 23)
-        btn_actualizar.TabIndex = 0
-        btn_actualizar.Text = "Acualizar"
+        btn_actualizar.Size = New Size(89, 23)
+        btn_actualizar.TabIndex = 2
+        btn_actualizar.Text = "Actualizar"
         btn_actualizar.UseVisualStyleBackColor = True
         btn_actualizar.Visible = False
         ' 
         ' btn_actualizar_valores
         ' 
         btn_actualizar_valores.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_actualizar_valores.Location = New Point(287, 321)
+        btn_actualizar_valores.Location = New Point(401, 508)
         btn_actualizar_valores.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar_valores.Name = "btn_actualizar_valores"
         btn_actualizar_valores.Size = New Size(118, 30)
-        btn_actualizar_valores.TabIndex = 3
+        btn_actualizar_valores.TabIndex = 1
         btn_actualizar_valores.Text = "Actualizar valores"
         btn_actualizar_valores.UseVisualStyleBackColor = True
         btn_actualizar_valores.Visible = False
@@ -927,14 +1387,14 @@ Partial Class Registro
         tb_precios.AllowUserToResizeColumns = False
         tb_precios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         tb_precios.Columns.AddRange(New DataGridViewColumn() {id, peso_inicial, peso_final, categoria_precio, valor})
-        tb_precios.Location = New Point(108, 103)
+        tb_precios.Location = New Point(234, 116)
         tb_precios.Margin = New Padding(4, 3, 4, 3)
         tb_precios.Name = "tb_precios"
         tb_precios.ReadOnly = True
         tb_precios.RowHeadersVisible = False
         tb_precios.RowTemplate.Height = 25
         tb_precios.RowTemplate.Resizable = DataGridViewTriState.False
-        tb_precios.Size = New Size(464, 203)
+        tb_precios.Size = New Size(458, 386)
         tb_precios.TabIndex = 2
         ' 
         ' id
@@ -973,7 +1433,7 @@ Partial Class Registro
         ' 
         Label12.AutoSize = True
         Label12.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
-        Label12.Location = New Point(276, 60)
+        Label12.Location = New Point(401, 82)
         Label12.Margin = New Padding(4, 0, 4, 0)
         Label12.Name = "Label12"
         Label12.Size = New Size(43, 17)
@@ -994,7 +1454,7 @@ Partial Class Registro
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(720, 429)
+        ClientSize = New Size(982, 600)
         Controls.Add(Tab_Consultar)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(4, 3, 4, 3)
@@ -1006,14 +1466,21 @@ Partial Class Registro
         TabPage1.PerformLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
+        TabPage3.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         TabPage4.ResumeLayout(False)
         TabPage4.PerformLayout()
+        GroupBox3.ResumeLayout(False)
+        GroupBox3.PerformLayout()
         GroupBox2.ResumeLayout(False)
         CType(icon_actualizar, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         CType(tb_productos, ComponentModel.ISupportInitialize).EndInit()
         CType(DataSet1BindingSource, ComponentModel.ISupportInitialize).EndInit()
+        TabPage5.ResumeLayout(False)
+        TabPage5.PerformLayout()
+        CType(tb_compras, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataSet1BindingSource1, ComponentModel.ISupportInitialize).EndInit()
         TabPage2.ResumeLayout(False)
         TabPage2.PerformLayout()
         Panel1.ResumeLayout(False)
@@ -1037,6 +1504,16 @@ Partial Class Registro
         jt_costo_total.Text = "Pendiente"
         jt_compra.Enabled = False
         jt_compra.Text = ""
+        lst_sucursall.Text = "Seleccione"
+        ch_adicional.Enabled = False
+        lb_compra_pircing.Enabled = False
+        lb_venta_pircing.Enabled = False
+        jt_compra_pircing.Enabled = False
+        jt_venta_pircing.Enabled = False
+        jt_compra_pircing.Text = ""
+        jt_venta_pircing.Text = ""
+        jt_talla.Text = ""
+        lb_talla.Enabled = False
 
         Select Case lst_tipo_producto.Text
 
@@ -1052,9 +1529,25 @@ Partial Class Registro
                 rb_hombre.Visible = False
                 rb_mujer.Checked = False
                 rb_hombre.Checked = False
+                rb_matrimonio.Visible = False
+                rb_matrimonio.Checked = False
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = True
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                ch_oro_rosa.Enabled = True
+                ch_oro_blanco.Enabled = True
+                ch_oro_amarillo.Enabled = True
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                jt_talla.Enabled = False
 
             Case "Dije"
                 jt_largo.Enabled = True
+                jt_grosor.Enabled = True
                 jt_cantidad.Enabled = True
                 jt_descripcion.Enabled = True
                 lst_marca.Enabled = True
@@ -1064,9 +1557,25 @@ Partial Class Registro
                 rb_hombre.Visible = False
                 rb_mujer.Checked = False
                 rb_hombre.Checked = False
+                rb_matrimonio.Visible = False
+                rb_matrimonio.Checked = False
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = True
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                ch_oro_rosa.Enabled = True
+                ch_oro_blanco.Enabled = True
+                ch_oro_amarillo.Enabled = True
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                jt_talla.Enabled = False
 
             Case "Anillo"
-                jt_grosor.Enabled = False
+                jt_talla.Enabled = True
+                jt_grosor.Enabled = True
                 jt_largo.Enabled = False
                 jt_descripcion.Enabled = True
                 lst_marca.Enabled = True
@@ -1078,6 +1587,45 @@ Partial Class Registro
                 rb_mujer.Visible = True
                 rb_hombre.Enabled = True
                 rb_hombre.Visible = True
+                rb_matrimonio.Visible = True
+                rb_matrimonio.Enabled = True
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = True
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                ch_oro_rosa.Enabled = True
+                ch_oro_blanco.Enabled = True
+                ch_oro_amarillo.Enabled = True
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                lb_talla.Enabled = True
+
+            Case "Anillo Solitario", "Anillo Matrimonio", "Anillo 15"
+                jt_grosor.Enabled = False
+                jt_largo.Enabled = False
+                jt_descripcion.Enabled = True
+                lst_marca.Enabled = True
+                lst_broche.Enabled = False
+                jt_cantidad.Enabled = True
+                jt_peso.Enabled = True
+                lst_categoria_precio.Enabled = True
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = True
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                ch_oro_rosa.Enabled = True
+                ch_oro_blanco.Enabled = True
+                ch_oro_amarillo.Enabled = True
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                jt_talla.Enabled = True
+                lb_talla.Enabled = True
 
             Case "Topos"
                 jt_grosor.Enabled = True
@@ -1092,8 +1640,23 @@ Partial Class Registro
                 rb_hombre.Visible = False
                 rb_mujer.Checked = False
                 rb_hombre.Checked = False
+                rb_matrimonio.Visible = False
+                rb_matrimonio.Checked = False
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = True
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                ch_oro_rosa.Enabled = True
+                ch_oro_blanco.Enabled = True
+                ch_oro_amarillo.Enabled = True
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                jt_talla.Enabled = False
 
-            Case "Pircing", "Herraje", "Pulsera tejida", "Candonga", "Bola"
+            Case "Herraje", "Pulsera tejida", "Candonga", "Bola"
                 jt_grosor.Enabled = False
                 jt_largo.Enabled = True
                 jt_descripcion.Enabled = True
@@ -1108,6 +1671,46 @@ Partial Class Registro
                 rb_hombre.Visible = False
                 rb_mujer.Checked = False
                 rb_hombre.Checked = False
+                rb_matrimonio.Visible = False
+                rb_matrimonio.Checked = False
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = True
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                ch_oro_rosa.Enabled = True
+                ch_oro_blanco.Enabled = True
+                ch_oro_amarillo.Enabled = True
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                jt_talla.Enabled = False
+
+            Case "Piercing"
+                jt_descripcion.Enabled = True
+                jt_grosor.Enabled = False
+                jt_largo.Enabled = False
+                lst_marca.Enabled = True
+                lst_broche.Enabled = False
+                jt_cantidad.Enabled = True
+                jt_peso.Enabled = False
+                jt_peso_total.Enabled = False
+                lst_categoria_precio.Enabled = False
+                jt_nombre_compuesto.Enabled = False
+                rb_mujer.Visible = False
+                rb_hombre.Visible = False
+                rb_mujer.Checked = False
+                rb_hombre.Checked = False
+                rb_matrimonio.Visible = False
+                rb_matrimonio.Checked = False
+                ch_adicional.Checked = False
+                ch_adicional.Enabled = False
+                lb_compra_pircing.Enabled = True
+                lb_venta_pircing.Enabled = True
+                jt_compra_pircing.Enabled = True
+                jt_venta_pircing.Enabled = True
+                jt_talla.Enabled = False
 
             Case Else
                 jt_grosor.Enabled = False
@@ -1124,12 +1727,41 @@ Partial Class Registro
                 rb_hombre.Visible = False
                 rb_mujer.Checked = False
                 rb_hombre.Checked = False
-
+                rb_matrimonio.Visible = False
+                rb_matrimonio.Checked = False
+                ch_adicional.Enabled = False
+                jt_compra.Enabled = False
+                ch_adicional.Checked = False
+                lb_adicional.Enabled = False
+                jt_adicional.Enabled = False
+                jt_adicional.Text = ""
+                jt_nombre_compuesto.Text = ""
+                lb_compra_pircing.Enabled = False
+                lb_venta_pircing.Enabled = False
+                jt_compra_pircing.Enabled = False
+                jt_venta_pircing.Enabled = False
+                jt_compra_pircing.Text = ""
+                jt_venta_pircing.Text = ""
+                jt_talla.Text = ""
+                ch_oro_rosa.Enabled = False
+                ch_oro_blanco.Enabled = False
+                ch_oro_amarillo.Enabled = False
+                ch_oro_amarillo.Checked = False
+                ch_oro_blanco.Checked = False
+                ch_oro_rosa.Checked = False
+                jt_talla.Enabled = False
+                lb_talla.Enabled = False
         End Select
     End Sub
+    Private Sub lst_sucursal_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_sucursall.SelectedIndexChanged
+        ActualizarNombreCompleto()
+    End Sub
+
+
     Private Sub lst_marca_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_marca.SelectedIndexChanged
         ActualizarNombreCompleto()
         lst_broche.Text = ""
+
         If lst_tipo_producto.Text = "Cadena" Or lst_tipo_producto.Text = "Pulso bebé" Or lst_tipo_producto.Text = "Tobillera" Or lst_tipo_producto.Text = "Pulso" Or lst_tipo_producto.Text = "Rosario" Then
             If lst_marca.Text = "Nacional" Then
                 lst_broche.Enabled = True
@@ -1147,22 +1779,30 @@ Partial Class Registro
             jt_compra.Enabled = False
             jt_compra.Text = ""
         ElseIf lst_marca.Text = "Nacional" Then
-            jt_compra.Enabled = True
-            jt_compra.Text = ""
-            Dim peso As Decimal
-            Decimal.TryParse(jt_peso.Text, peso)
-            jt_valor_gramo.Text = ObtenerValorGamoNacional(peso, lst_categoria_precio.SelectedItem.ToString())
-            CalcularValorUnitario()
-            CalcularCostoTotal()
+            If lst_tipo_producto.Text = "Piercing" Then
+                jt_compra.Enabled = False
+            Else
+                jt_compra.Enabled = True
+                jt_compra.Text = ""
+                Dim peso As Decimal
+                Decimal.TryParse(jt_peso.Text, peso)
+                jt_valor_gramo.Text = ObtenerValorGamoNacional(peso, lst_categoria_precio.SelectedItem.ToString())
+                CalcularValorUnitario()
+                CalcularCostoTotal()
+            End If
         ElseIf lst_marca.Text = "Italy" Then
-            lst_broche.Text = "Seleccione"
-            jt_compra.Enabled = True
-            jt_compra.Text = ""
-            Dim peso As Decimal
-            Decimal.TryParse(jt_peso.Text, peso)
-            jt_valor_gramo.Text = ObtenerValorGramoItaly(peso, lst_categoria_precio.SelectedItem.ToString())
-            CalcularValorUnitario()
-            CalcularCostoTotal()
+            If lst_tipo_producto.Text = "Piercing" Then
+                jt_compra.Enabled = False
+            Else
+                lst_broche.Text = "Seleccione"
+                jt_compra.Enabled = True
+                jt_compra.Text = ""
+                Dim peso As Decimal
+                Decimal.TryParse(jt_peso.Text, peso)
+                jt_valor_gramo.Text = ObtenerValorGramoItaly(peso, lst_categoria_precio.SelectedItem.ToString())
+                CalcularValorUnitario()
+                CalcularCostoTotal()
+            End If
         End If
     End Sub
     Private Sub jt_peso_TextChanged(sender As Object, e As EventArgs) Handles jt_peso.TextChanged
@@ -1197,7 +1837,11 @@ Partial Class Registro
             jt_costo_total.Text = "Pendiente"
         End If
     End Sub
+    Private Sub jt_talla_TextChanged(sender As Object, e As EventArgs) Handles jt_talla.TextChanged
+        ActualizarNombreCompleto()
+    End Sub
     Private Sub jt_cantidad_TextChanged(sender As Object, e As EventArgs) Handles jt_cantidad.TextChanged
+
         CalcularPesoTotal()
 
         If jt_peso.Text = "" Or jt_peso.Text = "0" Then
@@ -1227,9 +1871,12 @@ Partial Class Registro
     Private Sub lst_broche_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_broche.SelectedIndexChanged
         If lst_broche.SelectedItem.ToString() = "Seleccione" Then
             jt_valor_broche.Text = ""
+            ActualizarNombreCompleto()
         Else
             jt_valor_broche.Text = CalcularValorBroche(lst_broche.SelectedItem)
+            ActualizarNombreCompleto()
         End If
+        CalcularPesoTotal()
         CalcularValorUnitario()
         CalcularCostoTotal()
     End Sub
@@ -1243,13 +1890,17 @@ Partial Class Registro
             jt_valor_unitario.Text = "Pendiente"
             jt_costo_total.Text = "Pendiente"
         ElseIf lst_marca.Text = "Nacional" Then
+
             jt_valor_gramo.Text = ObtenerValorGamoNacional(jt_peso.Text, lst_categoria_precio.SelectedItem.ToString())
             CalcularValorUnitario()
             CalcularCostoTotal()
+
         ElseIf lst_marca.Text = "Italy" Then
+
             jt_valor_gramo.Text = ObtenerValorGramoItaly(jt_peso.Text, lst_categoria_precio.SelectedItem.ToString())
             CalcularValorUnitario()
             CalcularCostoTotal()
+
         End If
         ActualizarNombreCompleto()
     End Sub
@@ -1416,17 +2067,95 @@ Partial Class Registro
             e.Handled = True
         End If
     End Sub
+
     Private Sub jt_compra_Leave(sender As Object, e As EventArgs) Handles jt_compra.Leave
         If jt_compra.Text = "0" Then
             MessageBox.Show("El valor no puede ser cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             jt_compra.Focus()
         End If
     End Sub
+    Private Sub jt_valor_unitario_KeyPress(sender As Object, e As KeyPressEventArgs) Handles jt_valor_unitario.KeyPress
+        ' Permitir solo la entrada de números
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+
+        ' Limitar la longitud del texto a 9 caracteres
+        If jt_valor_unitario.Text.Length >= 9 And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub jt_valor_unitario_Leave(sender As Object, e As EventArgs) Handles jt_valor_unitario.Leave
+        If jt_valor_unitario.Text = "0" Then
+            MessageBox.Show("El valor no puede ser cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            jt_valor_unitario.Focus()
+        End If
+    End Sub
+    Private Sub jt_valor_unitario_TextChanged(sender As Object, e As EventArgs) Handles jt_valor_unitario.TextChanged
+        CalcularCostoTotal()
+    End Sub
+    Private Sub jt_compra_pircing_KeyPress(sender As Object, e As KeyPressEventArgs) Handles jt_compra_pircing.KeyPress
+        ' Permitir solo la entrada de números
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+        ' Limitar la longitud del texto a 10 caracteres
+        If jt_compra_pircing.Text.Length >= 10 And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+    Private Sub jt_compra_pircing_Leave(sender As Object, e As EventArgs) Handles jt_compra_pircing.Leave
+        If jt_compra_pircing.Text = "0" Then
+            MessageBox.Show("El precio de compra del Piercing no puede ser cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            jt_compra_pircing.Focus()
+        End If
+    End Sub
+    Private Sub jt_venta_pircing_KeyPress(sender As Object, e As KeyPressEventArgs) Handles jt_venta_pircing.KeyPress
+        ' Permitir solo la entrada de números
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+        ' Limitar la longitud del texto a 10 caracteres
+        If jt_venta_pircing.Text.Length >= 10 And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+    Private Sub jt_venta_pircing_Leave(sender As Object, e As EventArgs) Handles jt_venta_pircing.Leave
+        If jt_venta_pircing.Text = "0" Then
+            MessageBox.Show("El precio de venta del Piercing no puede ser cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            jt_venta_pircing.Focus()
+        End If
+    End Sub
+    Private Sub jt_adicional_KeyPress(sender As Object, e As KeyPressEventArgs) Handles jt_adicional.KeyPress
+        ' Permitir solo la entrada de números
+        If Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+        ' Limitar la longitud del texto a 9 caracteres
+        If jt_adicional.Text.Length >= 9 And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub jt_adicional_Leave(sender As Object, e As EventArgs) Handles jt_adicional.Leave
+        If jt_adicional.Text = "0" Then
+            MessageBox.Show("El valor adicional no puede ser cero", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            jt_adicional.Focus()
+        End If
+    End Sub
 
     Private Sub btn_registrar_Click(sender As Object, e As EventArgs) Handles btn_registrar.Click
-        validarCampos()
-        If camposValidados Then
-            registrar_producto()
+        If lst_tipo_producto.Text = "Piercing" Then
+            validarCamposPircing()
+            If CamposPircingValidados Then
+                registrar_pircing()
+            End If
+        Else
+            validarCampos()
+            If camposValidados Then
+                registrar_producto()
+            End If
         End If
     End Sub
     Private Sub tb_precios_DataError(sender As Object, e As DataGridViewDataErrorEventArgs) Handles tb_precios.DataError
@@ -1462,12 +2191,49 @@ Partial Class Registro
             End If
         End If
     End Sub
-    Private Sub jt_id_consulta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles jt_id_consulta.KeyPress
-        If e.KeyChar = Convert.ToChar(Keys.Enter) Then
-            ' Simula un clic en el botón btn_consultar_id
-            btn_consultar_id.PerformClick()
-            e.Handled = True ' Marca el evento como manejado
+    Private Sub jt_talla_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles jt_talla.KeyPress
+        ' Verificar si la tecla presionada es un número, el caracter /, un espacio o la tecla Backspace
+        If (Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "/"c AndAlso e.KeyChar <> " "c AndAlso e.KeyChar <> ControlChars.Back) Then
+            ' Si no es un número, el caracter /, un espacio ni la tecla Backspace, cancelar el evento de la tecla presionada
+            e.Handled = True
+            Return
         End If
+
+        ' Verificar si ya hay un espacio en el texto actual
+        If e.KeyChar = " "c AndAlso jt_talla.Text.Contains(" ") Then
+            ' Si ya hay un espacio presente en el texto, cancelar el evento de la tecla presionada
+            e.Handled = True
+            Return
+        End If
+
+        ' Verificar la longitud de jt_talla
+        Dim maxLength As Integer = 6
+        If jt_talla.Text.Length >= maxLength AndAlso e.KeyChar <> ControlChars.Back Then
+            ' Si se ha alcanzado la longitud máxima y no es una tecla de retroceso, cancelar el evento de la tecla presionada
+            e.Handled = True
+            Return
+        End If
+    End Sub
+
+    Private Sub ch_adicional_CheckedChanged(sender As Object, e As EventArgs) Handles ch_adicional.CheckedChanged
+        If ch_adicional.Checked Then
+            jt_adicional.Enabled = True
+            lb_adicional.Enabled = True
+        Else
+            jt_adicional.Enabled = False
+            jt_adicional.Text = ""
+            lb_adicional.Enabled = False
+
+        End If
+    End Sub
+    Private Sub ch_oro_amarillo_CheckedChanged(sender As Object, e As EventArgs) Handles ch_oro_amarillo.CheckedChanged
+        ActualizarNombreCompleto()
+    End Sub
+    Private Sub ch_oro_blanco_CheckedChanged(sender As Object, e As EventArgs) Handles ch_oro_blanco.CheckedChanged
+        ActualizarNombreCompleto()
+    End Sub
+    Private Sub ch_oro_rosa_CheckedChanged(sender As Object, e As EventArgs) Handles ch_oro_rosa.CheckedChanged
+        ActualizarNombreCompleto()
     End Sub
 
     Friend WithEvents lst_tipo_producto As ComboBox
@@ -1525,7 +2291,57 @@ Partial Class Registro
     Friend WithEvents DataSet1BindingSource As BindingSource
     Friend WithEvents jt_compra As TextBox
     Friend WithEvents Label17 As Label
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents btn_shopify As Button
+    Friend WithEvents btn_compra As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Public WithEvents OFD_depurar As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents btn_depurar As Button
+    Friend WithEvents Label18 As Label
+    Friend WithEvents btn_tarifa_precios As Button
+    Friend WithEvents icon_actualizar As PictureBox
+    Friend WithEvents tt_actualizar As ToolTip
+    Friend WithEvents tt_depurar As ToolTip
+    Friend WithEvents Label19 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents btn_backup As Button
+    Friend WithEvents Label21 As Label
+    Friend WithEvents lst_sucursall As ComboBox
+    Friend WithEvents tt_backup As ToolTip
+    Friend WithEvents ch_adicional As CheckBox
+    Friend WithEvents lb_adicional As Label
+    Friend WithEvents jt_adicional As TextBox
+    Friend WithEvents ch_oro_blanco As CheckBox
+    Friend WithEvents ch_oro_rosa As CheckBox
+    Friend WithEvents ch_oro_amarillo As CheckBox
+    Friend WithEvents lb_venta_pircing As Label
+    Friend WithEvents jt_venta_pircing As TextBox
+    Friend WithEvents lb_compra_pircing As Label
+    Friend WithEvents jt_compra_pircing As TextBox
+    Friend WithEvents lb_talla As Label
+    Friend WithEvents jt_talla As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents lst_compra As ComboBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents lst_sucursal_consulta As ComboBox
+    Friend WithEvents lst_compra_consulta As ComboBox
+    Friend WithEvents btn_consultar As Button
+    Friend WithEvents jt_referencia As TextBox
+    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents tb_compras As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents estado As DataGridViewTextBoxColumn
+    Friend WithEvents cantidadproductos As DataGridViewTextBoxColumn
+    Friend WithEvents DataSet1BindingSource1 As BindingSource
+    Friend WithEvents btn_agregar_compra As Button
+    Friend WithEvents btn_cerrar1 As Button
+    Friend WithEvents lst_compra_rep As ComboBox
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents referencia As DataGridViewTextBoxColumn
+    Friend WithEvents idcompra As DataGridViewTextBoxColumn
     Friend WithEvents nombre As DataGridViewTextBoxColumn
     Friend WithEvents marca As DataGridViewTextBoxColumn
     Friend WithEvents cantidad As DataGridViewTextBoxColumn
@@ -1536,21 +2352,12 @@ Partial Class Registro
     Friend WithEvents costo_total As DataGridViewTextBoxColumn
     Friend WithEvents valor_gramo As DataGridViewTextBoxColumn
     Friend WithEvents valor_unitario_compra As DataGridViewTextBoxColumn
-    Friend WithEvents btn_shopify As Button
-    Friend WithEvents btn_compra As Button
-    Friend WithEvents GroupBox1 As GroupBox
-    Public WithEvents OFD_depurar As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents btn_depurar As Button
-    Friend WithEvents Label18 As Label
-    Friend WithEvents btn_tarifa_precios As Button
-    Friend WithEvents jt_id_consulta As TextBox
-    Friend WithEvents btn_consultar_id As Button
-    Friend WithEvents icon_actualizar As PictureBox
-    Friend WithEvents tt_actualizar As ToolTip
-    Friend WithEvents tt_depurar As ToolTip
-    Friend WithEvents Label19 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents btn_backup As Button
+    Friend WithEvents broche As DataGridViewTextBoxColumn
+    Friend WithEvents vbroche As DataGridViewTextBoxColumn
+    Friend WithEvents btn_trasladar As Button
+    Friend WithEvents jt_referencia_traslado As TextBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents rb_matrimonio As RadioButton
+    Friend WithEvents btn_imprimir_reporte As Button
 End Class

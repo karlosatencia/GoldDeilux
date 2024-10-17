@@ -1,0 +1,14 @@
+# Ignorar carpetas de compilación
+bin/
+obj/
+.vs/
+
+# Ignorar archivos de configuración de Visual Studio
+*.suo
+*.user
+*.sln.docstates
+
+# Ignorar archivos temporales
+*.tmp
+*.log
+

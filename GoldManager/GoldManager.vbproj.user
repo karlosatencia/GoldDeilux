@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_LastSelectedProfileId>C:\Users\karlo\source\repos\GoldManager\GoldManager\My Project\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+    <_LastSelectedProfileId>C:\Código fuente Gold Manager\GoldManager - Elite Ref\GoldManager\My Project\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Compra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ImprimirIds.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormAutenticacion.vb">
       <SubType>Form</SubType>
     </Compile>
