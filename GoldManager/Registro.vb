@@ -339,10 +339,10 @@ Public Class Registro
         If lst_marca.Text = "Italy" Then
 
             If lst_tipo_producto.Text = "Piercing" Then
-                nombreCompuesto = lst_tipo_producto.Text & " Italy " & jt_descripcion.Text
+                nombreCompuesto = lst_tipo_producto.Text & " It " & jt_descripcion.Text
             Else
 
-                nombreCompuesto = lst_tipo_producto.Text & " Italy " & jt_descripcion.Text
+                nombreCompuesto = lst_tipo_producto.Text & " It " & jt_descripcion.Text
                 ' Agregar información de los checkboxes de oro
                 Dim oroSeleccionado As String = ""
 

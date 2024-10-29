@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kPEDAfU0/2w=",
+  "dgSpecHash": "/O2ksK++LD0=",
   "success": true,
-  "projectFilePath": "C:\\Código fuente Gold Manager\\GoldManager - Elite Ref\\GoldManager\\GoldManager.vbproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\source\\repos\\GoldManagerEliteGitHub\\GoldManager\\GoldManager.vbproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\closedxml\\0.101.0\\closedxml.0.101.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",

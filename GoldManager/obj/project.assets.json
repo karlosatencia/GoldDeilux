@@ -5925,11 +5925,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Código fuente Gold Manager\\GoldManager - Elite Ref\\GoldManager\\GoldManager.vbproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\source\\repos\\GoldManagerEliteGitHub\\GoldManager\\GoldManager.vbproj",
       "projectName": "GoldManager",
-      "projectPath": "C:\\Código fuente Gold Manager\\GoldManager - Elite Ref\\GoldManager\\GoldManager.vbproj",
+      "projectPath": "C:\\Users\\ADMIN\\source\\repos\\GoldManagerEliteGitHub\\GoldManager\\GoldManager.vbproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Código fuente Gold Manager\\GoldManager - Elite Ref\\GoldManager\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\source\\repos\\GoldManagerEliteGitHub\\GoldManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
