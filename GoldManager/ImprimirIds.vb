@@ -106,7 +106,7 @@ Public Class ImprimirIds
                 Dim numeroHasta As Integer = Integer.Parse(System.Text.RegularExpressions.Regex.Match(jtHasta, "\d+$").Value)
 
                 'Construir la consulta SQL
-                Dim sql As String = "SELECT referencia, peso, cantidad FROM productos WHERE referencia REGEXP @regex AND " &
+                Dim sql As String = "SELECT referencia, nombre, cantidad FROM productos WHERE referencia REGEXP @regex AND " &
                                     "CAST(SUBSTRING(referencia, LENGTH(@prefixDesde) + 1) AS UNSIGNED) BETWEEN @numeroDesde AND @numeroHasta"
                 Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
                 cmd.Parameters.AddWithValue("@regex", "^" & prefixDesde & "[0-9]+$")
@@ -130,7 +130,7 @@ Public Class ImprimirIds
                 Dim row As Integer = 2
                 While reader.Read()
                     ws.Cell(row, 1).Value = reader("referencia").ToString() ' Código de referencia
-                    ws.Cell(row, 2).Value = reader("peso").ToString() ' Valor auxiliar
+                    ws.Cell(row, 2).Value = reader("nombre").ToString() ' Valor auxiliar
                     ws.Cell(row, 3).Value = reader.GetInt32("cantidad") ' Cantidad
                     row += 1
                 End While
