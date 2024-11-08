@@ -1920,7 +1920,7 @@ Partial Class Registro
         If marca = "Nacional" Then
             Try
                 conexion.Open()
-                Dim query As String = "SELECT id, peso_inicial, peso_final, categoria_precio, valor FROM gramonacional"
+                Dim query As String = "SELECT id, peso_inicial, peso_final, categoria_precio, valor FROM gramonacional_new"
                 Dim adapter As New MySql.Data.MySqlClient.MySqlDataAdapter(query, conexion)
                 Dim tabla As New System.Data.DataTable()
                 adapter.Fill(tabla)
@@ -1954,7 +1954,7 @@ Partial Class Registro
         ElseIf marca = "Italy" Then
             Try
                 conexion.Open()
-                Dim query As String = "SELECT id, peso_inicial, peso_final, categoria_precio, valor FROM gramoitaly"
+                Dim query As String = "SELECT id, peso_inicial, peso_final, categoria_precio, valor FROM gramoitaly_new"
                 Dim adapter As New MySql.Data.MySqlClient.MySqlDataAdapter(query, conexion)
                 Dim tabla As New System.Data.DataTable()
                 adapter.Fill(tabla)
