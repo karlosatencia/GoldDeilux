@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uXMYvbTtTFY=",
+  "dgSpecHash": "sw1GlkJtwT0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github\\GoldManager\\GoldManager.vbproj",
+  "projectFilePath": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github New\\GoldManager\\GoldManager.vbproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ing Carlos\\.nuget\\packages\\closedxml\\0.101.0\\closedxml.0.101.0.nupkg.sha512",
     "C:\\Users\\Ing Carlos\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",

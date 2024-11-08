@@ -92,7 +92,7 @@ Public Class Registro
             reader_tipos.Close()
 
             ' Cargar los valores de la tabla broches en el ComboBox lst_broche
-            Dim query_broches As String = "SELECT peso_broche FROM broches"
+            Dim query_broches As String = "SELECT peso_broche FROM broches_new"
             Dim cmd_broches As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query_broches, conexion)
             Dim reader_broches As MySql.Data.MySqlClient.MySqlDataReader = cmd_broches.ExecuteReader()
             While reader_broches.Read()
@@ -124,7 +124,7 @@ Public Class Registro
         Dim valorBroche As Integer = 0
         Try
             conexion.Open()
-            Dim query As String = "SELECT precio_broche FROM broches WHERE peso_broche = @pesoBroche"
+            Dim query As String = "SELECT precio_broche FROM broches_new WHERE peso_broche = @pesoBroche"
             Dim cmd As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
             cmd.Parameters.AddWithValue("@pesoBroche", pesoBroche)
             Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
@@ -147,7 +147,7 @@ Public Class Registro
             jt_valor_gramo.Text = "Pendiente"
             Return 0
         End If
-        Dim query As String = "SELECT valor FROM gramonacional WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
+        Dim query As String = "SELECT valor FROM gramonacional_new WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
         Dim cmd As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
         cmd.Parameters.AddWithValue("@peso", peso)
         cmd.Parameters.AddWithValue("@categoria_precio", categoriaPrecio)
@@ -170,7 +170,7 @@ Public Class Registro
             jt_valor_gramo.Text = "Pendiente"
             Return 0
         End If
-        Dim query As String = "SELECT valor FROM gramoitaly WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
+        Dim query As String = "SELECT valor FROM gramoitaly_new WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
         Dim cmd As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
         cmd.Parameters.AddWithValue("@peso", peso)
         cmd.Parameters.AddWithValue("@categoria_precio", categoriaPrecio)
@@ -191,7 +191,7 @@ Public Class Registro
             Return ""
         End If
 
-        Dim query As String = "SELECT ct FROM gramonacional WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
+        Dim query As String = "SELECT ct FROM gramonacional_new WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
         Dim cmd As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
         cmd.Parameters.AddWithValue("@peso", peso)
         cmd.Parameters.AddWithValue("@categoria_precio", categoriaPrecio)
@@ -217,7 +217,7 @@ Public Class Registro
             Return ""
         End If
 
-        Dim query As String = "SELECT ct FROM gramoitaly WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
+        Dim query As String = "SELECT ct FROM gramoitaly_new WHERE peso_inicial <= @peso AND peso_final >= @peso AND categoria_precio = @categoria_precio;"
         Dim cmd As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
         cmd.Parameters.AddWithValue("@peso", peso)
         cmd.Parameters.AddWithValue("@categoria_precio", categoriaPrecio)
@@ -1147,7 +1147,7 @@ Public Class Registro
         btn_actualizar_valores.Enabled = True
         Try
             conexion.Open()
-            Dim query As String = "SELECT peso_inicial, peso_final, categoria_precio, valor FROM gramonacional"
+            Dim query As String = "SELECT peso_inicial, peso_final, categoria_precio, valor FROM gramonacional_new"
             Dim adapter As New MySql.Data.MySqlClient.MySqlDataAdapter(query, conexion)
             'Dim tabla As New DataTable()
             Dim tabla As New System.Data.DataTable()
@@ -1234,7 +1234,7 @@ Public Class Registro
         End Try
     End Sub
     Public Sub ActualizarValorGramoNacional()
-        Dim consultaGramo As String = "SELECT ct, valor FROM gramonacional"
+        Dim consultaGramo As String = "SELECT ct, valor FROM gramonacional_new"
         Dim comandoConsultaGramo As New MySql.Data.MySqlClient.MySqlCommand(consultaGramo, conexion)
         Dim valoresGramo As New Dictionary(Of String, Decimal)
 
@@ -1281,7 +1281,7 @@ Public Class Registro
 
                 Dim vbroche As Decimal = 0
                 If broche <> 0 Then
-                    Dim consultaBroches As String = "SELECT precio_broche FROM broches WHERE peso_broche = @broche"
+                    Dim consultaBroches As String = "SELECT precio_broche FROM broches_new WHERE peso_broche = @broche"
                     Dim comandoConsultaBroches As New MySql.Data.MySqlClient.MySqlCommand(consultaBroches, conexion)
                     comandoConsultaBroches.Parameters.AddWithValue("@broche", broche)
                     Dim resultadoBroche As Object = comandoConsultaBroches.ExecuteScalar()
@@ -1319,10 +1319,10 @@ Public Class Registro
         Dim connectionString As String = "server = shared10.hostgator.co;user=trescruc_jjaramillo;password=Safra2583*;database=trescruc_goldmanager3+;port=3306"
 
         ' Consulta para obtener el valor de gramoitaly donde ct = 'ic-1'
-        Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly WHERE ct = 'ic-1'"
+        Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly_new WHERE ct = 'ir1-2'"
 
         ' Consulta para actualizar precio_broche en la tabla broches
-        Dim queryActualizarBroches As String = "UPDATE broches SET precio_broche = peso_broche * @valor"
+        Dim queryActualizarBroches As String = "UPDATE broches_new SET precio_broche = peso_broche * @valor"
         Try
             Using connection As New MySql.Data.MySqlClient.MySqlConnection(connectionString)
                 connection.Open()
@@ -1382,7 +1382,7 @@ Public Class Registro
         End Try
     End Sub
     Public Sub ActualizarValorGramoItaly()
-        Dim consultaGramo As String = "SELECT ct, valor FROM gramoitaly"
+        Dim consultaGramo As String = "SELECT ct, valor FROM gramoitaly_new"
         Dim comandoConsultaGramo As New MySql.Data.MySqlClient.MySqlCommand(consultaGramo, conexion)
         Dim valoresGramo As New Dictionary(Of String, Decimal)
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github\\GoldManager\\GoldManager.vbproj": {}
+    "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github New\\GoldManager\\GoldManager.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github\\GoldManager\\GoldManager.vbproj": {
+    "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github New\\GoldManager\\GoldManager.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github\\GoldManager\\GoldManager.vbproj",
+        "projectUniqueName": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github New\\GoldManager\\GoldManager.vbproj",
         "projectName": "GoldManager",
-        "projectPath": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github\\GoldManager\\GoldManager.vbproj",
+        "projectPath": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github New\\GoldManager\\GoldManager.vbproj",
         "packagesPath": "C:\\Users\\Ing Carlos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github\\GoldManager\\obj\\publish\\win-x64\\",
+        "outputPath": "C:\\Users\\Ing Carlos\\source\\repos\\Gold Elite Github New\\GoldManager\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

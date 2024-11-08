@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("GoldManager"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Release"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0efebc0bf3c22d2a67ec98de353b7eb72caf80aa"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+758958855ea3ecbef1fc8272cff77beda1ab155c"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("GoldManager"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("GoldManager"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
