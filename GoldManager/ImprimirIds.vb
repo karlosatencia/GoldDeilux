@@ -1,4 +1,5 @@
 ﻿Imports ClosedXML.Excel
+Imports ClosedXML.Excel.XLPredefinedFormat
 
 Public Class ImprimirIds
     'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
@@ -123,15 +124,40 @@ Public Class ImprimirIds
 
                 'Escribir los encabezados de las columnas en la hoja de Excel
                 ws.Cell(1, 1).Value = "Código de referencia"
-                ws.Cell(1, 2).Value = "Valor auxiliar"
-                ws.Cell(1, 3).Value = "Cantidad"
+                ws.Cell(1, 2).Value = "Centímetros"
+                ws.Cell(1, 3).Value = "Talla"
+                ws.Cell(1, 4).Value = "Cantidad"
 
                 'Escribir los datos de la tabla Productos en la hoja de Excel
                 Dim row As Integer = 2
                 While reader.Read()
                     ws.Cell(row, 1).Value = reader("referencia").ToString() ' Código de referencia
-                    ws.Cell(row, 2).Value = reader("nombre").ToString() ' Valor auxiliar
-                    ws.Cell(row, 3).Value = reader.GetInt32("cantidad") ' Cantidad
+                    'ws.Cell(row, 2).Value = reader("nombre").ToString() ' Valor auxiliar
+
+
+                    Dim centimetros As String = ""
+                    Dim talla As String = ""
+                    Dim nombre As String = ""
+                    If Not IsDBNull(reader("nombre")) Then
+                        nombre = reader("nombre").ToString()
+                    End If
+                    ' Usar expresiones regulares para extraer centímetros (e.g., "50 CM")
+                    Dim regexCm As New System.Text.RegularExpressions.Regex("\b\d+([.,]\d+)?\s*CM\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+                    Dim matchCm As System.Text.RegularExpressions.Match = regexCm.Match(nombre)
+                    If matchCm.Success Then
+                        centimetros = matchCm.Value
+                    End If
+
+                    ' Usar expresiones regulares para extraer la talla (e.g., "TALLA 8 1/2")
+                    Dim regexTalla As New System.Text.RegularExpressions.Regex("\bTALLA\s+\d+(\s+[1-9]/[1-9])?\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+                    Dim matchTalla As System.Text.RegularExpressions.Match = regexTalla.Match(nombre)
+                    If matchTalla.Success Then
+                        talla = matchTalla.Value
+                    End If
+
+                    ws.Cell(row, 2).Value = centimetros ' Centímetros extraídos
+                    ws.Cell(row, 3).Value = talla ' Talla extraída
+                    ws.Cell(row, 4).Value = reader.GetInt32("cantidad") ' Cantidad
                     row += 1
                 End While
 
