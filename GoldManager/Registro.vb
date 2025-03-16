@@ -771,7 +771,7 @@ Public Class Registro
             End If
 
             Dim nombre_compuesto As String = jt_nombre_compuesto.Text
-            nombre_compuesto = nombre_compuesto.ToUpper()
+            'nombre_compuesto = nombre_compuesto.ToUpper()
 
             ' Consulta a la tabla tiposdeproducto para obtener el valor de id_categoria
             Dim id_categoria As Integer
@@ -1180,7 +1180,7 @@ Public Class Registro
         Try
 
             If lst_marca_tabla.SelectedItem = "Nacional" Then
-                Dim query As String = "UPDATE gramonacional SET valor = @valor WHERE id = @id"
+                Dim query As String = "UPDATE gramonacional_new SET valor = @valor WHERE id = @id"
                 Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
                     conexion.Open()
                     For Each row As DataGridViewRow In tb_precios.Rows
@@ -1204,7 +1204,7 @@ Public Class Registro
                 ActualizarValorUnitarioNacional()
                 ActualizarCostosTotalesNacional()
             ElseIf lst_marca_tabla.SelectedItem = "Italy" Then
-                Dim query As String = "UPDATE gramoitaly SET valor = @valor WHERE id = @id"
+                Dim query As String = "UPDATE gramoitaly_new SET valor = @valor WHERE id = @id"
                 Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
                     conexion.Open()
                     For Each row As DataGridViewRow In tb_precios.Rows
