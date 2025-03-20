@@ -1315,8 +1315,8 @@ Public Class Registro
     End Sub
     Public Sub ActualizarPrecioBroche()
         'Dim connectionString As String = "server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager"
-        'Dim connectionString As String = "server=162.241.2.168;user=cannabsu_jjaramillo;password=Safra2583*;database=cannabsu_goldmanager3+;port=3306"
-        Dim connectionString As String = "server = shared10.hostgator.co;user=trescruc_jjaramillo;password=Safra2583*;database=trescruc_goldmanager3+;port=3306"
+
+        Dim connectionString As String = "server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306"
 
         ' Consulta para obtener el valor de gramoitaly donde ct = 'ic-1'
         Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly_new WHERE ct = 'ir1-2'"
