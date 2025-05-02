@@ -1192,7 +1192,7 @@ Public Class Registro
                         cmd.ExecuteNonQuery()
                     Next
                 End Using
-                MessageBox.Show("Actualización completa.")
+                MessageBox.Show("Actualización tabla nacional completa.")
                 tb_precios.ReadOnly = True
                 tb_precios.Columns("valor").ReadOnly = True
                 btn_actualizar.Visible = False
@@ -1200,9 +1200,33 @@ Public Class Registro
                 btn_actualizar_valores.Enabled = True
 
                 conexion.Close()
-                ActualizarValorGramoNacional()
-                ActualizarValorUnitarioNacional()
-                ActualizarCostosTotalesNacional()
+                Dim queryActualizacion As String = "
+UPDATE productos p
+JOIN gramonacional_new g ON p.ct = g.ct
+SET p.valor_gramo = g.valor;
+UPDATE productos p
+LEFT JOIN broches_new b ON p.broche = b.peso_broche
+SET 
+    p.vbroche = IFNULL(b.precio_broche, 0),
+    p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0);
+
+UPDATE productos
+SET costo_total = cantidad * valor_unitario;
+"
+
+                Try
+                    conexion.Open()
+                    Dim comando As New MySql.Data.MySqlClient.MySqlCommand(queryActualizacion, conexion)
+                    comando.ExecuteNonQuery()
+                    MessageBox.Show("Actualización nacional masiva completada.")
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                Finally
+                    conexion.Close()
+                End Try
+                'ActualizarValorGramoNacional()
+                'ActualizarValorUnitarioNacional()
+                'ActualizarCostosTotalesNacional()
             ElseIf lst_marca_tabla.SelectedItem = "Italy" Then
                 Dim query As String = "UPDATE gramoitaly_new SET valor = @valor WHERE id = @id"
                 Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
@@ -1217,10 +1241,43 @@ Public Class Registro
                     Next
                 End Using
                 conexion.Close()
-                ActualizarValorGramoItaly()
-                ActualizarValorUnitarioNacional()
-                ActualizarCostosTotalesNacional()
-                MsgBox("Actualización completa.", vbInformation, "Éxito")
+                Dim queryActualizacion As String = "
+UPDATE productos p
+JOIN gramoitaly_new g ON p.ct = g.ct
+SET p.valor_gramo = g.valor;
+
+UPDATE broches_new 
+SET precio_broche = peso_broche * (
+    SELECT valor 
+    FROM gramoitaly_new 
+    WHERE ct = 'ir2-3' 
+    LIMIT 1
+);
+
+UPDATE productos p
+LEFT JOIN broches_new b ON p.broche = b.peso_broche
+SET 
+    p.vbroche = IFNULL(b.precio_broche, 0),
+    p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0);
+
+UPDATE productos
+SET costo_total = cantidad * valor_unitario;
+"
+
+                Try
+                    conexion.Open()
+                    Dim comando As New MySql.Data.MySqlClient.MySqlCommand(queryActualizacion, conexion)
+                    comando.ExecuteNonQuery()
+                    MessageBox.Show("Actualización Italy masiva completada.")
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                Finally
+                    conexion.Close()
+                End Try
+                'ActualizarValorGramoItaly()
+                'ActualizarValorUnitarioNacional()
+                'ActualizarCostosTotalesNacional()
+                'MsgBox("Actualización completa.", vbInformation, "Éxito")
                 tb_precios.ReadOnly = True
                 tb_precios.Columns("valor").ReadOnly = True
                 btn_actualizar.Visible = False
