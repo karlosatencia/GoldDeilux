@@ -1,4 +1,6 @@
-﻿Imports ClosedXML.Excel
+﻿Imports System.IO
+Imports ClosedXML.Excel
+Imports GoldManager.GoldManager
 Imports MySql.Data.MySqlClient
 Imports DataTable = System.Data.DataTable
 
@@ -2463,7 +2465,99 @@ SET costo_total = cantidad * valor_unitario;
     End Sub
 
     Private Sub btn_imprimir_Click(sender As Object, e As EventArgs) Handles btn_imprimir_reporte.Click
-        Dim rangoids As New ImprimirIds()
+        Dim rangoids As New ImprimirIds
         rangoids.ShowDialog()
+    End Sub
+
+    Private Sub btn_actualizar_precios_Click(sender As Object, e As EventArgs) Handles btn_actualizar_precios.Click
+        Try
+            ' Seleccionar archivo Excel de entrada
+            MessageBox.Show("Por favor, seleccione el archivo descargado desde Effi que contiene los IDs y las Referencias de los productos.", "Seleccionar archivo de Effi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim openFileDialog1 As New OpenFileDialog()
+            openFileDialog1.Filter = "Archivos Excel (*.xlsx)|*.xlsx"
+            openFileDialog1.Title = "Seleccionar archivo con IDs y Referencias"
+
+            If openFileDialog1.ShowDialog() <> DialogResult.OK Then Exit Sub
+
+            ' Leer el archivo Excel
+            Dim dicReferencias As New Dictionary(Of String, String) ' referencia -> id
+            Using workbook = New XLWorkbook(openFileDialog1.FileName)
+                Dim worksheet = workbook.Worksheets.First()
+                Dim row = 2
+                While Not String.IsNullOrEmpty(worksheet.Cell(row, 1).GetString())
+                    Dim id As String = worksheet.Cell(row, 1).GetString()
+                    Dim referencia As String = worksheet.Cell(row, 2).GetString()
+                    If Not dicReferencias.ContainsKey(referencia) Then
+                        dicReferencias.Add(referencia, id)
+                    End If
+                    row += 1
+                End While
+            End Using
+
+            btn_actualizar_precios.Enabled = False
+            lblProcesando.Visible = True
+            ProgressBar1.Visible = True
+            ProgressBar1.Minimum = 0
+            ProgressBar1.Maximum = dicReferencias.Count
+            ProgressBar1.Value = 0
+            Application.DoEvents()
+
+            ' Consultar base de datos
+            Dim resultados As New List(Of Tuple(Of String, Decimal)) ' id, valor_unitario
+            conexion.Open()
+            Dim i As Integer = 0
+            For Each ref In dicReferencias.Keys
+                Dim cmd As New MySql.Data.MySqlClient.MySqlCommand("SELECT valor_unitario FROM productos WHERE referencia = @referencia LIMIT 1", conexion)
+                cmd.Parameters.AddWithValue("@referencia", ref)
+                Dim result = cmd.ExecuteScalar()
+                If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                    resultados.Add(Tuple.Create(dicReferencias(ref), Convert.ToDecimal(result)))
+                End If
+                i += 1
+                ProgressBar1.Value = i
+                Application.DoEvents()
+            Next
+            conexion.Close()
+
+            ' Crear archivo Excel de salida
+            Dim wb As New XLWorkbook()
+            Dim ws = wb.Worksheets.Add("Resultados")
+            ws.Cell(1, 1).Value = "ID artículo Effi *"
+            ws.Cell(1, 2).Value = "ID tarifa de precio Effi *"
+            ws.Cell(1, 3).Value = "Precio antes de impuestos *"
+
+            Dim rowIndex As Integer = 2
+            For Each item In resultados
+                ws.Cell(rowIndex, 1).Value = item.Item1   ' ID 
+                ws.Cell(rowIndex, 2).Value = 1            ' ID tarifa fija
+                ws.Cell(rowIndex, 3).Value = item.Item2   ' valor_unitario
+                rowIndex += 1
+            Next
+
+            ' Guardar archivo
+            Dim saveFileDialog1 As New SaveFileDialog()
+            saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
+            saveFileDialog1.Title = "Guardar archivo generado"
+            If saveFileDialog1.ShowDialog() = DialogResult.OK Then
+                wb.SaveAs(saveFileDialog1.FileName)
+                MsgBox("Archivo generado correctamente.", vbInformation)
+                ProgressBar1.Visible = False
+                lblProcesando.Visible = False
+                btn_actualizar_precios.Enabled = True
+            Else
+                MsgBox("No se guardó el archivo.", vbExclamation)
+                ProgressBar1.Visible = False
+                lblProcesando.Visible = False
+                btn_actualizar_precios.Enabled = True
+            End If
+
+        Catch ex As IOException When ex.Message.Contains("because it is being used by another process")
+            MsgBox("El archivo seleccionado está siendo utilizado por otro programa (como Excel). Por favor, cierre el archivo e intente nuevamente.", vbExclamation, "Archivo en uso")
+            If conexion.State = ConnectionState.Open Then conexion.Close()
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, vbCritical)
+            If conexion.State = ConnectionState.Open Then conexion.Close()
+        End Try
     End Sub
 End Class

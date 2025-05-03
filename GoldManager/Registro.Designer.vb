@@ -27,7 +27,7 @@ Partial Class Registro
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Registro))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Registro))
         lst_marca_tabla = New ComboBox()
         lst_tipo_producto = New ComboBox()
         lst_marca = New ComboBox()
@@ -85,6 +85,9 @@ Partial Class Registro
         Label17 = New Label()
         PictureBox1 = New PictureBox()
         TabPage3 = New TabPage()
+        lblProcesando = New Label()
+        ProgressBar1 = New ProgressBar()
+        btn_actualizar_precios = New Button()
         btn_imprimir_reporte = New Button()
         Label24 = New Label()
         lst_compra_rep = New ComboBox()
@@ -175,7 +178,7 @@ Partial Class Registro
         ' lst_marca_tabla
         ' 
         lst_marca_tabla.DropDownStyle = ComboBoxStyle.DropDownList
-        lst_marca_tabla.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_marca_tabla.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         lst_marca_tabla.FormattingEnabled = True
         lst_marca_tabla.Items.AddRange(New Object() {"Seleccione", "Nacional", "Italy"})
         lst_marca_tabla.Location = New Point(447, 79)
@@ -188,7 +191,7 @@ Partial Class Registro
         ' 
         lst_tipo_producto.DropDownStyle = ComboBoxStyle.DropDownList
         lst_tipo_producto.DropDownWidth = 114
-        lst_tipo_producto.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_tipo_producto.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_tipo_producto.FormattingEnabled = True
         lst_tipo_producto.Location = New Point(336, 232)
         lst_tipo_producto.Margin = New Padding(4, 3, 4, 3)
@@ -199,7 +202,7 @@ Partial Class Registro
         ' lst_marca
         ' 
         lst_marca.DropDownStyle = ComboBoxStyle.DropDownList
-        lst_marca.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_marca.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_marca.FormattingEnabled = True
         lst_marca.Items.AddRange(New Object() {"Seleccione", "Nacional", "Italy"})
         lst_marca.Location = New Point(605, 311)
@@ -211,7 +214,7 @@ Partial Class Registro
         ' lst_categoria_precio
         ' 
         lst_categoria_precio.DropDownStyle = ComboBoxStyle.DropDownList
-        lst_categoria_precio.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_categoria_precio.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_categoria_precio.FormattingEnabled = True
         lst_categoria_precio.Items.AddRange(New Object() {"Seleccione", "Precio contado", "Recargo +1", "Recargo +2", "Recargo +3", "Recargo +4"})
         lst_categoria_precio.Location = New Point(605, 380)
@@ -223,7 +226,7 @@ Partial Class Registro
         ' lst_broche
         ' 
         lst_broche.DropDownStyle = ComboBoxStyle.DropDownList
-        lst_broche.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_broche.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_broche.FormattingEnabled = True
         lst_broche.Location = New Point(738, 311)
         lst_broche.Margin = New Padding(4, 3, 4, 3)
@@ -334,171 +337,171 @@ Partial Class Registro
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label1.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label1.Location = New Point(335, 212)
         Label1.Margin = New Padding(4, 0, 4, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(104, 17)
+        Label1.Size = New Size(110, 16)
         Label1.TabIndex = 16
         Label1.Text = "Tipo de producto"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label2.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label2.Location = New Point(110, 291)
         Label2.Margin = New Padding(4, 0, 4, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(75, 17)
+        Label2.Size = New Size(79, 16)
         Label2.TabIndex = 17
         Label2.Text = "Descripción"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label3.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label3.Location = New Point(605, 291)
         Label3.Margin = New Padding(4, 0, 4, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(43, 17)
+        Label3.Size = New Size(45, 16)
         Label3.TabIndex = 18
         Label3.Text = "Marca"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label4.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label4.Location = New Point(191, 359)
         Label4.Margin = New Padding(4, 0, 4, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(46, 17)
+        Label4.Size = New Size(48, 16)
         Label4.TabIndex = 19
         Label4.Text = "Grosor"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label5.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label5.Location = New Point(284, 359)
         Label5.Margin = New Padding(4, 0, 4, 0)
         Label5.Name = "Label5"
-        Label5.Size = New Size(41, 17)
+        Label5.Size = New Size(42, 16)
         Label5.TabIndex = 20
         Label5.Text = "Largo"
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label6.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label6.Location = New Point(738, 291)
         Label6.Margin = New Padding(4, 0, 4, 0)
         Label6.Name = "Label6"
-        Label6.Size = New Size(49, 17)
+        Label6.Size = New Size(50, 16)
         Label6.TabIndex = 21
         Label6.Text = "Broche"
         ' 
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label7.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label7.Location = New Point(110, 359)
         Label7.Margin = New Padding(4, 0, 4, 0)
         Label7.Name = "Label7"
-        Label7.Size = New Size(59, 17)
+        Label7.Size = New Size(61, 16)
         Label7.TabIndex = 22
         Label7.Text = "Cantidad"
         ' 
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label8.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label8.Location = New Point(368, 360)
         Label8.Margin = New Padding(4, 0, 4, 0)
         Label8.Name = "Label8"
-        Label8.Size = New Size(36, 17)
+        Label8.Size = New Size(39, 16)
         Label8.TabIndex = 23
         Label8.Text = "Peso"
         ' 
         ' Label9
         ' 
         Label9.AutoSize = True
-        Label9.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label9.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label9.Location = New Point(605, 361)
         Label9.Margin = New Padding(4, 0, 4, 0)
         Label9.Name = "Label9"
-        Label9.Size = New Size(103, 17)
+        Label9.Size = New Size(107, 16)
         Label9.TabIndex = 24
         Label9.Text = "Categoría precio"
         ' 
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label10.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label10.Location = New Point(451, 359)
         Label10.Margin = New Padding(4, 0, 4, 0)
         Label10.Name = "Label10"
-        Label10.Size = New Size(66, 17)
+        Label10.Size = New Size(67, 16)
         Label10.TabIndex = 25
         Label10.Text = "Peso total"
         ' 
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label11.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label11.Location = New Point(738, 359)
         Label11.Margin = New Padding(4, 0, 4, 0)
         Label11.Name = "Label11"
-        Label11.Size = New Size(80, 17)
+        Label11.Size = New Size(84, 16)
         Label11.TabIndex = 26
         Label11.Text = "Valor broche"
         ' 
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label13.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label13.Location = New Point(605, 414)
         Label13.Margin = New Padding(4, 0, 4, 0)
         Label13.Name = "Label13"
-        Label13.Size = New Size(77, 17)
+        Label13.Size = New Size(81, 16)
         Label13.TabIndex = 28
         Label13.Text = "Valor gramo"
         ' 
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label14.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label14.Location = New Point(605, 459)
         Label14.Margin = New Padding(4, 0, 4, 0)
         Label14.Name = "Label14"
-        Label14.Size = New Size(84, 17)
+        Label14.Size = New Size(85, 16)
         Label14.TabIndex = 29
         Label14.Text = "Valor unitario"
         ' 
         ' Label15
         ' 
         Label15.AutoSize = True
-        Label15.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label15.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label15.Location = New Point(738, 460)
         Label15.Margin = New Padding(4, 0, 4, 0)
         Label15.Name = "Label15"
-        Label15.Size = New Size(67, 17)
+        Label15.Size = New Size(67, 16)
         Label15.TabIndex = 30
         Label15.Text = "Valor total"
         ' 
         ' Label16
         ' 
         Label16.AutoSize = True
-        Label16.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label16.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label16.Location = New Point(110, 457)
         Label16.Margin = New Padding(4, 0, 4, 0)
         Label16.Name = "Label16"
-        Label16.Size = New Size(111, 17)
+        Label16.Size = New Size(115, 16)
         Label16.TabIndex = 31
         Label16.Text = "Nombre completo"
         ' 
         ' btn_registrar
         ' 
-        btn_registrar.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_registrar.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_registrar.Location = New Point(409, 517)
         btn_registrar.Margin = New Padding(4, 3, 4, 3)
         btn_registrar.Name = "btn_registrar"
@@ -510,11 +513,11 @@ Partial Class Registro
         ' rb_mujer
         ' 
         rb_mujer.AutoSize = True
-        rb_mujer.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_mujer.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         rb_mujer.Location = New Point(335, 288)
         rb_mujer.Margin = New Padding(4, 3, 4, 3)
         rb_mujer.Name = "rb_mujer"
-        rb_mujer.Size = New Size(57, 21)
+        rb_mujer.Size = New Size(58, 20)
         rb_mujer.TabIndex = 3
         rb_mujer.TabStop = True
         rb_mujer.Text = "Mujer"
@@ -523,11 +526,11 @@ Partial Class Registro
         ' rb_hombre
         ' 
         rb_hombre.AutoSize = True
-        rb_hombre.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_hombre.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         rb_hombre.Location = New Point(395, 288)
         rb_hombre.Margin = New Padding(4, 3, 4, 3)
         rb_hombre.Name = "rb_hombre"
-        rb_hombre.Size = New Size(72, 21)
+        rb_hombre.Size = New Size(74, 20)
         rb_hombre.TabIndex = 4
         rb_hombre.TabStop = True
         rb_hombre.Text = "Hombre"
@@ -541,7 +544,7 @@ Partial Class Registro
         Tab_Consultar.Controls.Add(TabPage5)
         Tab_Consultar.Controls.Add(TabPage2)
         Tab_Consultar.Dock = DockStyle.Fill
-        Tab_Consultar.Font = New Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Tab_Consultar.Font = New Font("Segoe UI Semilight", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         Tab_Consultar.Location = New Point(0, 0)
         Tab_Consultar.Margin = New Padding(4, 3, 4, 3)
         Tab_Consultar.Name = "Tab_Consultar"
@@ -629,10 +632,10 @@ Partial Class Registro
         ' Label20
         ' 
         Label20.AutoSize = True
-        Label20.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label20.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label20.Location = New Point(416, 156)
         Label20.Name = "Label20"
-        Label20.Size = New Size(59, 19)
+        Label20.Size = New Size(62, 18)
         Label20.TabIndex = 58
         Label20.Text = "Compra"
         ' 
@@ -649,10 +652,10 @@ Partial Class Registro
         ' 
         lb_talla.AutoSize = True
         lb_talla.Enabled = False
-        lb_talla.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_talla.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         lb_talla.Location = New Point(479, 292)
         lb_talla.Name = "lb_talla"
-        lb_talla.Size = New Size(35, 17)
+        lb_talla.Size = New Size(38, 16)
         lb_talla.TabIndex = 56
         lb_talla.Text = "Talla"
         ' 
@@ -668,10 +671,10 @@ Partial Class Registro
         ' 
         lb_venta_pircing.AutoSize = True
         lb_venta_pircing.Enabled = False
-        lb_venta_pircing.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_venta_pircing.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         lb_venta_pircing.Location = New Point(368, 410)
         lb_venta_pircing.Name = "lb_venta_pircing"
-        lb_venta_pircing.Size = New Size(131, 17)
+        lb_venta_pircing.Size = New Size(136, 16)
         lb_venta_pircing.TabIndex = 54
         lb_venta_pircing.Text = "Precio Venta Piercing"
         ' 
@@ -686,10 +689,10 @@ Partial Class Registro
         ' lb_compra_pircing
         ' 
         lb_compra_pircing.AutoSize = True
-        lb_compra_pircing.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_compra_pircing.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         lb_compra_pircing.Location = New Point(220, 410)
         lb_compra_pircing.Name = "lb_compra_pircing"
-        lb_compra_pircing.Size = New Size(143, 17)
+        lb_compra_pircing.Size = New Size(149, 16)
         lb_compra_pircing.TabIndex = 52
         lb_compra_pircing.Text = "Precio Compra Piercing"
         ' 
@@ -705,10 +708,10 @@ Partial Class Registro
         ' 
         ch_oro_blanco.AutoSize = True
         ch_oro_blanco.Enabled = False
-        ch_oro_blanco.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_blanco.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         ch_oro_blanco.Location = New Point(284, 337)
         ch_oro_blanco.Name = "ch_oro_blanco"
-        ch_oro_blanco.Size = New Size(80, 19)
+        ch_oro_blanco.Size = New Size(87, 19)
         ch_oro_blanco.TabIndex = 50
         ch_oro_blanco.Text = "Oro Blanco"
         ch_oro_blanco.UseVisualStyleBackColor = True
@@ -717,10 +720,10 @@ Partial Class Registro
         ' 
         ch_oro_rosa.AutoSize = True
         ch_oro_rosa.Enabled = False
-        ch_oro_rosa.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_rosa.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         ch_oro_rosa.Location = New Point(203, 337)
         ch_oro_rosa.Name = "ch_oro_rosa"
-        ch_oro_rosa.Size = New Size(70, 19)
+        ch_oro_rosa.Size = New Size(78, 19)
         ch_oro_rosa.TabIndex = 49
         ch_oro_rosa.Text = "Oro Rosa"
         ch_oro_rosa.UseVisualStyleBackColor = True
@@ -729,10 +732,10 @@ Partial Class Registro
         ' 
         ch_oro_amarillo.AutoSize = True
         ch_oro_amarillo.Enabled = False
-        ch_oro_amarillo.Font = New Font("Barlow Light", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_amarillo.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         ch_oro_amarillo.Location = New Point(110, 337)
         ch_oro_amarillo.Name = "ch_oro_amarillo"
-        ch_oro_amarillo.Size = New Size(87, 19)
+        ch_oro_amarillo.Size = New Size(94, 19)
         ch_oro_amarillo.TabIndex = 48
         ch_oro_amarillo.Text = "Oro Amarillo"
         ch_oro_amarillo.UseVisualStyleBackColor = True
@@ -751,10 +754,10 @@ Partial Class Registro
         ' 
         lb_adicional.AutoSize = True
         lb_adicional.Enabled = False
-        lb_adicional.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_adicional.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         lb_adicional.Location = New Point(110, 410)
         lb_adicional.Name = "lb_adicional"
-        lb_adicional.Size = New Size(91, 17)
+        lb_adicional.Size = New Size(97, 16)
         lb_adicional.TabIndex = 46
         lb_adicional.Text = "Valor adicional"
         ' 
@@ -769,10 +772,10 @@ Partial Class Registro
         ' Label21
         ' 
         Label21.AutoSize = True
-        Label21.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label21.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label21.Location = New Point(479, 212)
         Label21.Name = "Label21"
-        Label21.Size = New Size(58, 17)
+        Label21.Size = New Size(59, 16)
         Label21.TabIndex = 41
         Label21.Text = "Sucursal"
         ' 
@@ -780,7 +783,7 @@ Partial Class Registro
         ' 
         lst_sucursall.DropDownStyle = ComboBoxStyle.DropDownList
         lst_sucursall.DropDownWidth = 114
-        lst_sucursall.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_sucursall.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         lst_sucursall.FormattingEnabled = True
         lst_sucursall.Location = New Point(483, 232)
         lst_sucursall.Margin = New Padding(4, 3, 4, 3)
@@ -799,11 +802,11 @@ Partial Class Registro
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label17.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label17.Location = New Point(738, 414)
         Label17.Margin = New Padding(4, 0, 4, 0)
         Label17.Name = "Label17"
-        Label17.Size = New Size(131, 17)
+        Label17.Size = New Size(139, 16)
         Label17.TabIndex = 32
         Label17.Text = "Precio de compra (Gr)"
         ' 
@@ -822,6 +825,9 @@ Partial Class Registro
         ' 
         TabPage3.BackgroundImage = CType(resources.GetObject("TabPage3.BackgroundImage"), Image)
         TabPage3.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage3.Controls.Add(lblProcesando)
+        TabPage3.Controls.Add(ProgressBar1)
+        TabPage3.Controls.Add(btn_actualizar_precios)
         TabPage3.Controls.Add(btn_imprimir_reporte)
         TabPage3.Controls.Add(Label24)
         TabPage3.Controls.Add(lst_compra_rep)
@@ -839,9 +845,37 @@ Partial Class Registro
         TabPage3.Text = "Reportes"
         TabPage3.UseVisualStyleBackColor = True
         ' 
+        ' lblProcesando
+        ' 
+        lblProcesando.AutoSize = True
+        lblProcesando.Location = New Point(462, 552)
+        lblProcesando.Name = "lblProcesando"
+        lblProcesando.Size = New Size(77, 15)
+        lblProcesando.TabIndex = 9
+        lblProcesando.Text = "Procesando..."
+        lblProcesando.Visible = False
+        ' 
+        ' ProgressBar1
+        ' 
+        ProgressBar1.Location = New Point(254, 529)
+        ProgressBar1.Name = "ProgressBar1"
+        ProgressBar1.Size = New Size(477, 23)
+        ProgressBar1.TabIndex = 8
+        ProgressBar1.Visible = False
+        ' 
+        ' btn_actualizar_precios
+        ' 
+        btn_actualizar_precios.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_actualizar_precios.Location = New Point(530, 330)
+        btn_actualizar_precios.Name = "btn_actualizar_precios"
+        btn_actualizar_precios.Size = New Size(201, 72)
+        btn_actualizar_precios.TabIndex = 7
+        btn_actualizar_precios.Text = "Actualizar precios"
+        btn_actualizar_precios.UseVisualStyleBackColor = True
+        ' 
         ' btn_imprimir_reporte
         ' 
-        btn_imprimir_reporte.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_imprimir_reporte.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_imprimir_reporte.Location = New Point(415, 441)
         btn_imprimir_reporte.Name = "btn_imprimir_reporte"
         btn_imprimir_reporte.Size = New Size(153, 69)
@@ -852,10 +886,10 @@ Partial Class Registro
         ' Label24
         ' 
         Label24.AutoSize = True
-        Label24.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label24.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         Label24.Location = New Point(415, 152)
         Label24.Name = "Label24"
-        Label24.Size = New Size(160, 19)
+        Label24.Size = New Size(164, 18)
         Label24.TabIndex = 5
         Label24.Text = "Seleccione una compra"
         ' 
@@ -870,18 +904,19 @@ Partial Class Registro
         ' 
         ' btn_tarifa_precios
         ' 
-        btn_tarifa_precios.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_tarifa_precios.Location = New Point(530, 330)
+        btn_tarifa_precios.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_tarifa_precios.Location = New Point(4, 31)
         btn_tarifa_precios.Margin = New Padding(4, 3, 4, 3)
         btn_tarifa_precios.Name = "btn_tarifa_precios"
         btn_tarifa_precios.Size = New Size(201, 70)
         btn_tarifa_precios.TabIndex = 3
         btn_tarifa_precios.Text = "Reporte Actualizar Precios"
         btn_tarifa_precios.UseVisualStyleBackColor = True
+        btn_tarifa_precios.Visible = False
         ' 
         ' btn_compra
         ' 
-        btn_compra.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_compra.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         btn_compra.Location = New Point(530, 212)
         btn_compra.Margin = New Padding(4, 3, 4, 3)
         btn_compra.Name = "btn_compra"
@@ -892,7 +927,7 @@ Partial Class Registro
         ' 
         ' btn_shopify
         ' 
-        btn_shopify.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_shopify.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         btn_shopify.Location = New Point(254, 330)
         btn_shopify.Margin = New Padding(4, 3, 4, 3)
         btn_shopify.Name = "btn_shopify"
@@ -903,7 +938,7 @@ Partial Class Registro
         ' 
         ' btn_effy
         ' 
-        btn_effy.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_effy.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         btn_effy.Location = New Point(254, 212)
         btn_effy.Margin = New Padding(4, 3, 4, 3)
         btn_effy.Name = "btn_effy"
@@ -953,7 +988,7 @@ Partial Class Registro
         GroupBox3.Controls.Add(Label26)
         GroupBox3.Controls.Add(jt_referencia_traslado)
         GroupBox3.Controls.Add(btn_trasladar)
-        GroupBox3.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        GroupBox3.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         GroupBox3.Location = New Point(770, 6)
         GroupBox3.Name = "GroupBox3"
         GroupBox3.Size = New Size(175, 112)
@@ -966,7 +1001,7 @@ Partial Class Registro
         Label26.AutoSize = True
         Label26.Location = New Point(37, 27)
         Label26.Name = "Label26"
-        Label26.Size = New Size(70, 17)
+        Label26.Size = New Size(73, 16)
         Label26.TabIndex = 16
         Label26.Text = "Referencia"
         ' 
@@ -974,7 +1009,7 @@ Partial Class Registro
         ' 
         jt_referencia_traslado.Location = New Point(37, 45)
         jt_referencia_traslado.Name = "jt_referencia_traslado"
-        jt_referencia_traslado.Size = New Size(100, 23)
+        jt_referencia_traslado.Size = New Size(100, 22)
         jt_referencia_traslado.TabIndex = 14
         ' 
         ' btn_trasladar
@@ -995,7 +1030,7 @@ Partial Class Registro
         ' 
         ' btn_consultar
         ' 
-        btn_consultar.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_consultar.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         btn_consultar.Location = New Point(427, 142)
         btn_consultar.Name = "btn_consultar"
         btn_consultar.Size = New Size(95, 23)
@@ -1006,20 +1041,20 @@ Partial Class Registro
         ' Label23
         ' 
         Label23.AutoSize = True
-        Label23.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label23.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label23.Location = New Point(152, 124)
         Label23.Name = "Label23"
-        Label23.Size = New Size(58, 17)
+        Label23.Size = New Size(59, 16)
         Label23.TabIndex = 11
         Label23.Text = "Sucursal"
         ' 
         ' Label22
         ' 
         Label22.AutoSize = True
-        Label22.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label22.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label22.Location = New Point(7, 124)
         Label22.Name = "Label22"
-        Label22.Size = New Size(53, 17)
+        Label22.Size = New Size(55, 16)
         Label22.TabIndex = 10
         Label22.Text = "Compra"
         ' 
@@ -1045,7 +1080,7 @@ Partial Class Registro
         ' GroupBox2
         ' 
         GroupBox2.Controls.Add(btn_backup)
-        GroupBox2.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        GroupBox2.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         GroupBox2.Location = New Point(605, 6)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(159, 112)
@@ -1055,7 +1090,7 @@ Partial Class Registro
         ' 
         ' btn_backup
         ' 
-        btn_backup.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_backup.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         btn_backup.Location = New Point(37, 40)
         btn_backup.Name = "btn_backup"
         btn_backup.Size = New Size(85, 32)
@@ -1067,11 +1102,11 @@ Partial Class Registro
         ' Label19
         ' 
         Label19.AutoSize = True
-        Label19.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label19.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label19.Location = New Point(295, 124)
         Label19.Margin = New Padding(4, 0, 4, 0)
         Label19.Name = "Label19"
-        Label19.Size = New Size(70, 17)
+        Label19.Size = New Size(73, 16)
         Label19.TabIndex = 6
         Label19.Text = "Referencia"
         ' 
@@ -1103,7 +1138,7 @@ Partial Class Registro
         ' 
         ' Label18
         ' 
-        Label18.Font = New Font("Barlow Light", 9.749999F, FontStyle.Italic, GraphicsUnit.Point)
+        Label18.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Italic, GraphicsUnit.Point)
         Label18.Location = New Point(6, 19)
         Label18.Margin = New Padding(4, 0, 4, 0)
         Label18.Name = "Label18"
@@ -1113,7 +1148,7 @@ Partial Class Registro
         ' 
         ' btn_depurar
         ' 
-        btn_depurar.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_depurar.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_depurar.Location = New Point(211, 74)
         btn_depurar.Margin = New Padding(4, 3, 4, 3)
         btn_depurar.Name = "btn_depurar"
@@ -1225,11 +1260,6 @@ Partial Class Registro
         vbroche.Name = "vbroche"
         vbroche.ReadOnly = True
         ' 
-        ' DataSet1BindingSource
-        ' 
-        DataSet1BindingSource.DataSource = GetType(GoldManager.DataSet1)
-        DataSet1BindingSource.Position = 0
-        ' 
         ' TabPage5
         ' 
         TabPage5.BackgroundImage = CType(resources.GetObject("TabPage5.BackgroundImage"), Image)
@@ -1249,16 +1279,16 @@ Partial Class Registro
         ' Label25
         ' 
         Label25.AutoSize = True
-        Label25.Font = New Font("Barlow Light", 21.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Label25.Font = New Font("Microsoft Sans Serif", 21.75F, FontStyle.Regular, GraphicsUnit.Point)
         Label25.Location = New Point(428, 74)
         Label25.Name = "Label25"
-        Label25.Size = New Size(128, 36)
+        Label25.Size = New Size(134, 33)
         Label25.TabIndex = 3
         Label25.Text = "Compras"
         ' 
         ' btn_agregar_compra
         ' 
-        btn_agregar_compra.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_agregar_compra.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         btn_agregar_compra.Location = New Point(357, 446)
         btn_agregar_compra.Name = "btn_agregar_compra"
         btn_agregar_compra.Size = New Size(124, 34)
@@ -1268,7 +1298,7 @@ Partial Class Registro
         ' 
         ' btn_cerrar1
         ' 
-        btn_cerrar1.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_cerrar1.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         btn_cerrar1.Location = New Point(487, 446)
         btn_cerrar1.Name = "btn_cerrar1"
         btn_cerrar1.Size = New Size(124, 34)
@@ -1312,11 +1342,6 @@ Partial Class Registro
         cantidadproductos.Name = "cantidadproductos"
         cantidadproductos.ReadOnly = True
         ' 
-        ' DataSet1BindingSource1
-        ' 
-        DataSet1BindingSource1.DataSource = GetType(GoldManager.DataSet1)
-        DataSet1BindingSource1.Position = 0
-        ' 
         ' TabPage2
         ' 
         TabPage2.BackgroundImage = CType(resources.GetObject("TabPage2.BackgroundImage"), Image)
@@ -1347,7 +1372,7 @@ Partial Class Registro
         ' 
         ' btn_cancelar
         ' 
-        btn_cancelar.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_cancelar.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         btn_cancelar.Location = New Point(13, 42)
         btn_cancelar.Margin = New Padding(4, 3, 4, 3)
         btn_cancelar.Name = "btn_cancelar"
@@ -1359,7 +1384,7 @@ Partial Class Registro
         ' 
         ' btn_actualizar
         ' 
-        btn_actualizar.Font = New Font("Barlow Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_actualizar.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_actualizar.Location = New Point(13, 13)
         btn_actualizar.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar.Name = "btn_actualizar"
@@ -1371,7 +1396,7 @@ Partial Class Registro
         ' 
         ' btn_actualizar_valores
         ' 
-        btn_actualizar_valores.Font = New Font("Barlow Light", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_actualizar_valores.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
         btn_actualizar_valores.Location = New Point(401, 508)
         btn_actualizar_valores.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar_valores.Name = "btn_actualizar_valores"
@@ -1432,11 +1457,11 @@ Partial Class Registro
         ' Label12
         ' 
         Label12.AutoSize = True
-        Label12.Font = New Font("Barlow Light", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
+        Label12.Font = New Font("Microsoft Sans Serif", 9.749999F, FontStyle.Regular, GraphicsUnit.Point)
         Label12.Location = New Point(401, 82)
         Label12.Margin = New Padding(4, 0, 4, 0)
         Label12.Name = "Label12"
-        Label12.Size = New Size(43, 17)
+        Label12.Size = New Size(45, 16)
         Label12.TabIndex = 0
         Label12.Text = "Marca"
         ' 
@@ -1451,7 +1476,7 @@ Partial Class Registro
         ' 
         ' Registro
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 600)
@@ -2360,4 +2385,7 @@ Partial Class Registro
     Friend WithEvents Label26 As Label
     Friend WithEvents rb_matrimonio As RadioButton
     Friend WithEvents btn_imprimir_reporte As Button
+    Friend WithEvents btn_actualizar_precios As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents lblProcesando As Label
 End Class
