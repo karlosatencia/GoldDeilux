@@ -2178,31 +2178,33 @@ SET costo_total = cantidad * valor_unitario;
                     Return
                 End If
                 'Escribir los encabezados de las columnas en la hoja de Excel
-                ws.Cell(1, 1).Value = "Código de barras, Referencia o ID Effi: Artículo *"
-                ws.Cell(1, 2).Value = "Lote"
-                ws.Cell(1, 3).Value = "Serie"
-                ws.Cell(1, 4).Value = "Observación"
-                ws.Cell(1, 5).Value = "Cantidad *"
-                ws.Cell(1, 6).Value = "Precio ud. *"
-                ws.Cell(1, 7).Value = "Valor descuento total. *"
-                ws.Cell(1, 8).Value = "Código Effi Impuesto"
+                ws.Cell(1, 1).Value = "Código de barras, Referencia o ID Effi: Artículo"
+                ws.Cell(1, 2).Value = "ID Tipo de Egreso"
+                ws.Cell(1, 3).Value = "Lote"
+                ws.Cell(1, 4).Value = "Serie"
+                ws.Cell(1, 5).Value = "Observación"
+                ws.Cell(1, 6).Value = "Cantidad *"
+                ws.Cell(1, 7).Value = "Precio ud. *"
+                ws.Cell(1, 8).Value = "Valor descuento total. *"
+                ws.Cell(1, 9).Value = "Código Effi Impuesto"
 
                 'Escribir los datos de la tabla Productos en la hoja de Excel
                 Dim row As Integer = 2
                 While reader.Read()
                     'Dim id As Integer = reader("id")
                     ws.Cell(row, 1).Value = reader("referencia").ToString() ' Referencia
-                    ws.Cell(row, 2).Value = "" ' Lote
-                    ws.Cell(row, 3).Value = "" ' Serie
-                    ws.Cell(row, 4).Value = "" ' Observación
+                    ws.Cell(row, 2).Value = 2
+                    ws.Cell(row, 3).Value = "" ' Lote
+                    ws.Cell(row, 4).Value = "" ' Serie
+                    ws.Cell(row, 5).Value = "" ' Observación
                     Dim cantidad As Integer = reader.GetInt16("cantidad")
-                    ws.Cell(row, 5).Value = cantidad.ToString() ' Cantidad
+                    ws.Cell(row, 6).Value = cantidad.ToString() ' Cantidad
                     Dim v_compra As Decimal = reader.GetDecimal("valor_unitario_compra")
-                    Dim cell As IXLCell = ws.Cell(row, 6)
+                    Dim cell As IXLCell = ws.Cell(row, 7)
                     cell.Value = v_compra
                     cell.Style.NumberFormat.NumberFormatId = 4 ' Formato numérico sin decimales
-                    ws.Cell(row, 7).Value = 0 ' Valor descuento
-                    ws.Cell(row, 8).Value = 2 ' Código Effi impuesto
+                    ws.Cell(row, 8).Value = 0 ' Valor descuento
+                    ws.Cell(row, 9).Value = 2 ' Código Effi impuesto
 
                     row += 1
                 End While
@@ -2700,4 +2702,5 @@ SET costo_total = cantidad * valor_unitario;
             If conexion.State = ConnectionState.Open Then conexion.Close()
         End Try
     End Sub
+
 End Class
