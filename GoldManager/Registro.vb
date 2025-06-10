@@ -2178,7 +2178,7 @@ SET costo_total = cantidad * valor_unitario;
                     Return
                 End If
                 'Escribir los encabezados de las columnas en la hoja de Excel
-                ws.Cell(1, 1).Value = "Código de barras, Referencia o ID Effi: Artículo"
+                ws.Cell(1, 1).Value = "Código de barras, Referencia o ID EFFI: Artículo"
                 ws.Cell(1, 2).Value = "ID Tipo de Egreso"
                 ws.Cell(1, 3).Value = "Lote"
                 ws.Cell(1, 4).Value = "Serie"
