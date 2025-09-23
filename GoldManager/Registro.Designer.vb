@@ -151,6 +151,25 @@ Partial Class Registro
         categoria_precio = New DataGridViewTextBoxColumn()
         valor = New DataGridViewTextBoxColumn()
         Label12 = New Label()
+        TabPage6 = New TabPage()
+        SplitContainer1 = New SplitContainer()
+        ComboBox1 = New ComboBox()
+        TextBox2 = New TextBox()
+        TextBox1 = New TextBox()
+        Button1 = New Button()
+        Label30 = New Label()
+        Label27 = New Label()
+        Label29 = New Label()
+        Label28 = New Label()
+        ComboBox2 = New ComboBox()
+        Button2 = New Button()
+        TextBox3 = New TextBox()
+        Label32 = New Label()
+        DataGridView1 = New DataGridView()
+        identificacion = New DataGridViewTextBoxColumn()
+        nombreMayorista = New DataGridViewTextBoxColumn()
+        tipoMayorista = New DataGridViewTextBoxColumn()
+        Label31 = New Label()
         OFD_depurar = New OpenFileDialog()
         tt_actualizar = New ToolTip(components)
         tt_depurar = New ToolTip(components)
@@ -173,12 +192,18 @@ Partial Class Registro
         TabPage2.SuspendLayout()
         Panel1.SuspendLayout()
         CType(tb_precios, ComponentModel.ISupportInitialize).BeginInit()
+        TabPage6.SuspendLayout()
+        CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
+        SplitContainer1.Panel1.SuspendLayout()
+        SplitContainer1.Panel2.SuspendLayout()
+        SplitContainer1.SuspendLayout()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' lst_marca_tabla
         ' 
         lst_marca_tabla.DropDownStyle = ComboBoxStyle.DropDownList
-        lst_marca_tabla.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_marca_tabla.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         lst_marca_tabla.FormattingEnabled = True
         lst_marca_tabla.Items.AddRange(New Object() {"Seleccione", "Nacional", "Italy"})
         lst_marca_tabla.Location = New Point(447, 79)
@@ -543,8 +568,9 @@ Partial Class Registro
         Tab_Consultar.Controls.Add(TabPage4)
         Tab_Consultar.Controls.Add(TabPage5)
         Tab_Consultar.Controls.Add(TabPage2)
+        Tab_Consultar.Controls.Add(TabPage6)
         Tab_Consultar.Dock = DockStyle.Fill
-        Tab_Consultar.Font = New Font("Segoe UI Semilight", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Tab_Consultar.Font = New Font("Segoe UI Semilight", 10F, FontStyle.Regular, GraphicsUnit.Point)
         Tab_Consultar.Location = New Point(0, 0)
         Tab_Consultar.Margin = New Padding(4, 3, 4, 3)
         Tab_Consultar.Name = "Tab_Consultar"
@@ -609,11 +635,12 @@ Partial Class Registro
         TabPage1.Controls.Add(Label4)
         TabPage1.Controls.Add(Label3)
         TabPage1.Controls.Add(PictureBox1)
-        TabPage1.Location = New Point(4, 24)
+        TabPage1.Font = New Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage1.Location = New Point(4, 26)
         TabPage1.Margin = New Padding(4, 3, 4, 3)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(4, 3, 4, 3)
-        TabPage1.Size = New Size(974, 572)
+        TabPage1.Size = New Size(974, 570)
         TabPage1.TabIndex = 0
         TabPage1.Text = "Registro"
         TabPage1.UseVisualStyleBackColor = True
@@ -708,7 +735,7 @@ Partial Class Registro
         ' 
         ch_oro_blanco.AutoSize = True
         ch_oro_blanco.Enabled = False
-        ch_oro_blanco.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_blanco.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ch_oro_blanco.Location = New Point(284, 337)
         ch_oro_blanco.Name = "ch_oro_blanco"
         ch_oro_blanco.Size = New Size(87, 19)
@@ -720,7 +747,7 @@ Partial Class Registro
         ' 
         ch_oro_rosa.AutoSize = True
         ch_oro_rosa.Enabled = False
-        ch_oro_rosa.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_rosa.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ch_oro_rosa.Location = New Point(203, 337)
         ch_oro_rosa.Name = "ch_oro_rosa"
         ch_oro_rosa.Size = New Size(78, 19)
@@ -732,7 +759,7 @@ Partial Class Registro
         ' 
         ch_oro_amarillo.AutoSize = True
         ch_oro_amarillo.Enabled = False
-        ch_oro_amarillo.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_oro_amarillo.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ch_oro_amarillo.Location = New Point(110, 337)
         ch_oro_amarillo.Name = "ch_oro_amarillo"
         ch_oro_amarillo.Size = New Size(94, 19)
@@ -836,11 +863,11 @@ Partial Class Registro
         TabPage3.Controls.Add(btn_shopify)
         TabPage3.Controls.Add(btn_effy)
         TabPage3.Controls.Add(PictureBox2)
-        TabPage3.Location = New Point(4, 24)
+        TabPage3.Location = New Point(4, 26)
         TabPage3.Margin = New Padding(4, 3, 4, 3)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(4, 3, 4, 3)
-        TabPage3.Size = New Size(974, 572)
+        TabPage3.Size = New Size(974, 570)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Reportes"
         TabPage3.UseVisualStyleBackColor = True
@@ -850,7 +877,7 @@ Partial Class Registro
         lblProcesando.AutoSize = True
         lblProcesando.Location = New Point(462, 552)
         lblProcesando.Name = "lblProcesando"
-        lblProcesando.Size = New Size(77, 15)
+        lblProcesando.Size = New Size(89, 19)
         lblProcesando.TabIndex = 9
         lblProcesando.Text = "Procesando..."
         lblProcesando.Visible = False
@@ -865,7 +892,7 @@ Partial Class Registro
         ' 
         ' btn_actualizar_precios
         ' 
-        btn_actualizar_precios.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_actualizar_precios.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         btn_actualizar_precios.Location = New Point(530, 330)
         btn_actualizar_precios.Name = "btn_actualizar_precios"
         btn_actualizar_precios.Size = New Size(201, 72)
@@ -899,7 +926,7 @@ Partial Class Registro
         lst_compra_rep.FormattingEnabled = True
         lst_compra_rep.Location = New Point(432, 174)
         lst_compra_rep.Name = "lst_compra_rep"
-        lst_compra_rep.Size = New Size(121, 23)
+        lst_compra_rep.Size = New Size(121, 25)
         lst_compra_rep.TabIndex = 4
         ' 
         ' btn_tarifa_precios
@@ -974,11 +1001,11 @@ Partial Class Registro
         TabPage4.Controls.Add(icon_actualizar)
         TabPage4.Controls.Add(GroupBox1)
         TabPage4.Controls.Add(tb_productos)
-        TabPage4.Location = New Point(4, 24)
+        TabPage4.Location = New Point(4, 26)
         TabPage4.Margin = New Padding(4, 3, 4, 3)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(4, 3, 4, 3)
-        TabPage4.Size = New Size(974, 572)
+        TabPage4.Size = New Size(974, 570)
         TabPage4.TabIndex = 3
         TabPage4.Text = "Consultar productos"
         TabPage4.UseVisualStyleBackColor = True
@@ -1025,7 +1052,7 @@ Partial Class Registro
         ' 
         jt_referencia.Location = New Point(295, 142)
         jt_referencia.Name = "jt_referencia"
-        jt_referencia.Size = New Size(100, 23)
+        jt_referencia.Size = New Size(100, 25)
         jt_referencia.TabIndex = 13
         ' 
         ' btn_consultar
@@ -1065,7 +1092,7 @@ Partial Class Registro
         lst_sucursal_consulta.Items.AddRange(New Object() {"Bodega", "Detal", "Todas"})
         lst_sucursal_consulta.Location = New Point(154, 142)
         lst_sucursal_consulta.Name = "lst_sucursal_consulta"
-        lst_sucursal_consulta.Size = New Size(121, 23)
+        lst_sucursal_consulta.Size = New Size(121, 25)
         lst_sucursal_consulta.TabIndex = 9
         ' 
         ' lst_compra_consulta
@@ -1074,7 +1101,7 @@ Partial Class Registro
         lst_compra_consulta.FormattingEnabled = True
         lst_compra_consulta.Location = New Point(9, 142)
         lst_compra_consulta.Name = "lst_compra_consulta"
-        lst_compra_consulta.Size = New Size(121, 23)
+        lst_compra_consulta.Size = New Size(121, 25)
         lst_compra_consulta.TabIndex = 8
         ' 
         ' GroupBox2
@@ -1268,10 +1295,10 @@ Partial Class Registro
         TabPage5.Controls.Add(btn_agregar_compra)
         TabPage5.Controls.Add(btn_cerrar1)
         TabPage5.Controls.Add(tb_compras)
-        TabPage5.Location = New Point(4, 24)
+        TabPage5.Location = New Point(4, 26)
         TabPage5.Name = "TabPage5"
         TabPage5.Padding = New Padding(3)
-        TabPage5.Size = New Size(974, 572)
+        TabPage5.Size = New Size(974, 570)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Gestionar Compras"
         TabPage5.UseVisualStyleBackColor = True
@@ -1318,7 +1345,7 @@ Partial Class Registro
         tb_compras.Name = "tb_compras"
         tb_compras.ReadOnly = True
         tb_compras.RowTemplate.Height = 25
-        tb_compras.Size = New Size(297, 316)
+        tb_compras.Size = New Size(327, 316)
         tb_compras.TabIndex = 0
         ' 
         ' DataGridViewTextBoxColumn2
@@ -1351,11 +1378,11 @@ Partial Class Registro
         TabPage2.Controls.Add(tb_precios)
         TabPage2.Controls.Add(lst_marca_tabla)
         TabPage2.Controls.Add(Label12)
-        TabPage2.Location = New Point(4, 24)
+        TabPage2.Location = New Point(4, 26)
         TabPage2.Margin = New Padding(4, 3, 4, 3)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(4, 3, 4, 3)
-        TabPage2.Size = New Size(974, 572)
+        TabPage2.Size = New Size(974, 570)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Tabla de precios"
         TabPage2.UseVisualStyleBackColor = True
@@ -1465,6 +1492,202 @@ Partial Class Registro
         Label12.TabIndex = 0
         Label12.Text = "Marca"
         ' 
+        ' TabPage6
+        ' 
+        TabPage6.Controls.Add(SplitContainer1)
+        TabPage6.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage6.Location = New Point(4, 26)
+        TabPage6.Name = "TabPage6"
+        TabPage6.Padding = New Padding(3)
+        TabPage6.Size = New Size(974, 570)
+        TabPage6.TabIndex = 5
+        TabPage6.Text = "Mayoristas"
+        TabPage6.UseVisualStyleBackColor = True
+        ' 
+        ' SplitContainer1
+        ' 
+        SplitContainer1.BorderStyle = BorderStyle.FixedSingle
+        SplitContainer1.Dock = DockStyle.Fill
+        SplitContainer1.IsSplitterFixed = True
+        SplitContainer1.Location = New Point(3, 3)
+        SplitContainer1.Name = "SplitContainer1"
+        ' 
+        ' SplitContainer1.Panel1
+        ' 
+        SplitContainer1.Panel1.Controls.Add(ComboBox1)
+        SplitContainer1.Panel1.Controls.Add(TextBox2)
+        SplitContainer1.Panel1.Controls.Add(TextBox1)
+        SplitContainer1.Panel1.Controls.Add(Button1)
+        SplitContainer1.Panel1.Controls.Add(Label30)
+        SplitContainer1.Panel1.Controls.Add(Label27)
+        SplitContainer1.Panel1.Controls.Add(Label29)
+        SplitContainer1.Panel1.Controls.Add(Label28)
+        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        ' 
+        ' SplitContainer1.Panel2
+        ' 
+        SplitContainer1.Panel2.Controls.Add(ComboBox2)
+        SplitContainer1.Panel2.Controls.Add(Button2)
+        SplitContainer1.Panel2.Controls.Add(TextBox3)
+        SplitContainer1.Panel2.Controls.Add(Label32)
+        SplitContainer1.Panel2.Controls.Add(DataGridView1)
+        SplitContainer1.Panel2.Controls.Add(Label31)
+        SplitContainer1.Size = New Size(968, 564)
+        SplitContainer1.SplitterDistance = 400
+        SplitContainer1.TabIndex = 0
+        ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(129, 234)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(240, 29)
+        ComboBox1.TabIndex = 8
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox2.Location = New Point(129, 184)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(240, 29)
+        TextBox2.TabIndex = 7
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox1.Location = New Point(129, 134)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(240, 29)
+        TextBox1.TabIndex = 6
+        ' 
+        ' Button1
+        ' 
+        Button1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Button1.Location = New Point(129, 311)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(114, 50)
+        Button1.TabIndex = 5
+        Button1.Text = "Registrar"
+        Button1.UseVisualStyleBackColor = True
+        ' 
+        ' Label30
+        ' 
+        Label30.AutoSize = True
+        Label30.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label30.Location = New Point(16, 234)
+        Label30.Name = "Label30"
+        Label30.Size = New Size(44, 21)
+        Label30.TabIndex = 4
+        Label30.Text = "Tipo:"
+        ' 
+        ' Label27
+        ' 
+        Label27.AutoSize = True
+        Label27.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label27.Location = New Point(16, 184)
+        Label27.Name = "Label27"
+        Label27.Size = New Size(70, 21)
+        Label27.TabIndex = 3
+        Label27.Text = "Nombre:"
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoSize = True
+        Label29.Location = New Point(82, 37)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(231, 32)
+        Label29.TabIndex = 2
+        Label29.Text = "Registrar Mayorista"
+        ' 
+        ' Label28
+        ' 
+        Label28.AutoSize = True
+        Label28.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label28.Location = New Point(16, 134)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(106, 21)
+        Label28.TabIndex = 1
+        Label28.Text = "Identificación:"
+        ' 
+        ' ComboBox2
+        ' 
+        ComboBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Location = New Point(190, 84)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(240, 29)
+        ComboBox2.TabIndex = 10
+        ' 
+        ' Button2
+        ' 
+        Button2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Button2.Location = New Point(250, 169)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(114, 50)
+        Button2.TabIndex = 9
+        Button2.Text = "Consultar"
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' TextBox3
+        ' 
+        TextBox3.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox3.Location = New Point(190, 126)
+        TextBox3.Name = "TextBox3"
+        TextBox3.Size = New Size(240, 29)
+        TextBox3.TabIndex = 8
+        ' 
+        ' Label32
+        ' 
+        Label32.AutoSize = True
+        Label32.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label32.Location = New Point(105, 87)
+        Label32.Name = "Label32"
+        Label32.Size = New Size(81, 21)
+        Label32.TabIndex = 7
+        Label32.Text = "Filtrar por:"
+        ' 
+        ' DataGridView1
+        ' 
+        DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {identificacion, nombreMayorista, tipoMayorista})
+        DataGridView1.Location = New Point(34, 257)
+        DataGridView1.Name = "DataGridView1"
+        DataGridView1.RowTemplate.Height = 25
+        DataGridView1.Size = New Size(495, 286)
+        DataGridView1.TabIndex = 1
+        ' 
+        ' identificacion
+        ' 
+        identificacion.Frozen = True
+        identificacion.HeaderText = "Identificación"
+        identificacion.Name = "identificacion"
+        identificacion.ReadOnly = True
+        ' 
+        ' nombreMayorista
+        ' 
+        nombreMayorista.Frozen = True
+        nombreMayorista.HeaderText = "Nombre"
+        nombreMayorista.Name = "nombreMayorista"
+        nombreMayorista.ReadOnly = True
+        ' 
+        ' tipoMayorista
+        ' 
+        tipoMayorista.Frozen = True
+        tipoMayorista.HeaderText = "Tipo"
+        tipoMayorista.Name = "tipoMayorista"
+        tipoMayorista.ReadOnly = True
+        ' 
+        ' Label31
+        ' 
+        Label31.AutoSize = True
+        Label31.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        Label31.Location = New Point(170, 37)
+        Label31.Name = "Label31"
+        Label31.Size = New Size(239, 32)
+        Label31.TabIndex = 0
+        Label31.Text = "Gestionar Mayorista"
+        ' 
         ' OFD_depurar
         ' 
         OFD_depurar.Filter = "Archivos de Excel|*.xlsx;*.xls"
@@ -1476,7 +1699,7 @@ Partial Class Registro
         ' 
         ' Registro
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 600)
@@ -1485,7 +1708,7 @@ Partial Class Registro
         Margin = New Padding(4, 3, 4, 3)
         Name = "Registro"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Gold Manager"
+        Text = "Gold Manager - Elite"
         Tab_Consultar.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
         TabPage1.PerformLayout()
@@ -1510,6 +1733,14 @@ Partial Class Registro
         TabPage2.PerformLayout()
         Panel1.ResumeLayout(False)
         CType(tb_precios, ComponentModel.ISupportInitialize).EndInit()
+        TabPage6.ResumeLayout(False)
+        SplitContainer1.Panel1.ResumeLayout(False)
+        SplitContainer1.Panel1.PerformLayout()
+        SplitContainer1.Panel2.ResumeLayout(False)
+        SplitContainer1.Panel2.PerformLayout()
+        CType(SplitContainer1, ComponentModel.ISupportInitialize).EndInit()
+        SplitContainer1.ResumeLayout(False)
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Private Sub lst_tipo_producto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_tipo_producto.SelectedIndexChanged
@@ -2388,4 +2619,23 @@ Partial Class Registro
     Friend WithEvents btn_actualizar_precios As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents lblProcesando As Label
+    Friend WithEvents TabPage6 As TabPage
+    Friend WithEvents SplitContainer1 As SplitContainer
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label31 As Label
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label32 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents identificacion As DataGridViewTextBoxColumn
+    Friend WithEvents nombreMayorista As DataGridViewTextBoxColumn
+    Friend WithEvents tipoMayorista As DataGridViewTextBoxColumn
+    Friend WithEvents ComboBox2 As ComboBox
 End Class
