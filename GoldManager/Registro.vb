@@ -848,7 +848,11 @@ Public Class Registro
             If conexion.State = ConnectionState.Closed Then
                 conexion.Open()
             End If
-            Using cmdRef As New MySql.Data.MySqlClient.MySqlCommand("SELECT MAX(CAST(SUBSTRING(referencia, 2) AS SIGNED)) FROM productos WHERE sucursal = @idsucursal", conexion)
+            Using cmdRef As New MySql.Data.MySqlClient.MySqlCommand("SELECT MAX(CAST(SUBSTRING(referencia, 2) AS SIGNED)) 
+            FROM productos
+            WHERE sucursal = @idsucursal
+            AND referencia NOT LIKE 'B%';
+            ", conexion)
                 cmdRef.Parameters.AddWithValue("@idsucursal", id_sucursal)
                 Dim resultado As Object = cmdRef.ExecuteScalar()
                 If resultado IsNot DBNull.Value Then
@@ -864,7 +868,7 @@ Public Class Registro
             ' Construir la nueva referencia según la lógica establecida
             Dim nueva_referencia As String
             If id_sucursal = 1 Then
-                nueva_referencia = "B" & ultima_referencia
+                nueva_referencia = "E" & ultima_referencia
             ElseIf id_sucursal = 2 Then
                 nueva_referencia = "D" & ultima_referencia
             Else
@@ -1041,7 +1045,10 @@ Public Class Registro
             If conexion.State = ConnectionState.Closed Then
                 conexion.Open()
             End If
-            Using cmdRef As New MySql.Data.MySqlClient.MySqlCommand("SELECT MAX(CAST(SUBSTRING(referencia, 2) AS SIGNED)) FROM productos WHERE sucursal = @idsucursal", conexion)
+            Using cmdRef As New MySql.Data.MySqlClient.MySqlCommand("SELECT MAX(CAST(SUBSTRING(referencia, 2) AS SIGNED)) 
+            FROM productos
+            WHERE sucursal = @idsucursal
+            AND referencia NOT LIKE 'B%';", conexion)
                 cmdRef.Parameters.AddWithValue("@idsucursal", id_sucursal)
                 Dim resultado As Object = cmdRef.ExecuteScalar()
                 If resultado IsNot DBNull.Value Then
@@ -1057,7 +1064,7 @@ Public Class Registro
             ' Construir la nueva referencia según la lógica establecida
             Dim nueva_referencia As String
             If id_sucursal = 1 Then
-                nueva_referencia = "B" & ultima_referencia
+                nueva_referencia = "E" & ultima_referencia
             ElseIf id_sucursal = 2 Then
                 nueva_referencia = "D" & ultima_referencia
             Else
