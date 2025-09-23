@@ -2614,7 +2614,7 @@ SET costo_total = cantidad * valor_unitario;
     Private Sub btn_actualizar_precios_Click(sender As Object, e As EventArgs) Handles btn_actualizar_precios.Click
         Try
             ' Seleccionar archivo Excel de entrada
-            MessageBox.Show("Por favor, seleccione el archivo descargado desde Effi que contiene los IDs y las Referencias de los productos.", "Seleccionar archivo de Effi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Por favor, seleccione el archivo descargado desde Effi que contiene los IDs y las Referencias de los productos", "Seleccionar archivo de Effi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Dim openFileDialog1 As New OpenFileDialog()
             openFileDialog1.Filter = "Archivos Excel (*.xlsx)|*.xlsx"
             openFileDialog1.Title = "Seleccionar archivo con IDs y Referencias"
