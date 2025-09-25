@@ -1934,6 +1934,7 @@ SET costo_total = cantidad * valor_unitario;
                         Case 29 : tags = "PULSERAS,PULSERAS BEBE"
                         Case 33 : tags = "CADENAS,GARGANTILLAS"
                         Case 44 : tags = "ARETES,TOPOS"
+                        Case 38 : tags = "ANILLOS, ANILLOS 15"
                     End Select
 
                     Dim referencia As String = reader("referencia").ToString()
