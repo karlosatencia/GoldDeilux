@@ -140,6 +140,7 @@ Partial Class Registro
         cantidadproductos = New DataGridViewTextBoxColumn()
         DataSet1BindingSource1 = New BindingSource(components)
         TabPage2 = New TabPage()
+        btn_act_automatico = New Button()
         Panel1 = New Panel()
         btn_cancelar = New Button()
         btn_actualizar = New Button()
@@ -1373,6 +1374,7 @@ Partial Class Registro
         ' 
         TabPage2.BackgroundImage = CType(resources.GetObject("TabPage2.BackgroundImage"), Image)
         TabPage2.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage2.Controls.Add(btn_act_automatico)
         TabPage2.Controls.Add(Panel1)
         TabPage2.Controls.Add(btn_actualizar_valores)
         TabPage2.Controls.Add(tb_precios)
@@ -1386,6 +1388,17 @@ Partial Class Registro
         TabPage2.TabIndex = 1
         TabPage2.Text = "Tabla de precios"
         TabPage2.UseVisualStyleBackColor = True
+        ' 
+        ' btn_act_automatico
+        ' 
+        btn_act_automatico.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_act_automatico.Location = New Point(466, 508)
+        btn_act_automatico.Name = "btn_act_automatico"
+        btn_act_automatico.Size = New Size(190, 39)
+        btn_act_automatico.TabIndex = 5
+        btn_act_automatico.Text = "Actualizar automático"
+        btn_act_automatico.UseVisualStyleBackColor = True
+        btn_act_automatico.Visible = False
         ' 
         ' Panel1
         ' 
@@ -1424,12 +1437,12 @@ Partial Class Registro
         ' btn_actualizar_valores
         ' 
         btn_actualizar_valores.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_actualizar_valores.Location = New Point(401, 508)
+        btn_actualizar_valores.Location = New Point(279, 508)
         btn_actualizar_valores.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar_valores.Name = "btn_actualizar_valores"
-        btn_actualizar_valores.Size = New Size(118, 30)
+        btn_actualizar_valores.Size = New Size(167, 39)
         btn_actualizar_valores.TabIndex = 1
-        btn_actualizar_valores.Text = "Actualizar valores"
+        btn_actualizar_valores.Text = "Actualizar manual"
         btn_actualizar_valores.UseVisualStyleBackColor = True
         btn_actualizar_valores.Visible = False
         ' 
@@ -1495,7 +1508,7 @@ Partial Class Registro
         ' TabPage6
         ' 
         TabPage6.Controls.Add(SplitContainer1)
-        TabPage6.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage6.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TabPage6.Location = New Point(4, 26)
         TabPage6.Name = "TabPage6"
         TabPage6.Padding = New Padding(3)
@@ -1522,7 +1535,7 @@ Partial Class Registro
         SplitContainer1.Panel1.Controls.Add(Label27)
         SplitContainer1.Panel1.Controls.Add(Label29)
         SplitContainer1.Panel1.Controls.Add(Label28)
-        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18.0F, FontStyle.Bold, GraphicsUnit.Point)
         ' 
         ' SplitContainer1.Panel2
         ' 
@@ -1538,7 +1551,7 @@ Partial Class Registro
         ' 
         ' ComboBox1
         ' 
-        ComboBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(129, 234)
         ComboBox1.Name = "ComboBox1"
@@ -1547,7 +1560,7 @@ Partial Class Registro
         ' 
         ' TextBox2
         ' 
-        TextBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox2.Location = New Point(129, 184)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(240, 29)
@@ -1555,7 +1568,7 @@ Partial Class Registro
         ' 
         ' TextBox1
         ' 
-        TextBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox1.Location = New Point(129, 134)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(240, 29)
@@ -1563,7 +1576,7 @@ Partial Class Registro
         ' 
         ' Button1
         ' 
-        Button1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Button1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Button1.Location = New Point(129, 311)
         Button1.Name = "Button1"
         Button1.Size = New Size(114, 50)
@@ -1574,7 +1587,7 @@ Partial Class Registro
         ' Label30
         ' 
         Label30.AutoSize = True
-        Label30.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label30.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label30.Location = New Point(16, 234)
         Label30.Name = "Label30"
         Label30.Size = New Size(44, 21)
@@ -1584,7 +1597,7 @@ Partial Class Registro
         ' Label27
         ' 
         Label27.AutoSize = True
-        Label27.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label27.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label27.Location = New Point(16, 184)
         Label27.Name = "Label27"
         Label27.Size = New Size(70, 21)
@@ -1603,7 +1616,7 @@ Partial Class Registro
         ' Label28
         ' 
         Label28.AutoSize = True
-        Label28.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label28.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label28.Location = New Point(16, 134)
         Label28.Name = "Label28"
         Label28.Size = New Size(106, 21)
@@ -1612,7 +1625,7 @@ Partial Class Registro
         ' 
         ' ComboBox2
         ' 
-        ComboBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(190, 84)
         ComboBox2.Name = "ComboBox2"
@@ -1621,7 +1634,7 @@ Partial Class Registro
         ' 
         ' Button2
         ' 
-        Button2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Button2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Button2.Location = New Point(250, 169)
         Button2.Name = "Button2"
         Button2.Size = New Size(114, 50)
@@ -1631,7 +1644,7 @@ Partial Class Registro
         ' 
         ' TextBox3
         ' 
-        TextBox3.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox3.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox3.Location = New Point(190, 126)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(240, 29)
@@ -1640,7 +1653,7 @@ Partial Class Registro
         ' Label32
         ' 
         Label32.AutoSize = True
-        Label32.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label32.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label32.Location = New Point(105, 87)
         Label32.Name = "Label32"
         Label32.Size = New Size(81, 21)
@@ -1681,7 +1694,7 @@ Partial Class Registro
         ' Label31
         ' 
         Label31.AutoSize = True
-        Label31.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        Label31.Font = New Font("Segoe UI Semilight", 18.0F, FontStyle.Bold, GraphicsUnit.Point)
         Label31.Location = New Point(170, 37)
         Label31.Name = "Label31"
         Label31.Size = New Size(239, 32)
@@ -1699,7 +1712,7 @@ Partial Class Registro
         ' 
         ' Registro
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(982, 600)
@@ -2174,6 +2187,7 @@ Partial Class Registro
 
         ' Realizar consulta solo si se selecciona la opción "Nacional"
         If marca = "Nacional" Then
+            btn_act_automatico.Visible = True
             Try
                 conexion.Open()
                 Dim query As String = "SELECT id, peso_inicial, peso_final, categoria_precio, valor FROM gramonacional_new"
@@ -2208,6 +2222,7 @@ Partial Class Registro
                 conexion.Close()
             End Try
         ElseIf marca = "Italy" Then
+            btn_act_automatico.Visible = True
             Try
                 conexion.Open()
                 Dim query As String = "SELECT id, peso_inicial, peso_final, categoria_precio, valor FROM gramoitaly_new"
@@ -2242,6 +2257,7 @@ Partial Class Registro
                 conexion.Close()
             End Try
         ElseIf marca = "Seleccione" Then
+            btn_act_automatico.Visible = False
             tb_precios.Visible = False ' Ocultar la tabla
             btn_actualizar_valores.Visible = False
             btn_actualizar.Visible = False
@@ -2638,4 +2654,5 @@ Partial Class Registro
     Friend WithEvents nombreMayorista As DataGridViewTextBoxColumn
     Friend WithEvents tipoMayorista As DataGridViewTextBoxColumn
     Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents btn_act_automatico As Button
 End Class

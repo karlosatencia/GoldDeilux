@@ -891,7 +891,8 @@ Public Class Registro
                     cmd.Parameters.AddWithValue("@valor_unitario_compra", valor_unitario_compra)
                     cmd.Parameters.AddWithValue("@ct", ct)
                     cmd.Parameters.AddWithValue("@referencia", nueva_referencia)
-                    cmd.Parameters.AddWithValue("@idsucursal", id_sucursal)
+                    cmd.Parameters.AddWithValue("@idsucursal", 1)
+                    'cmd.Parameters.AddWithValue("@idsucursal", id_sucursal)
 
                     If lst_marca.Text = "Nacional" AndAlso lst_broche.Text <> "Seleccione" Then
                         Dim broche As Decimal = Convert.ToDecimal(lst_broche.Text)
@@ -1542,8 +1543,9 @@ Public Class Registro
                 Dim row As Integer = 2
                 While reader.Read()
                     ws.Cell(row, 1).Value = reader.GetString(1) ' Nombre
-                    ws.Cell(row, 2).Value = reader.GetString(15) ' ID - Referencia
-                    ws.Cell(row, 3).Value = reader.GetInt32(12) ' Sucursal principal
+                    ws.Cell(row, 2).Value = reader.GetString(16) ' ID - Referencia
+                    'ws.Cell(row, 3).Value = reader.GetInt32(13) ' Sucursal principal
+                    ws.Cell(row, 3).Value = 1 ' Sucursal principal
                     ws.Cell(row, 4).Value = "" ' Código de barras
                     ws.Cell(row, 5).Value = 3 ' Tipo de artículo
                     ws.Cell(row, 6).Value = reader.GetInt32(6) ' Categoría
@@ -1558,7 +1560,7 @@ Public Class Registro
                     ws.Cell(row, 15).Value = 1 ' Habilitar en alquiler
                     ws.Cell(row, 16).Value = "" ' Depósito
                     ws.Cell(row, 17).Value = 2 ' Impuesto
-                    ws.Cell(row, 18).Value = reader.GetDecimal(10) ' Valor unitario de compra
+                    ws.Cell(row, 18).Value = reader.GetDecimal(11) ' Valor unitario de compra
                     ws.Cell(row, 19).Value = "" ' Precio mínimo venta
                     ws.Cell(row, 20).Value = reader.GetDecimal(4) ' Valor referencia
                     ws.Cell(row, 21).Value = "" ' Porcentaje referencia
@@ -1909,7 +1911,7 @@ Public Class Registro
 
             Dim query As String = "SELECT compra.id, compra.estado, COUNT(productos.id) AS CantidadProductos " &
                                     "FROM compra LEFT JOIN productos ON compra.id = productos.idcompra " &
-                                    "GROUP BY compra.id, compra.estado"
+                                    "GROUP BY compra.id, compra.estado ORDER BY compra.id DESC"
             Dim adapter As New MySql.Data.MySqlClient.MySqlDataAdapter(query, conexion)
             Dim tabla As New System.Data.DataTable()
             adapter.Fill(tabla)
@@ -2261,8 +2263,9 @@ Public Class Registro
             lst_compra_rep.Items.Clear()
             Dim query_compras_rep As String = "SELECT compra.id FROM compra LEFT JOIN productos ON compra.id = productos.idcompra
                                                WHERE compra.estado = 'CERRADA'                                            
-                                               GROUP BY compra.id
-                                               HAVING COUNT(productos.id) > 0;"
+                                               GROUP BY compra.id 
+                                               HAVING COUNT(productos.id) > 0
+                                               ORDER BY compra.id DESC;"
             Dim cmd_compras_rep As MySql.Data.MySqlClient.MySqlCommand = New MySql.Data.MySqlClient.MySqlCommand(query_compras_rep, conexion)
             Dim reader_compras_rep As MySql.Data.MySqlClient.MySqlDataReader = cmd_compras_rep.ExecuteReader()
             While reader_compras_rep.Read()
@@ -2482,6 +2485,132 @@ Public Class Registro
             MsgBox("Error: " & ex.Message, vbCritical)
             If conexion.State = ConnectionState.Open Then conexion.Close()
         End Try
+    End Sub
+
+    Private Sub btn_act_automatico_Click(sender As Object, e As EventArgs) Handles btn_act_automatico.Click
+        Dim valorTexto As String
+        Dim valorEntero As Integer
+        Dim valido As Boolean = False
+
+        Do
+            ' Mostrar cuadro de entrada
+            valorTexto = InputBox("Ingrese el valor del incremento del gramo", "Incremento automático")
+
+            ' Si el usuario presiona Cancelar o deja vacío
+            If valorTexto = "" Then
+                MessageBox.Show("Operación cancelada o valor vacío.")
+                Exit Sub
+            End If
+
+            ' Validar que sea número entero
+            If Integer.TryParse(valorTexto, valorEntero) Then
+                ' Validar que no sea negativo ni cero y que esté dentro del rango
+                If valorEntero >= 1000 AndAlso valorEntero <= 30000 Then
+                    valido = True
+                Else
+                    MessageBox.Show("El valor debe estar entre 1000 y 30000.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            Else
+                MessageBox.Show("Debe ingresar solo números enteros válidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        Loop Until valido
+
+        ' Si llegó aquí es porque pasó todas las validaciones
+        MessageBox.Show("Valor válido ingresado: " & valorEntero, "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        ' Aquí puedes usar valorEntero en tu lógica...
+        Try
+
+            If lst_marca_tabla.SelectedItem = "Nacional" Then
+                Dim query As String = "UPDATE gramonacional_new SET valor = valor + @incremento"
+                Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
+                    cmd.Parameters.AddWithValue("@incremento", valorEntero)
+                    conexion.Open()
+                    Dim filasAfectadas As Integer = cmd.ExecuteNonQuery()
+                    MessageBox.Show("Actualización completa. Filas afectadas: " & filasAfectadas, "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
+                MessageBox.Show("Actualización tabla nacional completa.")
+                conexion.Close()
+
+                Dim queryActualizacion As String = "
+                    UPDATE productos p
+                    JOIN gramonacional_new g ON p.ct = g.ct
+                    SET p.valor_gramo = g.valor;
+                    UPDATE productos p
+                    LEFT JOIN broches_new b ON p.broche = b.peso_broche
+                    SET 
+                        p.vbroche = IFNULL(b.precio_broche, 0),
+                        p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0) + IFNULL(p.valor_prenda, 0);
+
+                    UPDATE productos
+                    SET costo_total = cantidad * valor_unitario;
+                "
+
+                Try
+                    conexion.Open()
+                    Dim comando As New MySql.Data.MySqlClient.MySqlCommand(queryActualizacion, conexion)
+                    comando.ExecuteNonQuery()
+                    MessageBox.Show("Actualización nacional masiva completada.")
+                    lst_marca_tabla.SelectedIndex = lst_marca_tabla.SelectedIndex
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                Finally
+                    conexion.Close()
+                End Try
+            ElseIf lst_marca_tabla.SelectedItem = "Italy" Then
+                Dim query As String = "UPDATE gramoitaly_new SET valor = valor + @incremento"
+                Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
+                    cmd.Parameters.AddWithValue("@incremento", valorEntero)
+                    conexion.Open()
+                    Dim filasAfectadas As Integer = cmd.ExecuteNonQuery()
+                    MessageBox.Show("Actualización completa. Filas afectadas: " & filasAfectadas, "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Using
+                MessageBox.Show("Actualización tabla Italy completa.")
+                lst_marca_tabla.SelectedIndex = lst_marca_tabla.SelectedIndex
+                conexion.Close()
+
+                Dim queryActualizacion As String = "
+                    UPDATE productos p
+                    JOIN gramoitaly_new g ON p.ct = g.ct
+                    SET p.valor_gramo = g.valor;
+
+                    UPDATE broches_new 
+                    SET precio_broche = peso_broche * (
+                        SELECT valor 
+                        FROM gramoitaly_new 
+                        WHERE ct = 'ir2-3' 
+                        LIMIT 1
+                    );
+
+                    UPDATE productos p
+                    LEFT JOIN broches_new b ON p.broche = b.peso_broche
+                    SET 
+                        p.vbroche = IFNULL(b.precio_broche, 0),
+                        p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0) + IFNULL(p.valor_prenda, 0);
+
+                    UPDATE productos
+                    SET costo_total = cantidad * valor_unitario;
+                "
+
+                Try
+                    conexion.Open()
+                    Dim comando As New MySql.Data.MySqlClient.MySqlCommand(queryActualizacion, conexion)
+                    comando.ExecuteNonQuery()
+                    MessageBox.Show("Actualización Italy masiva completada.")
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                Finally
+                    conexion.Close()
+                End Try
+
+            Else
+                MessageBox.Show("Seleccione la tabla que desea actualizar.")
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Ha ocurrido un error al actualizar la tabla. Detalles del error: " & ex.Message)
+        End Try
+
     End Sub
 
 End Class
