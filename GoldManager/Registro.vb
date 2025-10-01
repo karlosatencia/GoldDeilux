@@ -1619,231 +1619,7 @@ Public Class Registro
     End Sub
 
     Private Sub btn_shopify_Click(sender As Object, e As EventArgs) Handles btn_shopify.Click
-        'If lst_compra_rep.SelectedItem Is Nothing Then
-        '    MessageBox.Show("Por favor, seleccione una compra.")
-        'Else
-        '    Try
-        '        'Abrir la conexión a la base de datos
-        '        conexion.Open()
 
-        '        'Crear un objeto para manejar el archivo de Excel
-        '        Dim wb As New ClosedXML.Excel.XLWorkbook()
-        '        Dim ws As IXLWorksheet = wb.Worksheets.Add("Productos")
-        '        Dim selectedCompraID As Integer = CInt(lst_compra_rep.SelectedItem)
-        '        'Ejecutar la consulta SQL para obtener los datos de la tabla Productos
-        '        Dim sql As String = "SELECT referencia, nombre, marca, peso, categoria_producto, valor_unitario FROM productos WHERE idcompra = @compraID"
-        '        Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
-        '        cmd.Parameters.AddWithValue("@compraID", selectedCompraID)
-        '        Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
-        '        If Not reader.HasRows Then
-        '            MessageBox.Show("No se encontraron registros para la compra especificada.")
-        '            conexion.Close()
-        '            Return
-        '        End If
-        '        'Agregamos las columnas
-        '        ws.Cell(1, 1).Value = "Handle"
-        '        ws.Cell(1, 2).Value = "Title"
-        '        ws.Cell(1, 3).Value = "Body (HTML)"
-        '        ws.Cell(1, 4).Value = "Vendor"
-        '        ws.Cell(1, 5).Value = "Product Category"
-        '        ws.Cell(1, 6).Value = "Type"
-        '        ws.Cell(1, 7).Value = "Tags"
-        '        ws.Cell(1, 8).Value = "Published"
-        '        ws.Cell(1, 9).Value = "Option1 Name"
-        '        ws.Cell(1, 10).Value = "Option1 Value"
-        '        ws.Cell(1, 11).Value = "Option2 Name"
-        '        ws.Cell(1, 12).Value = "Option2 Value"
-        '        ws.Cell(1, 13).Value = "Option3 Name"
-        '        ws.Cell(1, 14).Value = "Option3 Value"
-        '        ws.Cell(1, 15).Value = "Variant SKU"
-        '        ws.Cell(1, 16).Value = "Variant Grams"
-        '        ws.Cell(1, 17).Value = "Variant Inventory Tracker"
-        '        ws.Cell(1, 18).Value = "Variant Inventory Qty"
-        '        ws.Cell(1, 19).Value = "Variant Inventory Policy"
-        '        ws.Cell(1, 20).Value = "Variant Fulfillment Service"
-        '        ws.Cell(1, 21).Value = "Variant Price"
-        '        ws.Cell(1, 22).Value = "Variant Compare At Price"
-        '        ws.Cell(1, 23).Value = "Variant Requires Shipping"
-        '        ws.Cell(1, 24).Value = "Variant Taxable"
-        '        ws.Cell(1, 25).Value = "Variant Barcode"
-        '        ws.Cell(1, 26).Value = "Image Src"
-        '        ws.Cell(1, 27).Value = "Image Position"
-        '        ws.Cell(1, 28).Value = "Image Alt Text"
-        '        ws.Cell(1, 29).Value = "Gift Card"
-        '        ws.Cell(1, 30).Value = "SEO Title"
-        '        ws.Cell(1, 31).Value = "SEO Description"
-        '        ws.Cell(1, 32).Value = "Google Shopping / Google Product Category"
-        '        ws.Cell(1, 33).Value = "Google Shopping / Gender"
-        '        ws.Cell(1, 34).Value = "Google Shopping / Age Group"
-        '        ws.Cell(1, 35).Value = "Google Shopping / MPN"
-        '        ws.Cell(1, 36).Value = "Google Shopping / AdWords Grouping"
-        '        ws.Cell(1, 37).Value = "Google Shopping / AdWords Labels"
-        '        ws.Cell(1, 38).Value = "Google Shopping / Condition"
-        '        ws.Cell(1, 39).Value = "Google Shopping / Custom Product"
-        '        ws.Cell(1, 40).Value = "Google Shopping / Custom Label 0"
-        '        ws.Cell(1, 41).Value = "Google Shopping / Custom Label 1"
-        '        ws.Cell(1, 42).Value = "Google Shopping / Custom Label 2"
-        '        ws.Cell(1, 43).Value = "Google Shopping / Custom Label 3"
-        '        ws.Cell(1, 44).Value = "Google Shopping / Custom Label 4"
-        '        ws.Cell(1, 45).Value = "Variant Image"
-        '        ws.Cell(1, 46).Value = "Variant Weight Unit"
-        '        ws.Cell(1, 47).Value = "Variant Tax Code"
-        '        ws.Cell(1, 48).Value = "Cost per item"
-        '        ws.Cell(1, 49).Value = "Price / Internacional"
-        '        ws.Cell(1, 50).Value = "Compare At Price / Internacional"
-        '        ws.Cell(1, 51).Value = "Status"
-
-        '        Dim row As Integer = 2 'Iniciamos en la segunda fila para agregar los datos a partir de allí
-        '        While reader.Read() 'Mientras haya datos en el resultado de la consulta
-        '            'Obtenemos el valor del campo nombre y eliminamos los espacios en blanco
-        '            Dim nombre As String = reader.GetString("nombre").Replace(" ", "-")
-        '            'Agregamos el valor en la columna Handle de la fila correspondiente
-        '            ws.Cell(row, 1).Value = nombre
-        '            ws.Cell(row, 2).Value = reader("nombre").ToString()
-        '            ws.Cell(row, 3).Value = reader("nombre").ToString().ToLower()
-        '            ws.Cell(row, 4).Value = "Elite Joyería"
-        '            ws.Cell(row, 5).Value = "Ropa y accesorios > Joyería"
-
-        '            Dim marca As Integer = reader.GetInt32("marca")
-        '            Dim type As String = ""
-        '            If marca = 1 Then
-        '                type = "Oro Nacional"
-        '            ElseIf marca = 2 Then
-        '                type = "Oro Italy"
-        '            End If
-        '            ws.Cell(row, 6).Value = type
-
-        '            Dim categoria_producto As Integer = reader.GetInt32("categoria_producto")
-        '            Dim tags As String
-        '            Select Case categoria_producto
-        '                Case 4
-        '                    tags = "ROSARIOS"
-        '                Case 5
-        '                    tags = "PULSERAS,PULSOS"
-        '                Case 6
-        '                    tags = "DIJES"
-        '                Case 7
-        '                    tags = "ARETES,TOPOS"
-        '                Case 8
-        '                    tags = "ARETES,CANDONGAS"
-        '                Case 9
-        '                    tags = "ANILLOS"
-        '                Case 11
-        '                    tags = "AROS,PULSERAS"
-        '                Case 12
-        '                    tags = "TOBILLERAS"
-        '                Case 14
-        '                    tags = "PULSERAS TEJIDAS,PULSERAS"
-        '                Case 15
-        '                    tags = "HERRAJE"
-        '                Case 16
-        '                    tags = "BOLAS"
-        '                Case 19
-        '                    tags = "CADENAS,CADENAS 45"
-        '                Case 20
-        '                    tags = "CADENAS,CADENAS 50"
-        '                Case 21
-        '                    tags = "CADENAS,CADENAS 55"
-        '                Case 22
-        '                    tags = "CADENAS,CADENAS 60"
-        '                Case 23
-        '                    tags = "CADENAS,CADENAS 65"
-        '                Case 24
-        '                    tags = "CADENAS,CADENAS 70"
-        '                Case 25
-        '                    tags = "CADENAS,CADENAS 40"
-        '                Case 26
-        '                    tags = "ANILLOS,ANILLOS MUJER"
-        '                Case 27
-        '                    tags = "ANILLOS,ANILLOS HOMBRE"
-        '                Case 29
-        '                    tags = "PULSERAS,PULSERAS BEBE"
-        '                Case 33
-        '                    tags = "CADENAS,GARGANTILLAS"
-        '                Case Else
-        '                    tags = ""
-        '            End Select
-        '            ws.Cell(row, 7).Value = tags
-        '            ws.Cell(row, 8).Value = "VERDADERO"
-        '            ws.Cell(row, 9).Value = "Title"
-        '            ws.Cell(row, 10).Value = "Default Title"
-        '            ws.Cell(row, 11).Value = ""
-        '            ws.Cell(row, 12).Value = ""
-        '            ws.Cell(row, 13).Value = ""
-        '            ws.Cell(row, 14).Value = ""
-
-        '            'Dim id As Integer = reader("id")
-        '            'ws.Cell(row, 15).Value = id.ToString()
-        '            ws.Cell(row, 15).Value = reader("referencia").ToString()
-
-        '            Dim peso As Double = reader.GetDouble("peso")
-        '            Dim cellpeso As IXLCell = ws.Cell(row, 16)
-        '            cellpeso.Value = peso.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)
-        '            cellpeso.Style.NumberFormat.NumberFormatId = 4 ' Formato numérico sin decimales
-
-        '            ws.Cell(row, 17).Value = "shopify"
-        '            ws.Cell(row, 18).Value = ""
-        '            ws.Cell(row, 19).Value = "deny"
-        '            ws.Cell(row, 20).Value = "manual"
-
-        '            Dim vunitario As String = reader.GetDecimal("valor_unitario")
-        '            Dim cell As IXLCell = ws.Cell(row, 21)
-        '            cell.Value = vunitario
-        '            cell.Style.NumberFormat.NumberFormatId = 4 ' Formato numérico sin decimales
-
-        '            ws.Cell(row, 22).Value = ""
-        '            ws.Cell(row, 23).Value = "VERDADERO"
-        '            ws.Cell(row, 24).Value = "VERDADERO"
-        '            ws.Cell(row, 25).Value = ""
-        '            ws.Cell(row, 26).Value = ""
-        '            ws.Cell(row, 27).Value = ""
-        '            ws.Cell(row, 28).Value = ""
-        '            ws.Cell(row, 29).Value = "FALSO"
-        '            ws.Cell(row, 30).Value = ""
-        '            ws.Cell(row, 31).Value = ""
-        '            ws.Cell(row, 32).Value = ""
-        '            ws.Cell(row, 33).Value = ""
-        '            ws.Cell(row, 34).Value = ""
-        '            ws.Cell(row, 35).Value = ""
-        '            ws.Cell(row, 36).Value = ""
-        '            ws.Cell(row, 37).Value = ""
-        '            ws.Cell(row, 38).Value = ""
-        '            ws.Cell(row, 39).Value = ""
-        '            ws.Cell(row, 40).Value = ""
-        '            ws.Cell(row, 41).Value = ""
-        '            ws.Cell(row, 42).Value = ""
-        '            ws.Cell(row, 43).Value = ""
-        '            ws.Cell(row, 44).Value = ""
-        '            ws.Cell(row, 45).Value = ""
-        '            ws.Cell(row, 46).Value = "g"
-        '            ws.Cell(row, 47).Value = "FALSO"
-        '            ws.Cell(row, 48).Value = ""
-        '            ws.Cell(row, 49).Value = ""
-        '            ws.Cell(row, 50).Value = ""
-        '            ws.Cell(row, 51).Value = "active"
-        '            row += 1 'Incrementamos el número de fila para agregar los siguientes datos en la siguiente fila
-        '        End While
-        '        'Cerrar el lector y la conexión a la base de datos
-        '        reader.Close()
-        '        conexion.Close()
-
-        '        'Guardar el archivo de Excel y cerrar la aplicación Excel
-        '        Dim saveFileDialog1 As New SaveFileDialog()
-        '        saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
-        '        saveFileDialog1.Title = "Guardar como"
-        '        saveFileDialog1.ShowDialog()
-
-        '        If saveFileDialog1.FileName <> "" Then
-        '            wb.SaveAs(saveFileDialog1.FileName)
-        '            MsgBox("Archivo guardado con éxito", vbInformation, "Guardado")
-        '        Else
-        '            MsgBox("Error al guardar el archivo", vbCritical, "Error")
-        '        End If
-
-        '    Catch ex As Exception
-        '        MessageBox.Show("Ha ocurrido un error al generar el archivo: " & ex.Message)
-        '    End Try
-        'End If
         If lst_compra_rep.SelectedItem Is Nothing Then
             MessageBox.Show("Por favor, seleccione una compra.")
             Return
@@ -1852,22 +1628,6 @@ Public Class Registro
         Try
             conexion.Open()
             Dim selectedCompraID As Integer = CInt(lst_compra_rep.SelectedItem)
-
-            Dim nombresDuplicados As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
-            Dim sqlDuplicados As String = "
-                SELECT nombre
-                FROM productos
-                WHERE idcompra = @compraID
-                GROUP BY nombre
-                HAVING COUNT(*) > 1;"
-            Using cmdDup As New MySql.Data.MySqlClient.MySqlCommand(sqlDuplicados, conexion)
-                cmdDup.Parameters.AddWithValue("@compraID", selectedCompraID)
-                Using rDup = cmdDup.ExecuteReader()
-                    While rDup.Read()
-                        nombresDuplicados.Add(rDup.GetString(0))
-                    End While
-                End Using
-            End Using
 
             Dim sql As String = "SELECT referencia, nombre, marca, peso, categoria_producto, valor_unitario FROM productos WHERE idcompra = @compraID"
             Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
@@ -1890,7 +1650,6 @@ Public Class Registro
                 Return
             End If
 
-            ' Puedes usar Encoding.Default para ANSI o UTF8 según necesidad
             Using sw As New StreamWriter(saveFileDialog1.FileName, False, Encoding.UTF8)
 
                 ' CABECERAS
@@ -1913,14 +1672,7 @@ Public Class Registro
                 While reader.Read()
                     Dim nombre As String = reader.GetString("nombre")
                     Dim referencia As String = reader("referencia").ToString()
-                    Dim handle As String
-                    If nombresDuplicados.Contains(nombre) Then
-                        ' Si el nombre está duplicado para esta compra, agrega la referencia
-                        handle = (nombre & "-" & referencia).Replace(" ", "-")
-                    Else
-                        ' Si no está duplicado, deja el comportamiento actual
-                        handle = nombre.Replace(" ", "-")
-                    End If
+                    Dim handle As String = (nombre & "-" & referencia).Replace(" ", "-")
                     Dim title As String = nombre
                     Dim bodyHTML As String = nombre.ToLower()
                     Dim vendor As String = "Elite Joyería"
