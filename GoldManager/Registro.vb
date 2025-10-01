@@ -943,7 +943,7 @@ Public Class Registro
                 Dim cantidad As Decimal = Convert.ToDecimal(jt_cantidad.Text)
                 Dim costo_total As Decimal = cantidad * valor_unitario
 
-                Dim query As String = "INSERT INTO productos (nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, valor_unitario_compra, ct, sucursal, referencia, idcompra) VALUES (@nombre, @marca, @cantidad, @peso, @peso_total, @categoria_producto, @valor_unitario, @costo_total, @valor_gramo, @valor_unitario_compra, @ct, @idsucursal, @referencia, @idcompra)"
+                Dim query As String = "INSERT INTO productos (nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, valor_prenda, valor_unitario_compra, ct, sucursal, referencia, idcompra) VALUES (@nombre, @marca, @cantidad, @peso, @peso_total, @categoria_producto, @valor_unitario, @costo_total, @valor_gramo, @valor_prenda, @valor_unitario_compra, @ct, @idsucursal, @referencia, @idcompra)"
 
                 Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
                     cmd.Parameters.AddWithValue("@nombre", nombre_compuesto)
@@ -955,7 +955,8 @@ Public Class Registro
                     cmd.Parameters.AddWithValue("@valor_unitario", valor_unitario)
                     cmd.Parameters.AddWithValue("@costo_total", costo_total)
                     cmd.Parameters.AddWithValue("@valor_gramo", Convert.ToDecimal(jt_valor_gramo.Text))
-                    cmd.Parameters.AddWithValue("@valor_unitario_compra", valor_unitario_compra)
+                    cmd.Parameters.AddWithValue("@valor_prenda", valor_unitario_compra)
+                    cmd.Parameters.AddWithValue("@valor_unitario_compra", valor_adicional)
                     cmd.Parameters.AddWithValue("@ct", ct)
                     cmd.Parameters.AddWithValue("@idsucursal", id_sucursal)
                     cmd.Parameters.AddWithValue("@referencia", nueva_referencia)
@@ -1211,18 +1212,18 @@ Public Class Registro
 
                 conexion.Close()
                 Dim queryActualizacion As String = "
-UPDATE productos p
-JOIN gramonacional_new g ON p.ct = g.ct
-SET p.valor_gramo = g.valor;
-UPDATE productos p
-LEFT JOIN broches_new b ON p.broche = b.peso_broche
-SET 
-    p.vbroche = IFNULL(b.precio_broche, 0),
-    p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0);
+                    UPDATE productos p
+                    JOIN gramonacional_new g ON p.ct = g.ct
+                    SET p.valor_gramo = g.valor;
+                    UPDATE productos p
+                    LEFT JOIN broches_new b ON p.broche = b.peso_broche
+                    SET 
+                        p.vbroche = IFNULL(b.precio_broche, 0),
+                        p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0) + IFNULL(p.valor_prenda, 0);
 
-UPDATE productos
-SET costo_total = cantidad * valor_unitario;
-"
+                    UPDATE productos
+                    SET costo_total = cantidad * valor_unitario;
+                "
 
                 Try
                     conexion.Open()
@@ -1234,9 +1235,7 @@ SET costo_total = cantidad * valor_unitario;
                 Finally
                     conexion.Close()
                 End Try
-                'ActualizarValorGramoNacional()
-                'ActualizarValorUnitarioNacional()
-                'ActualizarCostosTotalesNacional()
+
             ElseIf lst_marca_tabla.SelectedItem = "Italy" Then
                 Dim query As String = "UPDATE gramoitaly_new SET valor = @valor WHERE id = @id"
                 Using cmd As New MySql.Data.MySqlClient.MySqlCommand(query, conexion)
@@ -1252,27 +1251,27 @@ SET costo_total = cantidad * valor_unitario;
                 End Using
                 conexion.Close()
                 Dim queryActualizacion As String = "
-UPDATE productos p
-JOIN gramoitaly_new g ON p.ct = g.ct
-SET p.valor_gramo = g.valor;
+                    UPDATE productos p
+                    JOIN gramoitaly_new g ON p.ct = g.ct
+                    SET p.valor_gramo = g.valor;
 
-UPDATE broches_new 
-SET precio_broche = peso_broche * (
-    SELECT valor 
-    FROM gramoitaly_new 
-    WHERE ct = 'ir2-3' 
-    LIMIT 1
-);
+                    UPDATE broches_new 
+                    SET precio_broche = peso_broche * (
+                        SELECT valor 
+                        FROM gramoitaly_new 
+                        WHERE ct = 'ir2-3' 
+                        LIMIT 1
+                    );
 
-UPDATE productos p
-LEFT JOIN broches_new b ON p.broche = b.peso_broche
-SET 
-    p.vbroche = IFNULL(b.precio_broche, 0),
-    p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0);
+                    UPDATE productos p
+                    LEFT JOIN broches_new b ON p.broche = b.peso_broche
+                    SET 
+                        p.vbroche = IFNULL(b.precio_broche, 0),
+                        p.valor_unitario = (p.peso * p.valor_gramo) + IFNULL(b.precio_broche, 0) + IFNULL(p.valor_prenda, 0);
 
-UPDATE productos
-SET costo_total = cantidad * valor_unitario;
-"
+                    UPDATE productos
+                    SET costo_total = cantidad * valor_unitario;
+                "
 
                 Try
                     conexion.Open()
@@ -1284,10 +1283,7 @@ SET costo_total = cantidad * valor_unitario;
                 Finally
                     conexion.Close()
                 End Try
-                'ActualizarValorGramoItaly()
-                'ActualizarValorUnitarioNacional()
-                'ActualizarCostosTotalesNacional()
-                'MsgBox("Actualización completa.", vbInformation, "Éxito")
+
                 tb_precios.ReadOnly = True
                 tb_precios.Columns("valor").ReadOnly = True
                 btn_actualizar.Visible = False
@@ -1917,7 +1913,6 @@ SET costo_total = cantidad * valor_unitario;
                 While reader.Read()
                     Dim nombre As String = reader.GetString("nombre")
                     Dim referencia As String = reader("referencia").ToString()
-                    'Dim handle As String = nombre.Replace(" ", "-")
                     Dim handle As String
                     If nombresDuplicados.Contains(nombre) Then
                         ' Si el nombre está duplicado para esta compra, agrega la referencia
