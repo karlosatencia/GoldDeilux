@@ -1856,6 +1856,23 @@ SET costo_total = cantidad * valor_unitario;
         Try
             conexion.Open()
             Dim selectedCompraID As Integer = CInt(lst_compra_rep.SelectedItem)
+
+            Dim nombresDuplicados As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+            Dim sqlDuplicados As String = "
+                SELECT nombre
+                FROM productos
+                WHERE idcompra = @compraID
+                GROUP BY nombre
+                HAVING COUNT(*) > 1;"
+            Using cmdDup As New MySql.Data.MySqlClient.MySqlCommand(sqlDuplicados, conexion)
+                cmdDup.Parameters.AddWithValue("@compraID", selectedCompraID)
+                Using rDup = cmdDup.ExecuteReader()
+                    While rDup.Read()
+                        nombresDuplicados.Add(rDup.GetString(0))
+                    End While
+                End Using
+            End Using
+
             Dim sql As String = "SELECT referencia, nombre, marca, peso, categoria_producto, valor_unitario FROM productos WHERE idcompra = @compraID"
             Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
             cmd.Parameters.AddWithValue("@compraID", selectedCompraID)
@@ -1899,11 +1916,20 @@ SET costo_total = cantidad * valor_unitario;
 
                 While reader.Read()
                     Dim nombre As String = reader.GetString("nombre")
-                    Dim handle As String = nombre.Replace(" ", "-")
+                    Dim referencia As String = reader("referencia").ToString()
+                    'Dim handle As String = nombre.Replace(" ", "-")
+                    Dim handle As String
+                    If nombresDuplicados.Contains(nombre) Then
+                        ' Si el nombre está duplicado para esta compra, agrega la referencia
+                        handle = (nombre & "-" & referencia).Replace(" ", "-")
+                    Else
+                        ' Si no está duplicado, deja el comportamiento actual
+                        handle = nombre.Replace(" ", "-")
+                    End If
                     Dim title As String = nombre
                     Dim bodyHTML As String = nombre.ToLower()
                     Dim vendor As String = "Elite Joyería"
-                    Dim productCategory As String = "Joyería en Ropa y accesorios" 'Ropa y accesorios > Joyería
+                    Dim productCategory As String = "Joyería en Ropa y accesorios"
 
                     Dim marca As Integer = reader.GetInt32("marca")
                     Dim tipo As String = If(marca = 1, "Oro Nacional", If(marca = 2, "Oro Italy", ""))
@@ -1937,7 +1963,7 @@ SET costo_total = cantidad * valor_unitario;
                         Case 38 : tags = "ANILLOS, ANILLOS 15"
                     End Select
 
-                    Dim referencia As String = reader("referencia").ToString()
+                    'Dim referencia As String = reader("referencia").ToString()
                     Dim peso As Double = reader.GetDouble("peso")
                     Dim pesoStr As String = peso.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) ' Con punto
                     Dim valorUnitario As String = reader.GetDecimal("valor_unitario").ToString("0.00").Replace(".", ",") ' Para CSV con coma decimal
