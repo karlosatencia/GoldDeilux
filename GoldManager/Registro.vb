@@ -835,7 +835,12 @@ Public Class Registro
 
             ' Cálculo del valor_unitario_compra
             Dim valor_unitario_compra As Decimal
-            valor_unitario_compra = Convert.ToDecimal(jt_peso.Text) * Convert.ToDecimal(jt_compra.Text)
+            If Not ch_adicional.Checked Then
+                valor_unitario_compra = Convert.ToDecimal(jt_peso.Text) * Convert.ToDecimal(jt_compra.Text)
+            Else
+                valor_unitario_compra = Convert.ToDecimal(jt_compra.Text)
+            End If
+
             Dim ct As String = ""
             If lst_marca.Text = "Nacional" Then
                 ct = ObtenerCtNacional(Convert.ToDecimal(jt_peso.Text), lst_categoria_precio.SelectedItem.ToString())
@@ -956,8 +961,8 @@ Public Class Registro
                     cmd.Parameters.AddWithValue("@valor_unitario", valor_unitario)
                     cmd.Parameters.AddWithValue("@costo_total", costo_total)
                     cmd.Parameters.AddWithValue("@valor_gramo", Convert.ToDecimal(jt_valor_gramo.Text))
-                    cmd.Parameters.AddWithValue("@valor_prenda", valor_unitario_compra)
-                    cmd.Parameters.AddWithValue("@valor_unitario_compra", valor_adicional)
+                    cmd.Parameters.AddWithValue("@valor_prenda", valor_adicional)
+                    cmd.Parameters.AddWithValue("@valor_unitario_compra", valor_unitario_compra)
                     cmd.Parameters.AddWithValue("@ct", ct)
                     cmd.Parameters.AddWithValue("@idsucursal", id_sucursal)
                     cmd.Parameters.AddWithValue("@referencia", nueva_referencia)

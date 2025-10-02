@@ -2335,7 +2335,7 @@ Partial Class Registro
         End If
 
         ' Limitar la longitud del texto a 6 caracteres
-        If jt_compra.Text.Length >= 6 And Not Char.IsControl(e.KeyChar) Then
+        If jt_compra.Text.Length >= 8 And Not Char.IsControl(e.KeyChar) Then
             e.Handled = True
         End If
     End Sub
