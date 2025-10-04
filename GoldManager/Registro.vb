@@ -896,8 +896,7 @@ Public Class Registro
                     cmd.Parameters.AddWithValue("@valor_unitario_compra", valor_unitario_compra)
                     cmd.Parameters.AddWithValue("@ct", ct)
                     cmd.Parameters.AddWithValue("@referencia", nueva_referencia)
-                    cmd.Parameters.AddWithValue("@idsucursal", 1)
-                    'cmd.Parameters.AddWithValue("@idsucursal", id_sucursal)
+                    cmd.Parameters.AddWithValue("@idsucursal", id_sucursal)
 
                     If lst_marca.Text = "Nacional" AndAlso lst_broche.Text <> "Seleccione" Then
                         Dim broche As Decimal = Convert.ToDecimal(lst_broche.Text)
