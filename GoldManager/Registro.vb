@@ -10,9 +10,9 @@ Public Class Registro
     Dim CamposPircingValidados As Boolean
     Dim conn As MySql.Data.MySqlClient.MySqlConnection
     'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
-    'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=shared12.hostgator.co;user=elitejoy_jjaramillo;password=Safra2583*;database=elitejoy_goldmanagerelite;port=3306")
-    'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=shared26.hostgator.co;user=horusoro_adminhorus;password=Safrat2583;database=horusoro_horusgold;port=3306")
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00002.hostgator.co;user=cdcbfeba_adminelite;password=Safrat2583;database=cdcbfeba_goldmanagerelite;port=3306")
+    '("server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306")
+
     'Evento personalizado
     Public Event NuevaInsercionRealizada()
 
@@ -1384,7 +1384,8 @@ Public Class Registro
     Public Sub ActualizarPrecioBroche()
         'Dim connectionString As String = "server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager"
 
-        Dim connectionString As String = "server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306"
+        Dim connectionString As String = "server=sh00002.hostgator.co;user=cdcbfeba_adminelite;password=Safrat2583;database=cdcbfeba_goldmanagerelite;port=3306"
+        '"server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306"
 
         ' Consulta para obtener el valor de gramoitaly donde ct = 'ic-1'
         Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly_new WHERE ct = 'ir1-2'"
