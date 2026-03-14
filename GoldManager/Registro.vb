@@ -2235,36 +2235,14 @@ Public Class Registro
         Tab_Consultar_Click(Nothing, Nothing)
     End Sub
     Private Sub btn_agregar_compra_Click(sender As Object, e As EventArgs) Handles btn_agregar_compra.Click
-        Dim nuevaCompra As New Nueva_Compra_Form()
-        AddHandler nuevaCompra.NuevaCompraIngresada, AddressOf CompraCreada
-        nuevaCompra.ShowDialog()
+        Dim autenticacion As New FormAutenticacion()
+        autenticacion.ShowDialog()
+        If autenticacion.DialogResult = DialogResult.OK Then
+            Dim nuevaCompra As New Nueva_Compra_Form()
+            AddHandler nuevaCompra.NuevaCompraIngresada, AddressOf CompraCreada
+            nuevaCompra.ShowDialog()
+        End If
 
-        '' Verificar que estás conectado a la base de datos antes de intentar la inserción.
-        'If conexion.State = ConnectionState.Closed Then
-        '    conexion.Open()
-        'End If
-
-        'Try
-        '    ' Construir la consulta SQL para la inserción en la tabla "compra"
-        '    Dim query As String = "INSERT INTO compra (estado) VALUES (@estado)"
-        '    Dim cmd As New MySqlCommand(query, conexion)
-
-        '    ' Establecer el valor para el parámetro @estado
-        '    cmd.Parameters.AddWithValue("@estado", "ABIERTA") ' Estado por defecto "ABIERTA".
-
-        '    ' Ejecutar la consulta de inserción
-        '    cmd.ExecuteNonQuery()
-
-        '    MessageBox.Show("Compra agregada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        '    Tab_Consultar_Click(Nothing, Nothing)
-        '    ' Notificar al TabPage1 que se ha realizado una inserción
-        '    RaiseEvent NuevaInsercionRealizada()
-
-        'Catch ex As Exception
-        '    MessageBox.Show("Error al agregar compra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'Finally
-        '    conexion.Close()
-        'End Try
     End Sub
     Private datosCargados As Boolean = False
     Private Sub CargarDatosComboBoxRep()
