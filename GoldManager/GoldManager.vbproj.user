@@ -13,6 +13,9 @@
     <Compile Update="FormAutenticacion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Nueva_Compra_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="RangoIds.vb">
       <SubType>Form</SubType>
     </Compile>

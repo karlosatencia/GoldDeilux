@@ -537,3 +537,4 @@ C:\Users\ADMIN\Source\Repos\GoldEliteV2\GoldManager\obj\Release\net6.0-windows\r
 C:\Users\ADMIN\Source\Repos\GoldEliteV2\GoldManager\obj\Release\net6.0-windows\GoldManager.pdb
 C:\Users\ADMIN\Source\Repos\GoldEliteV2\GoldManager\obj\Release\net6.0-windows\GoldManager.genruntimeconfig.cache
 C:\Users\ADMIN\Source\Repos\GoldEliteV2\GoldManager\obj\Release\net6.0-windows\ref\GoldManager.dll
+C:\Users\ADMIN\Source\Repos\GoldEliteV2\GoldManager\obj\Release\net6.0-windows\GoldManager.Nueva_Compra_Form.resources
