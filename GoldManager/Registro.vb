@@ -720,9 +720,9 @@ Public Class Registro
                     ElseIf jt_cantidad.Text = "" Or Val(jt_cantidad.Text) = 0 Then
                         MessageBox.Show("Ingrese la cantidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         jt_cantidad.Focus()
-                    ElseIf jt_compra.Text = "" Or Val(jt_compra.Text) = 0 Then
-                        MessageBox.Show("Ingrese el valor (Compra) del gramo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                        jt_compra.Focus()
+                        'ElseIf jt_compra.Text = "" Or Val(jt_compra.Text) = 0 Then
+                        '    MessageBox.Show("Ingrese el valor (Compra) del gramo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        '    jt_compra.Focus()
                     ElseIf (lst_tipo_producto.SelectedItem.ToString() = "Anillo" Or
                             lst_tipo_producto.SelectedItem.ToString() = "Anillo Solitario" Or
                             lst_tipo_producto.SelectedItem.ToString() = "Anillo Matrimonio" Or
@@ -835,10 +835,35 @@ Public Class Registro
 
             ' Cálculo del valor_unitario_compra
             Dim valor_unitario_compra As Decimal
+
             If Not ch_adicional.Checked Then
-                valor_unitario_compra = Convert.ToDecimal(jt_peso.Text) * Convert.ToDecimal(jt_compra.Text)
+
+                Dim valorGramoCompra As Decimal
+
+                Dim queryCompra As String = "SELECT valor_gr_nac, valor_gr_it FROM compra WHERE id = @idcompra"
+
+                Using cmdCompra As New MySqlCommand(queryCompra, conexion)
+                    cmdCompra.Parameters.AddWithValue("@idcompra", idcompra)
+
+                    Using reader As MySqlDataReader = cmdCompra.ExecuteReader()
+                        If reader.Read() Then
+
+                            If lst_marca.Text = "Nacional" Then
+                                valorGramoCompra = Convert.ToDecimal(reader("valor_gr_nac"))
+                            ElseIf lst_marca.Text = "Italy" Then
+                                valorGramoCompra = Convert.ToDecimal(reader("valor_gr_it"))
+                            End If
+
+                        End If
+                    End Using
+                End Using
+
+                valor_unitario_compra = Convert.ToDecimal(jt_peso.Text) * valorGramoCompra
+
             Else
+
                 valor_unitario_compra = Convert.ToDecimal(jt_compra.Text)
+
             End If
 
             Dim ct As String = ""

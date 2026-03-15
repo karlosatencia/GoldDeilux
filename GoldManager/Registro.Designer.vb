@@ -2051,7 +2051,7 @@ Partial Class Registro
             If lst_tipo_producto.Text = "Piercing" Then
                 jt_compra.Enabled = False
             Else
-                jt_compra.Enabled = True
+                'jt_compra.Enabled = True
                 jt_compra.Text = ""
                 Dim peso As Decimal
                 Decimal.TryParse(jt_peso.Text, peso)
@@ -2064,7 +2064,7 @@ Partial Class Registro
                 jt_compra.Enabled = False
             Else
                 lst_broche.Text = "Seleccione"
-                jt_compra.Enabled = True
+                'jt_compra.Enabled = True
                 jt_compra.Text = ""
                 Dim peso As Decimal
                 Decimal.TryParse(jt_peso.Text, peso)
@@ -2491,10 +2491,12 @@ Partial Class Registro
         If ch_adicional.Checked Then
             jt_adicional.Enabled = True
             lb_adicional.Enabled = True
+            jt_compra.Enabled = True
         Else
             jt_adicional.Enabled = False
             jt_adicional.Text = ""
             lb_adicional.Enabled = False
+            jt_compra.Enabled = False
 
         End If
     End Sub
