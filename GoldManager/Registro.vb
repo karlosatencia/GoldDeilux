@@ -51,7 +51,7 @@ Public Class Registro
         tb_compras.AllowUserToResizeColumns = False
         tb_compras.AllowUserToResizeRows = False
         tb_compras.RowHeadersVisible = False
-
+        jt_nombre_compuesto.ForeColor = Color.LimeGreen
 
         Dim widths() As Integer = {80, 80, 500, 50, 60, 50, 80, 70, 100, 100, 100, 110, 50, 110}
         For i As Integer = 0 To tb_productos.Columns.Count - 1
