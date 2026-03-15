@@ -2636,4 +2636,10 @@ Public Class Registro
     Private Sub tb_productos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tb_productos.CellContentClick
 
     End Sub
+
+    Private Sub btn_generar_reporte_ingreso_Click(sender As Object, e As EventArgs) Handles btn_generar_reporte_ingreso.Click
+        Dim repIngreso As New ReporteIngreso()
+        repIngreso.StartPosition = FormStartPosition.CenterScreen
+        repIngreso.ShowDialog()
+    End Sub
 End Class

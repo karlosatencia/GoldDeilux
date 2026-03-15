@@ -85,6 +85,7 @@ Partial Class Registro
         Label17 = New Label()
         PictureBox1 = New PictureBox()
         TabPage3 = New TabPage()
+        btn_generar_reporte_ingreso = New Button()
         lblProcesando = New Label()
         ProgressBar1 = New ProgressBar()
         btn_actualizar_precios = New Button()
@@ -115,6 +116,19 @@ Partial Class Registro
         Label18 = New Label()
         btn_depurar = New Button()
         tb_productos = New DataGridView()
+        referencia = New DataGridViewTextBoxColumn()
+        idcompra = New DataGridViewTextBoxColumn()
+        nombre = New DataGridViewTextBoxColumn()
+        marca = New DataGridViewTextBoxColumn()
+        cantidad = New DataGridViewTextBoxColumn()
+        peso = New DataGridViewTextBoxColumn()
+        peso_total = New DataGridViewTextBoxColumn()
+        categoria_producto = New DataGridViewTextBoxColumn()
+        valor_unitario = New DataGridViewTextBoxColumn()
+        costo_total = New DataGridViewTextBoxColumn()
+        valor_gramo = New DataGridViewTextBoxColumn()
+        broche = New DataGridViewTextBoxColumn()
+        vbroche = New DataGridViewTextBoxColumn()
         DataSet1BindingSource = New BindingSource(components)
         TabPage5 = New TabPage()
         Label25 = New Label()
@@ -161,19 +175,6 @@ Partial Class Registro
         tt_actualizar = New ToolTip(components)
         tt_depurar = New ToolTip(components)
         tt_backup = New ToolTip(components)
-        referencia = New DataGridViewTextBoxColumn()
-        idcompra = New DataGridViewTextBoxColumn()
-        nombre = New DataGridViewTextBoxColumn()
-        marca = New DataGridViewTextBoxColumn()
-        cantidad = New DataGridViewTextBoxColumn()
-        peso = New DataGridViewTextBoxColumn()
-        peso_total = New DataGridViewTextBoxColumn()
-        categoria_producto = New DataGridViewTextBoxColumn()
-        valor_unitario = New DataGridViewTextBoxColumn()
-        costo_total = New DataGridViewTextBoxColumn()
-        valor_gramo = New DataGridViewTextBoxColumn()
-        broche = New DataGridViewTextBoxColumn()
-        vbroche = New DataGridViewTextBoxColumn()
         Tab_Consultar.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -203,7 +204,7 @@ Partial Class Registro
         ' lst_marca_tabla
         ' 
         lst_marca_tabla.DropDownStyle = ComboBoxStyle.DropDownList
-        lst_marca_tabla.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        lst_marca_tabla.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         lst_marca_tabla.FormattingEnabled = True
         lst_marca_tabla.Items.AddRange(New Object() {"Seleccione", "Nacional", "Italy"})
         lst_marca_tabla.Location = New Point(575, 84)
@@ -550,7 +551,7 @@ Partial Class Registro
         ' rb_mujer
         ' 
         rb_mujer.AutoSize = True
-        rb_mujer.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_mujer.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         rb_mujer.Location = New Point(423, 308)
         rb_mujer.Margin = New Padding(5, 3, 5, 3)
         rb_mujer.Name = "rb_mujer"
@@ -563,7 +564,7 @@ Partial Class Registro
         ' rb_hombre
         ' 
         rb_hombre.AutoSize = True
-        rb_hombre.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_hombre.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         rb_hombre.Location = New Point(518, 308)
         rb_hombre.Margin = New Padding(5, 3, 5, 3)
         rb_hombre.Name = "rb_hombre"
@@ -582,7 +583,7 @@ Partial Class Registro
         Tab_Consultar.Controls.Add(TabPage2)
         Tab_Consultar.Controls.Add(TabPage6)
         Tab_Consultar.Dock = DockStyle.Fill
-        Tab_Consultar.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Tab_Consultar.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Tab_Consultar.Location = New Point(0, 0)
         Tab_Consultar.Margin = New Padding(5, 3, 5, 3)
         Tab_Consultar.Name = "Tab_Consultar"
@@ -647,7 +648,7 @@ Partial Class Registro
         TabPage1.Controls.Add(Label4)
         TabPage1.Controls.Add(Label3)
         TabPage1.Controls.Add(PictureBox1)
-        TabPage1.Font = New Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage1.Font = New Font("Segoe UI Semilight", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
         TabPage1.Location = New Point(4, 26)
         TabPage1.Margin = New Padding(5, 3, 5, 3)
         TabPage1.Name = "TabPage1"
@@ -660,7 +661,7 @@ Partial Class Registro
         ' rb_matrimonio
         ' 
         rb_matrimonio.AutoSize = True
-        rb_matrimonio.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_matrimonio.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         rb_matrimonio.Location = New Point(289, 308)
         rb_matrimonio.Margin = New Padding(4, 3, 4, 3)
         rb_matrimonio.Name = "rb_matrimonio"
@@ -696,7 +697,7 @@ Partial Class Registro
         ' 
         lb_talla.AutoSize = True
         lb_talla.Enabled = False
-        lb_talla.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_talla.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         lb_talla.Location = New Point(651, 311)
         lb_talla.Margin = New Padding(4, 0, 4, 0)
         lb_talla.Name = "lb_talla"
@@ -799,7 +800,7 @@ Partial Class Registro
         ' ch_adicional
         ' 
         ch_adicional.AutoSize = True
-        ch_adicional.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_adicional.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ch_adicional.Location = New Point(519, 281)
         ch_adicional.Margin = New Padding(4, 3, 4, 3)
         ch_adicional.Name = "ch_adicional"
@@ -888,6 +889,7 @@ Partial Class Registro
         ' 
         TabPage3.BackgroundImage = CType(resources.GetObject("TabPage3.BackgroundImage"), Image)
         TabPage3.BackgroundImageLayout = ImageLayout.Stretch
+        TabPage3.Controls.Add(btn_generar_reporte_ingreso)
         TabPage3.Controls.Add(lblProcesando)
         TabPage3.Controls.Add(ProgressBar1)
         TabPage3.Controls.Add(btn_actualizar_precios)
@@ -907,6 +909,16 @@ Partial Class Registro
         TabPage3.TabIndex = 2
         TabPage3.Text = "Reportes"
         TabPage3.UseVisualStyleBackColor = True
+        ' 
+        ' btn_generar_reporte_ingreso
+        ' 
+        btn_generar_reporte_ingreso.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_generar_reporte_ingreso.Location = New Point(327, 449)
+        btn_generar_reporte_ingreso.Name = "btn_generar_reporte_ingreso"
+        btn_generar_reporte_ingreso.Size = New Size(258, 74)
+        btn_generar_reporte_ingreso.TabIndex = 10
+        btn_generar_reporte_ingreso.Text = "Generar reporte de Ingreso"
+        btn_generar_reporte_ingreso.UseVisualStyleBackColor = True
         ' 
         ' lblProcesando
         ' 
@@ -930,8 +942,8 @@ Partial Class Registro
         ' 
         ' btn_actualizar_precios
         ' 
-        btn_actualizar_precios.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_actualizar_precios.Location = New Point(681, 352)
+        btn_actualizar_precios.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_actualizar_precios.Location = New Point(681, 340)
         btn_actualizar_precios.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar_precios.Name = "btn_actualizar_precios"
         btn_actualizar_precios.Size = New Size(258, 77)
@@ -941,11 +953,11 @@ Partial Class Registro
         ' 
         ' btn_imprimir_reporte
         ' 
-        btn_imprimir_reporte.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_imprimir_reporte.Location = New Point(534, 470)
+        btn_imprimir_reporte.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_imprimir_reporte.Location = New Point(681, 449)
         btn_imprimir_reporte.Margin = New Padding(4, 3, 4, 3)
         btn_imprimir_reporte.Name = "btn_imprimir_reporte"
-        btn_imprimir_reporte.Size = New Size(197, 74)
+        btn_imprimir_reporte.Size = New Size(258, 74)
         btn_imprimir_reporte.TabIndex = 6
         btn_imprimir_reporte.Text = "Imprimir id's"
         btn_imprimir_reporte.UseVisualStyleBackColor = True
@@ -953,22 +965,23 @@ Partial Class Registro
         ' Label24
         ' 
         Label24.AutoSize = True
-        Label24.Font = New Font("Microsoft Sans Serif", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Label24.Location = New Point(534, 162)
+        Label24.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        Label24.Location = New Point(538, 163)
         Label24.Margin = New Padding(4, 0, 4, 0)
         Label24.Name = "Label24"
-        Label24.Size = New Size(164, 18)
+        Label24.Size = New Size(185, 20)
         Label24.TabIndex = 5
         Label24.Text = "Seleccione una compra"
         ' 
         ' lst_compra_rep
         ' 
         lst_compra_rep.DropDownStyle = ComboBoxStyle.DropDownList
+        lst_compra_rep.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         lst_compra_rep.FormattingEnabled = True
         lst_compra_rep.Location = New Point(555, 186)
         lst_compra_rep.Margin = New Padding(4, 3, 4, 3)
         lst_compra_rep.Name = "lst_compra_rep"
-        lst_compra_rep.Size = New Size(154, 24)
+        lst_compra_rep.Size = New Size(154, 28)
         lst_compra_rep.TabIndex = 4
         ' 
         ' btn_tarifa_precios
@@ -985,35 +998,35 @@ Partial Class Registro
         ' 
         ' btn_compra
         ' 
-        btn_compra.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_compra.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_compra.Location = New Point(681, 226)
         btn_compra.Margin = New Padding(5, 3, 5, 3)
         btn_compra.Name = "btn_compra"
         btn_compra.Size = New Size(258, 77)
         btn_compra.TabIndex = 2
-        btn_compra.Text = "Generar Reporte Compra"
+        btn_compra.Text = "Generar reporte Compra"
         btn_compra.UseVisualStyleBackColor = True
         ' 
         ' btn_shopify
         ' 
-        btn_shopify.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_shopify.Location = New Point(327, 352)
+        btn_shopify.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_shopify.Location = New Point(327, 340)
         btn_shopify.Margin = New Padding(5, 3, 5, 3)
         btn_shopify.Name = "btn_shopify"
         btn_shopify.Size = New Size(258, 77)
         btn_shopify.TabIndex = 1
-        btn_shopify.Text = "Generar Reporte Shopy"
+        btn_shopify.Text = "Generar reporte Shopify"
         btn_shopify.UseVisualStyleBackColor = True
         ' 
         ' btn_effy
         ' 
-        btn_effy.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_effy.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
         btn_effy.Location = New Point(327, 226)
         btn_effy.Margin = New Padding(5, 3, 5, 3)
         btn_effy.Name = "btn_effy"
         btn_effy.Size = New Size(258, 77)
         btn_effy.TabIndex = 0
-        btn_effy.Text = "Generar Reporte Effi"
+        btn_effy.Text = "Generar reporte Effi"
         btn_effy.UseVisualStyleBackColor = True
         ' 
         ' PictureBox2
@@ -1259,6 +1272,84 @@ Partial Class Registro
         tb_productos.Size = New Size(1237, 432)
         tb_productos.TabIndex = 0
         ' 
+        ' referencia
+        ' 
+        referencia.HeaderText = "referencia"
+        referencia.Name = "referencia"
+        referencia.ReadOnly = True
+        ' 
+        ' idcompra
+        ' 
+        idcompra.HeaderText = "idcompra"
+        idcompra.Name = "idcompra"
+        idcompra.ReadOnly = True
+        ' 
+        ' nombre
+        ' 
+        nombre.HeaderText = "nombre"
+        nombre.Name = "nombre"
+        nombre.ReadOnly = True
+        ' 
+        ' marca
+        ' 
+        marca.HeaderText = "marca"
+        marca.Name = "marca"
+        marca.ReadOnly = True
+        ' 
+        ' cantidad
+        ' 
+        cantidad.HeaderText = "cantidad"
+        cantidad.Name = "cantidad"
+        cantidad.ReadOnly = True
+        ' 
+        ' peso
+        ' 
+        peso.HeaderText = "peso"
+        peso.Name = "peso"
+        peso.ReadOnly = True
+        ' 
+        ' peso_total
+        ' 
+        peso_total.HeaderText = "peso_total"
+        peso_total.Name = "peso_total"
+        peso_total.ReadOnly = True
+        ' 
+        ' categoria_producto
+        ' 
+        categoria_producto.HeaderText = "categoria_producto"
+        categoria_producto.Name = "categoria_producto"
+        categoria_producto.ReadOnly = True
+        ' 
+        ' valor_unitario
+        ' 
+        valor_unitario.HeaderText = "valor_unitario"
+        valor_unitario.Name = "valor_unitario"
+        valor_unitario.ReadOnly = True
+        ' 
+        ' costo_total
+        ' 
+        costo_total.HeaderText = "costo_total"
+        costo_total.Name = "costo_total"
+        costo_total.ReadOnly = True
+        ' 
+        ' valor_gramo
+        ' 
+        valor_gramo.HeaderText = "valor_gramo"
+        valor_gramo.Name = "valor_gramo"
+        valor_gramo.ReadOnly = True
+        ' 
+        ' broche
+        ' 
+        broche.HeaderText = "broche"
+        broche.Name = "broche"
+        broche.ReadOnly = True
+        ' 
+        ' vbroche
+        ' 
+        vbroche.HeaderText = "vbroche"
+        vbroche.Name = "vbroche"
+        vbroche.ReadOnly = True
+        ' 
         ' TabPage5
         ' 
         TabPage5.BackgroundImage = CType(resources.GetObject("TabPage5.BackgroundImage"), Image)
@@ -1367,7 +1458,7 @@ Partial Class Registro
         ' 
         ' btn_act_automatico
         ' 
-        btn_act_automatico.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_act_automatico.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         btn_act_automatico.Location = New Point(599, 542)
         btn_act_automatico.Margin = New Padding(4, 3, 4, 3)
         btn_act_automatico.Name = "btn_act_automatico"
@@ -1485,7 +1576,7 @@ Partial Class Registro
         ' TabPage6
         ' 
         TabPage6.Controls.Add(SplitContainer1)
-        TabPage6.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage6.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TabPage6.Location = New Point(4, 26)
         TabPage6.Margin = New Padding(4, 3, 4, 3)
         TabPage6.Name = "TabPage6"
@@ -1513,7 +1604,7 @@ Partial Class Registro
         SplitContainer1.Panel1.Controls.Add(Label27)
         SplitContainer1.Panel1.Controls.Add(Label29)
         SplitContainer1.Panel1.Controls.Add(Label28)
-        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18.0F, FontStyle.Bold, GraphicsUnit.Point)
         ' 
         ' SplitContainer1.Panel2
         ' 
@@ -1529,7 +1620,7 @@ Partial Class Registro
         ' 
         ' ComboBox1
         ' 
-        ComboBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(129, 234)
         ComboBox1.Name = "ComboBox1"
@@ -1538,7 +1629,7 @@ Partial Class Registro
         ' 
         ' TextBox2
         ' 
-        TextBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox2.Location = New Point(129, 184)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(240, 29)
@@ -1546,7 +1637,7 @@ Partial Class Registro
         ' 
         ' TextBox1
         ' 
-        TextBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox1.Location = New Point(129, 134)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(240, 29)
@@ -1554,7 +1645,7 @@ Partial Class Registro
         ' 
         ' Button1
         ' 
-        Button1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Button1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Button1.Location = New Point(129, 311)
         Button1.Name = "Button1"
         Button1.Size = New Size(114, 50)
@@ -1565,7 +1656,7 @@ Partial Class Registro
         ' Label30
         ' 
         Label30.AutoSize = True
-        Label30.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label30.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label30.Location = New Point(16, 234)
         Label30.Name = "Label30"
         Label30.Size = New Size(44, 21)
@@ -1575,7 +1666,7 @@ Partial Class Registro
         ' Label27
         ' 
         Label27.AutoSize = True
-        Label27.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label27.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label27.Location = New Point(16, 184)
         Label27.Name = "Label27"
         Label27.Size = New Size(70, 21)
@@ -1594,7 +1685,7 @@ Partial Class Registro
         ' Label28
         ' 
         Label28.AutoSize = True
-        Label28.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label28.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label28.Location = New Point(16, 134)
         Label28.Name = "Label28"
         Label28.Size = New Size(106, 21)
@@ -1603,7 +1694,7 @@ Partial Class Registro
         ' 
         ' ComboBox2
         ' 
-        ComboBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(190, 84)
         ComboBox2.Name = "ComboBox2"
@@ -1612,7 +1703,7 @@ Partial Class Registro
         ' 
         ' Button2
         ' 
-        Button2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
+        Button2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
         Button2.Location = New Point(250, 169)
         Button2.Name = "Button2"
         Button2.Size = New Size(114, 50)
@@ -1622,7 +1713,7 @@ Partial Class Registro
         ' 
         ' TextBox3
         ' 
-        TextBox3.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox3.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox3.Location = New Point(190, 126)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(240, 29)
@@ -1631,7 +1722,7 @@ Partial Class Registro
         ' Label32
         ' 
         Label32.AutoSize = True
-        Label32.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label32.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Label32.Location = New Point(105, 87)
         Label32.Name = "Label32"
         Label32.Size = New Size(81, 21)
@@ -1672,7 +1763,7 @@ Partial Class Registro
         ' Label31
         ' 
         Label31.AutoSize = True
-        Label31.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        Label31.Font = New Font("Segoe UI Semilight", 18.0F, FontStyle.Bold, GraphicsUnit.Point)
         Label31.Location = New Point(170, 37)
         Label31.Name = "Label31"
         Label31.Size = New Size(239, 32)
@@ -1688,92 +1779,14 @@ Partial Class Registro
         ' 
         tt_actualizar.ShowAlways = True
         ' 
-        ' referencia
-        ' 
-        referencia.HeaderText = "referencia"
-        referencia.Name = "referencia"
-        referencia.ReadOnly = True
-        ' 
-        ' idcompra
-        ' 
-        idcompra.HeaderText = "idcompra"
-        idcompra.Name = "idcompra"
-        idcompra.ReadOnly = True
-        ' 
-        ' nombre
-        ' 
-        nombre.HeaderText = "nombre"
-        nombre.Name = "nombre"
-        nombre.ReadOnly = True
-        ' 
-        ' marca
-        ' 
-        marca.HeaderText = "marca"
-        marca.Name = "marca"
-        marca.ReadOnly = True
-        ' 
-        ' cantidad
-        ' 
-        cantidad.HeaderText = "cantidad"
-        cantidad.Name = "cantidad"
-        cantidad.ReadOnly = True
-        ' 
-        ' peso
-        ' 
-        peso.HeaderText = "peso"
-        peso.Name = "peso"
-        peso.ReadOnly = True
-        ' 
-        ' peso_total
-        ' 
-        peso_total.HeaderText = "peso_total"
-        peso_total.Name = "peso_total"
-        peso_total.ReadOnly = True
-        ' 
-        ' categoria_producto
-        ' 
-        categoria_producto.HeaderText = "categoria_producto"
-        categoria_producto.Name = "categoria_producto"
-        categoria_producto.ReadOnly = True
-        ' 
-        ' valor_unitario
-        ' 
-        valor_unitario.HeaderText = "valor_unitario"
-        valor_unitario.Name = "valor_unitario"
-        valor_unitario.ReadOnly = True
-        ' 
-        ' costo_total
-        ' 
-        costo_total.HeaderText = "costo_total"
-        costo_total.Name = "costo_total"
-        costo_total.ReadOnly = True
-        ' 
-        ' valor_gramo
-        ' 
-        valor_gramo.HeaderText = "valor_gramo"
-        valor_gramo.Name = "valor_gramo"
-        valor_gramo.ReadOnly = True
-        ' 
-        ' broche
-        ' 
-        broche.HeaderText = "broche"
-        broche.Name = "broche"
-        broche.ReadOnly = True
-        ' 
-        ' vbroche
-        ' 
-        vbroche.HeaderText = "vbroche"
-        vbroche.Name = "vbroche"
-        vbroche.ReadOnly = True
-        ' 
         ' Registro
         ' 
-        AutoScaleDimensions = New SizeF(9F, 16F)
+        AutoScaleDimensions = New SizeF(9.0F, 16.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1369, 756)
         Controls.Add(Tab_Consultar)
-        Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(5, 3, 5, 3)
         Name = "Registro"
@@ -2713,4 +2726,5 @@ Partial Class Registro
     Friend WithEvents valor_gramo As DataGridViewTextBoxColumn
     Friend WithEvents broche As DataGridViewTextBoxColumn
     Friend WithEvents vbroche As DataGridViewTextBoxColumn
+    Friend WithEvents btn_generar_reporte_ingreso As Button
 End Class
