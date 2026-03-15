@@ -1827,7 +1827,7 @@ Public Class Registro
     Private Sub ConsultarProductos()
         Try
             conexion.Open()
-            Dim query As String = "SELECT nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, valor_unitario_compra, broche, vbroche, referencia, idcompra FROM productos WHERE " ' Consulta base
+            Dim query As String = "SELECT nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, broche, vbroche, referencia, idcompra FROM productos WHERE " ' Consulta base
 
             Dim conditions As New List(Of String) ' Lista para almacenar las condiciones de búsqueda
 
@@ -1909,8 +1909,8 @@ Public Class Registro
             tb_productos.Columns(10).HeaderText = "Valor Gr"
             tb_productos.Columns(10).DataPropertyName = "valor_gramo"
 
-            tb_productos.Columns(11).HeaderText = "Valor Compra"
-            tb_productos.Columns(11).DataPropertyName = "valor_unitario_compra"
+            'tb_productos.Columns(11).HeaderText = "Valor Compra"
+            'tb_productos.Columns(11).DataPropertyName = "valor_unitario_compra"
 
             tb_productos.Columns(12).HeaderText = "Broche"
             tb_productos.Columns(12).DataPropertyName = "broche"
@@ -1970,83 +1970,88 @@ Public Class Registro
         If lst_compra_rep.SelectedItem Is Nothing Then
             MessageBox.Show("Por favor, seleccione una compra.")
         Else
-            Try
-                'Abrir la conexión a la base de datos
-                conexion.Open()
+            Dim autenticacion As New FormAutenticacion()
+            autenticacion.ShowDialog()
+            If autenticacion.DialogResult = DialogResult.OK Then
+                Try
+                    'Abrir la conexión a la base de datos
+                    conexion.Open()
 
-                'Crear un objeto para manejar el archivo de Excel
-                Dim wb As New ClosedXML.Excel.XLWorkbook()
-                Dim ws As IXLWorksheet = wb.Worksheets.Add("Productos")
+                    'Crear un objeto para manejar el archivo de Excel
+                    Dim wb As New ClosedXML.Excel.XLWorkbook()
+                    Dim ws As IXLWorksheet = wb.Worksheets.Add("Productos")
 
-                Dim selectedCompraID As Integer = CInt(lst_compra_rep.SelectedItem)
+                    Dim selectedCompraID As Integer = CInt(lst_compra_rep.SelectedItem)
 
-                'Ejecutar la consulta SQL para obtener los datos de la tabla Productos
-                Dim sql As String = "SELECT referencia, cantidad, valor_unitario_compra FROM productos WHERE idcompra = @compraID "
-                Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
-                cmd.Parameters.AddWithValue("@compraID", selectedCompraID)
-                Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
-                If Not reader.HasRows Then
-                    MessageBox.Show("No se encontraron registros para la compra especificada.")
+                    'Ejecutar la consulta SQL para obtener los datos de la tabla Productos
+                    Dim sql As String = "SELECT referencia, cantidad, valor_unitario_compra FROM productos WHERE idcompra = @compraID "
+                    Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
+                    cmd.Parameters.AddWithValue("@compraID", selectedCompraID)
+                    Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+                    If Not reader.HasRows Then
+                        MessageBox.Show("No se encontraron registros para la compra especificada.")
+                        conexion.Close()
+                        Return
+                    End If
+                    'Escribir los encabezados de las columnas en la hoja de Excel
+                    ws.Cell(1, 1).Value = "Código de barras, Referencia o ID EFFI: Artículo"
+                    ws.Cell(1, 2).Value = "ID Tipo de Egreso"
+                    ws.Cell(1, 3).Value = "Lote"
+                    ws.Cell(1, 4).Value = "Serie"
+                    ws.Cell(1, 5).Value = "Observación"
+                    ws.Cell(1, 6).Value = "Cantidad *"
+                    ws.Cell(1, 7).Value = "Precio ud. *"
+                    ws.Cell(1, 8).Value = "Valor descuento total. *"
+                    ws.Cell(1, 9).Value = "Código Effi Impuesto"
+
+                    'Escribir los datos de la tabla Productos en la hoja de Excel
+                    Dim row As Integer = 2
+                    While reader.Read()
+                        'Dim id As Integer = reader("id")
+                        ws.Cell(row, 1).Value = reader("referencia").ToString() ' Referencia
+                        ws.Cell(row, 2).Value = 2
+                        ws.Cell(row, 3).Value = "" ' Lote
+                        ws.Cell(row, 4).Value = "" ' Serie
+                        ws.Cell(row, 5).Value = "" ' Observación
+                        Dim cantidad As Integer = reader.GetInt16("cantidad")
+                        ws.Cell(row, 6).Value = cantidad.ToString() ' Cantidad
+                        Dim v_compra As Decimal = reader.GetDecimal("valor_unitario_compra")
+                        Dim cell As IXLCell = ws.Cell(row, 7)
+                        cell.Value = v_compra
+                        cell.Style.NumberFormat.NumberFormatId = 4 ' Formato numérico sin decimales
+                        ws.Cell(row, 8).Value = 0 ' Valor descuento
+                        ws.Cell(row, 9).Value = 2 ' Código Effi impuesto
+
+                        row += 1
+                    End While
+
+                    'Cerrar el lector y la conexión a la base de datos
+                    reader.Close()
                     conexion.Close()
-                    Return
-                End If
-                'Escribir los encabezados de las columnas en la hoja de Excel
-                ws.Cell(1, 1).Value = "Código de barras, Referencia o ID EFFI: Artículo"
-                ws.Cell(1, 2).Value = "ID Tipo de Egreso"
-                ws.Cell(1, 3).Value = "Lote"
-                ws.Cell(1, 4).Value = "Serie"
-                ws.Cell(1, 5).Value = "Observación"
-                ws.Cell(1, 6).Value = "Cantidad *"
-                ws.Cell(1, 7).Value = "Precio ud. *"
-                ws.Cell(1, 8).Value = "Valor descuento total. *"
-                ws.Cell(1, 9).Value = "Código Effi Impuesto"
 
-                'Escribir los datos de la tabla Productos en la hoja de Excel
-                Dim row As Integer = 2
-                While reader.Read()
-                    'Dim id As Integer = reader("id")
-                    ws.Cell(row, 1).Value = reader("referencia").ToString() ' Referencia
-                    ws.Cell(row, 2).Value = 2
-                    ws.Cell(row, 3).Value = "" ' Lote
-                    ws.Cell(row, 4).Value = "" ' Serie
-                    ws.Cell(row, 5).Value = "" ' Observación
-                    Dim cantidad As Integer = reader.GetInt16("cantidad")
-                    ws.Cell(row, 6).Value = cantidad.ToString() ' Cantidad
-                    Dim v_compra As Decimal = reader.GetDecimal("valor_unitario_compra")
-                    Dim cell As IXLCell = ws.Cell(row, 7)
-                    cell.Value = v_compra
-                    cell.Style.NumberFormat.NumberFormatId = 4 ' Formato numérico sin decimales
-                    ws.Cell(row, 8).Value = 0 ' Valor descuento
-                    ws.Cell(row, 9).Value = 2 ' Código Effi impuesto
+                    'Guardar el archivo de Excel y cerrar la aplicación Excel
+                    Dim saveFileDialog1 As New SaveFileDialog()
+                    saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
+                    saveFileDialog1.Title = "Guardar como"
+                    saveFileDialog1.ShowDialog()
 
-                    row += 1
-                End While
+                    If saveFileDialog1.FileName <> "" Then
+                        wb.SaveAs(saveFileDialog1.FileName)
 
-                'Cerrar el lector y la conexión a la base de datos
-                reader.Close()
-                conexion.Close()
+                        MsgBox("Archivo guardado con éxito", vbInformation, "Guardado")
+                    Else
+                        MsgBox("Error al guardar el archivo", vbCritical, "Error")
+                    End If
 
-                'Guardar el archivo de Excel y cerrar la aplicación Excel
-                Dim saveFileDialog1 As New SaveFileDialog()
-                saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
-                saveFileDialog1.Title = "Guardar como"
-                saveFileDialog1.ShowDialog()
+                Catch ex As Exception
+                    MessageBox.Show("Error al obtener datos: " + ex.Message)
+                    conexion.Close()
+                Finally
 
-                If saveFileDialog1.FileName <> "" Then
-                    wb.SaveAs(saveFileDialog1.FileName)
-
-                    MsgBox("Archivo guardado con éxito", vbInformation, "Guardado")
-                Else
-                    MsgBox("Error al guardar el archivo", vbCritical, "Error")
-                End If
-
-            Catch ex As Exception
-                MessageBox.Show("Error al obtener datos: " + ex.Message)
-                conexion.Close()
-            Finally
-
-            End Try
+                End Try
+            End If
         End If
+
     End Sub
     Private Sub btn_depurar_Click(sender As Object, e As EventArgs) Handles btn_depurar.Click
         Dim autenticacion As New FormAutenticacion()
@@ -2628,4 +2633,7 @@ Public Class Registro
 
     End Sub
 
+    Private Sub tb_productos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles tb_productos.CellContentClick
+
+    End Sub
 End Class

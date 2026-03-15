@@ -551,7 +551,7 @@ Partial Class Registro
         ' rb_mujer
         ' 
         rb_mujer.AutoSize = True
-        rb_mujer.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_mujer.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         rb_mujer.Location = New Point(423, 308)
         rb_mujer.Margin = New Padding(5, 3, 5, 3)
         rb_mujer.Name = "rb_mujer"
@@ -564,7 +564,7 @@ Partial Class Registro
         ' rb_hombre
         ' 
         rb_hombre.AutoSize = True
-        rb_hombre.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_hombre.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         rb_hombre.Location = New Point(518, 308)
         rb_hombre.Margin = New Padding(5, 3, 5, 3)
         rb_hombre.Name = "rb_hombre"
@@ -583,7 +583,7 @@ Partial Class Registro
         Tab_Consultar.Controls.Add(TabPage2)
         Tab_Consultar.Controls.Add(TabPage6)
         Tab_Consultar.Dock = DockStyle.Fill
-        Tab_Consultar.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Tab_Consultar.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Tab_Consultar.Location = New Point(0, 0)
         Tab_Consultar.Margin = New Padding(5, 3, 5, 3)
         Tab_Consultar.Name = "Tab_Consultar"
@@ -648,7 +648,7 @@ Partial Class Registro
         TabPage1.Controls.Add(Label4)
         TabPage1.Controls.Add(Label3)
         TabPage1.Controls.Add(PictureBox1)
-        TabPage1.Font = New Font("Segoe UI Semilight", 9.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage1.Font = New Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point)
         TabPage1.Location = New Point(4, 26)
         TabPage1.Margin = New Padding(5, 3, 5, 3)
         TabPage1.Name = "TabPage1"
@@ -661,7 +661,7 @@ Partial Class Registro
         ' rb_matrimonio
         ' 
         rb_matrimonio.AutoSize = True
-        rb_matrimonio.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        rb_matrimonio.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         rb_matrimonio.Location = New Point(289, 308)
         rb_matrimonio.Margin = New Padding(4, 3, 4, 3)
         rb_matrimonio.Name = "rb_matrimonio"
@@ -697,7 +697,7 @@ Partial Class Registro
         ' 
         lb_talla.AutoSize = True
         lb_talla.Enabled = False
-        lb_talla.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        lb_talla.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         lb_talla.Location = New Point(651, 311)
         lb_talla.Margin = New Padding(4, 0, 4, 0)
         lb_talla.Name = "lb_talla"
@@ -800,7 +800,7 @@ Partial Class Registro
         ' ch_adicional
         ' 
         ch_adicional.AutoSize = True
-        ch_adicional.Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ch_adicional.Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ch_adicional.Location = New Point(519, 281)
         ch_adicional.Margin = New Padding(4, 3, 4, 3)
         ch_adicional.Name = "ch_adicional"
@@ -904,7 +904,7 @@ Partial Class Registro
         TabPage3.Margin = New Padding(5, 3, 5, 3)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(5, 3, 5, 3)
-        TabPage3.Size = New Size(1342, 726)
+        TabPage3.Size = New Size(1361, 726)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Reportes"
         TabPage3.UseVisualStyleBackColor = True
@@ -931,7 +931,7 @@ Partial Class Registro
         ' 
         ' btn_actualizar_precios
         ' 
-        btn_actualizar_precios.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_actualizar_precios.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         btn_actualizar_precios.Location = New Point(681, 352)
         btn_actualizar_precios.Margin = New Padding(4, 3, 4, 3)
         btn_actualizar_precios.Name = "btn_actualizar_precios"
@@ -1048,7 +1048,7 @@ Partial Class Registro
         TabPage4.Margin = New Padding(5, 3, 5, 3)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(5, 3, 5, 3)
-        TabPage4.Size = New Size(1342, 726)
+        TabPage4.Size = New Size(1361, 726)
         TabPage4.TabIndex = 3
         TabPage4.Text = "Consultar productos"
         TabPage4.UseVisualStyleBackColor = True
@@ -1356,7 +1356,7 @@ Partial Class Registro
         TabPage5.Margin = New Padding(4, 3, 4, 3)
         TabPage5.Name = "TabPage5"
         TabPage5.Padding = New Padding(4, 3, 4, 3)
-        TabPage5.Size = New Size(1342, 726)
+        TabPage5.Size = New Size(1361, 726)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Gestionar Compras"
         TabPage5.UseVisualStyleBackColor = True
@@ -1445,14 +1445,14 @@ Partial Class Registro
         TabPage2.Margin = New Padding(5, 3, 5, 3)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(5, 3, 5, 3)
-        TabPage2.Size = New Size(1342, 726)
+        TabPage2.Size = New Size(1361, 726)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Tabla de precios"
         TabPage2.UseVisualStyleBackColor = True
         ' 
         ' btn_act_automatico
         ' 
-        btn_act_automatico.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        btn_act_automatico.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point)
         btn_act_automatico.Location = New Point(599, 542)
         btn_act_automatico.Margin = New Padding(4, 3, 4, 3)
         btn_act_automatico.Name = "btn_act_automatico"
@@ -1570,12 +1570,12 @@ Partial Class Registro
         ' TabPage6
         ' 
         TabPage6.Controls.Add(SplitContainer1)
-        TabPage6.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TabPage6.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TabPage6.Location = New Point(4, 26)
         TabPage6.Margin = New Padding(4, 3, 4, 3)
         TabPage6.Name = "TabPage6"
         TabPage6.Padding = New Padding(4, 3, 4, 3)
-        TabPage6.Size = New Size(1342, 726)
+        TabPage6.Size = New Size(1361, 726)
         TabPage6.TabIndex = 5
         TabPage6.Text = "Mayoristas"
         TabPage6.UseVisualStyleBackColor = True
@@ -1598,7 +1598,7 @@ Partial Class Registro
         SplitContainer1.Panel1.Controls.Add(Label27)
         SplitContainer1.Panel1.Controls.Add(Label29)
         SplitContainer1.Panel1.Controls.Add(Label28)
-        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18.0F, FontStyle.Bold, GraphicsUnit.Point)
+        SplitContainer1.Panel1.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
         ' 
         ' SplitContainer1.Panel2
         ' 
@@ -1608,13 +1608,13 @@ Partial Class Registro
         SplitContainer1.Panel2.Controls.Add(Label32)
         SplitContainer1.Panel2.Controls.Add(DataGridView1)
         SplitContainer1.Panel2.Controls.Add(Label31)
-        SplitContainer1.Size = New Size(1334, 720)
-        SplitContainer1.SplitterDistance = 551
+        SplitContainer1.Size = New Size(1353, 720)
+        SplitContainer1.SplitterDistance = 558
         SplitContainer1.TabIndex = 0
         ' 
         ' ComboBox1
         ' 
-        ComboBox1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ComboBox1.FormattingEnabled = True
         ComboBox1.Location = New Point(129, 234)
         ComboBox1.Name = "ComboBox1"
@@ -1623,7 +1623,7 @@ Partial Class Registro
         ' 
         ' TextBox2
         ' 
-        TextBox2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox2.Location = New Point(129, 184)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(240, 29)
@@ -1631,7 +1631,7 @@ Partial Class Registro
         ' 
         ' TextBox1
         ' 
-        TextBox1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox1.Location = New Point(129, 134)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(240, 29)
@@ -1639,7 +1639,7 @@ Partial Class Registro
         ' 
         ' Button1
         ' 
-        Button1.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Button1.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Button1.Location = New Point(129, 311)
         Button1.Name = "Button1"
         Button1.Size = New Size(114, 50)
@@ -1650,7 +1650,7 @@ Partial Class Registro
         ' Label30
         ' 
         Label30.AutoSize = True
-        Label30.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label30.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label30.Location = New Point(16, 234)
         Label30.Name = "Label30"
         Label30.Size = New Size(44, 21)
@@ -1660,7 +1660,7 @@ Partial Class Registro
         ' Label27
         ' 
         Label27.AutoSize = True
-        Label27.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label27.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label27.Location = New Point(16, 184)
         Label27.Name = "Label27"
         Label27.Size = New Size(70, 21)
@@ -1679,7 +1679,7 @@ Partial Class Registro
         ' Label28
         ' 
         Label28.AutoSize = True
-        Label28.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label28.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label28.Location = New Point(16, 134)
         Label28.Name = "Label28"
         Label28.Size = New Size(106, 21)
@@ -1688,7 +1688,7 @@ Partial Class Registro
         ' 
         ' ComboBox2
         ' 
-        ComboBox2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        ComboBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         ComboBox2.FormattingEnabled = True
         ComboBox2.Location = New Point(190, 84)
         ComboBox2.Name = "ComboBox2"
@@ -1697,7 +1697,7 @@ Partial Class Registro
         ' 
         ' Button2
         ' 
-        Button2.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Button2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Button2.Location = New Point(250, 169)
         Button2.Name = "Button2"
         Button2.Size = New Size(114, 50)
@@ -1707,7 +1707,7 @@ Partial Class Registro
         ' 
         ' TextBox3
         ' 
-        TextBox3.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        TextBox3.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         TextBox3.Location = New Point(190, 126)
         TextBox3.Name = "TextBox3"
         TextBox3.Size = New Size(240, 29)
@@ -1716,7 +1716,7 @@ Partial Class Registro
         ' Label32
         ' 
         Label32.AutoSize = True
-        Label32.Font = New Font("Segoe UI Semilight", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Label32.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Label32.Location = New Point(105, 87)
         Label32.Name = "Label32"
         Label32.Size = New Size(81, 21)
@@ -1757,7 +1757,7 @@ Partial Class Registro
         ' Label31
         ' 
         Label31.AutoSize = True
-        Label31.Font = New Font("Segoe UI Semilight", 18.0F, FontStyle.Bold, GraphicsUnit.Point)
+        Label31.Font = New Font("Segoe UI Semilight", 18F, FontStyle.Bold, GraphicsUnit.Point)
         Label31.Location = New Point(170, 37)
         Label31.Name = "Label31"
         Label31.Size = New Size(239, 32)
@@ -1775,12 +1775,12 @@ Partial Class Registro
         ' 
         ' Registro
         ' 
-        AutoScaleDimensions = New SizeF(9.0F, 16.0F)
+        AutoScaleDimensions = New SizeF(9F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(1369, 756)
         Controls.Add(Tab_Consultar)
-        Font = New Font("Mongolian Baiti", 12.0F, FontStyle.Regular, GraphicsUnit.Point)
+        Font = New Font("Mongolian Baiti", 12F, FontStyle.Regular, GraphicsUnit.Point)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Margin = New Padding(5, 3, 5, 3)
         Name = "Registro"
