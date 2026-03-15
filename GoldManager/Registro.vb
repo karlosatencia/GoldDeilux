@@ -53,7 +53,7 @@ Public Class Registro
         tb_compras.RowHeadersVisible = False
         jt_nombre_compuesto.ForeColor = Color.LimeGreen
 
-        Dim widths() As Integer = {80, 80, 500, 50, 60, 50, 80, 70, 100, 100, 100, 110, 50, 110}
+        Dim widths() As Integer = {80, 80, 500, 50, 60, 50, 80, 70, 100, 100, 100, 110, 110}
         For i As Integer = 0 To tb_productos.Columns.Count - 1
             tb_productos.Columns(i).Width = widths(i)
         Next
@@ -69,7 +69,7 @@ Public Class Registro
         tb_productos.Columns(10).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         tb_productos.Columns(11).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         tb_productos.Columns(12).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        tb_productos.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'tb_productos.Columns(13).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         lst_marca_tabla.SelectedIndex = 0
         jt_nombre_compuesto.Text = ""
@@ -1912,11 +1912,11 @@ Public Class Registro
             'tb_productos.Columns(11).HeaderText = "Valor Compra"
             'tb_productos.Columns(11).DataPropertyName = "valor_unitario_compra"
 
-            tb_productos.Columns(12).HeaderText = "Broche"
-            tb_productos.Columns(12).DataPropertyName = "broche"
+            tb_productos.Columns(11).HeaderText = "Broche"
+            tb_productos.Columns(11).DataPropertyName = "broche"
 
-            tb_productos.Columns(13).HeaderText = "Valor Broche"
-            tb_productos.Columns(13).DataPropertyName = "vbroche"
+            tb_productos.Columns(12).HeaderText = "Valor Broche"
+            tb_productos.Columns(12).DataPropertyName = "vbroche"
 
 
             If tabla.Rows.Count = 0 Then

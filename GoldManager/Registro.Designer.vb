@@ -115,20 +115,6 @@ Partial Class Registro
         Label18 = New Label()
         btn_depurar = New Button()
         tb_productos = New DataGridView()
-        referencia = New DataGridViewTextBoxColumn()
-        idcompra = New DataGridViewTextBoxColumn()
-        nombre = New DataGridViewTextBoxColumn()
-        marca = New DataGridViewTextBoxColumn()
-        cantidad = New DataGridViewTextBoxColumn()
-        peso = New DataGridViewTextBoxColumn()
-        peso_total = New DataGridViewTextBoxColumn()
-        categoria_producto = New DataGridViewTextBoxColumn()
-        valor_unitario = New DataGridViewTextBoxColumn()
-        costo_total = New DataGridViewTextBoxColumn()
-        valor_gramo = New DataGridViewTextBoxColumn()
-        valor_unitario_compra = New DataGridViewTextBoxColumn()
-        broche = New DataGridViewTextBoxColumn()
-        vbroche = New DataGridViewTextBoxColumn()
         DataSet1BindingSource = New BindingSource(components)
         TabPage5 = New TabPage()
         Label25 = New Label()
@@ -175,6 +161,19 @@ Partial Class Registro
         tt_actualizar = New ToolTip(components)
         tt_depurar = New ToolTip(components)
         tt_backup = New ToolTip(components)
+        referencia = New DataGridViewTextBoxColumn()
+        idcompra = New DataGridViewTextBoxColumn()
+        nombre = New DataGridViewTextBoxColumn()
+        marca = New DataGridViewTextBoxColumn()
+        cantidad = New DataGridViewTextBoxColumn()
+        peso = New DataGridViewTextBoxColumn()
+        peso_total = New DataGridViewTextBoxColumn()
+        categoria_producto = New DataGridViewTextBoxColumn()
+        valor_unitario = New DataGridViewTextBoxColumn()
+        costo_total = New DataGridViewTextBoxColumn()
+        valor_gramo = New DataGridViewTextBoxColumn()
+        broche = New DataGridViewTextBoxColumn()
+        vbroche = New DataGridViewTextBoxColumn()
         Tab_Consultar.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -1248,7 +1247,7 @@ Partial Class Registro
         tb_productos.AllowUserToResizeColumns = False
         tb_productos.AutoGenerateColumns = False
         tb_productos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        tb_productos.Columns.AddRange(New DataGridViewColumn() {referencia, idcompra, nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, valor_unitario_compra, broche, vbroche})
+        tb_productos.Columns.AddRange(New DataGridViewColumn() {referencia, idcompra, nombre, marca, cantidad, peso, peso_total, categoria_producto, valor_unitario, costo_total, valor_gramo, broche, vbroche})
         tb_productos.DataSource = DataSet1BindingSource
         tb_productos.Location = New Point(5, 182)
         tb_productos.Margin = New Padding(5, 3, 5, 3)
@@ -1259,90 +1258,6 @@ Partial Class Registro
         tb_productos.RowTemplate.Resizable = DataGridViewTriState.False
         tb_productos.Size = New Size(1237, 432)
         tb_productos.TabIndex = 0
-        ' 
-        ' referencia
-        ' 
-        referencia.HeaderText = "referencia"
-        referencia.Name = "referencia"
-        referencia.ReadOnly = True
-        ' 
-        ' idcompra
-        ' 
-        idcompra.HeaderText = "idcompra"
-        idcompra.Name = "idcompra"
-        idcompra.ReadOnly = True
-        ' 
-        ' nombre
-        ' 
-        nombre.HeaderText = "nombre"
-        nombre.Name = "nombre"
-        nombre.ReadOnly = True
-        ' 
-        ' marca
-        ' 
-        marca.HeaderText = "marca"
-        marca.Name = "marca"
-        marca.ReadOnly = True
-        ' 
-        ' cantidad
-        ' 
-        cantidad.HeaderText = "cantidad"
-        cantidad.Name = "cantidad"
-        cantidad.ReadOnly = True
-        ' 
-        ' peso
-        ' 
-        peso.HeaderText = "peso"
-        peso.Name = "peso"
-        peso.ReadOnly = True
-        ' 
-        ' peso_total
-        ' 
-        peso_total.HeaderText = "peso_total"
-        peso_total.Name = "peso_total"
-        peso_total.ReadOnly = True
-        ' 
-        ' categoria_producto
-        ' 
-        categoria_producto.HeaderText = "categoria_producto"
-        categoria_producto.Name = "categoria_producto"
-        categoria_producto.ReadOnly = True
-        ' 
-        ' valor_unitario
-        ' 
-        valor_unitario.HeaderText = "valor_unitario"
-        valor_unitario.Name = "valor_unitario"
-        valor_unitario.ReadOnly = True
-        ' 
-        ' costo_total
-        ' 
-        costo_total.HeaderText = "costo_total"
-        costo_total.Name = "costo_total"
-        costo_total.ReadOnly = True
-        ' 
-        ' valor_gramo
-        ' 
-        valor_gramo.HeaderText = "valor_gramo"
-        valor_gramo.Name = "valor_gramo"
-        valor_gramo.ReadOnly = True
-        ' 
-        ' valor_unitario_compra
-        ' 
-        valor_unitario_compra.HeaderText = "valor_unitario_compra"
-        valor_unitario_compra.Name = "valor_unitario_compra"
-        valor_unitario_compra.ReadOnly = True
-        ' 
-        ' broche
-        ' 
-        broche.HeaderText = "broche"
-        broche.Name = "broche"
-        broche.ReadOnly = True
-        ' 
-        ' vbroche
-        ' 
-        vbroche.HeaderText = "vbroche"
-        vbroche.Name = "vbroche"
-        vbroche.ReadOnly = True
         ' 
         ' TabPage5
         ' 
@@ -1772,6 +1687,84 @@ Partial Class Registro
         ' tt_actualizar
         ' 
         tt_actualizar.ShowAlways = True
+        ' 
+        ' referencia
+        ' 
+        referencia.HeaderText = "referencia"
+        referencia.Name = "referencia"
+        referencia.ReadOnly = True
+        ' 
+        ' idcompra
+        ' 
+        idcompra.HeaderText = "idcompra"
+        idcompra.Name = "idcompra"
+        idcompra.ReadOnly = True
+        ' 
+        ' nombre
+        ' 
+        nombre.HeaderText = "nombre"
+        nombre.Name = "nombre"
+        nombre.ReadOnly = True
+        ' 
+        ' marca
+        ' 
+        marca.HeaderText = "marca"
+        marca.Name = "marca"
+        marca.ReadOnly = True
+        ' 
+        ' cantidad
+        ' 
+        cantidad.HeaderText = "cantidad"
+        cantidad.Name = "cantidad"
+        cantidad.ReadOnly = True
+        ' 
+        ' peso
+        ' 
+        peso.HeaderText = "peso"
+        peso.Name = "peso"
+        peso.ReadOnly = True
+        ' 
+        ' peso_total
+        ' 
+        peso_total.HeaderText = "peso_total"
+        peso_total.Name = "peso_total"
+        peso_total.ReadOnly = True
+        ' 
+        ' categoria_producto
+        ' 
+        categoria_producto.HeaderText = "categoria_producto"
+        categoria_producto.Name = "categoria_producto"
+        categoria_producto.ReadOnly = True
+        ' 
+        ' valor_unitario
+        ' 
+        valor_unitario.HeaderText = "valor_unitario"
+        valor_unitario.Name = "valor_unitario"
+        valor_unitario.ReadOnly = True
+        ' 
+        ' costo_total
+        ' 
+        costo_total.HeaderText = "costo_total"
+        costo_total.Name = "costo_total"
+        costo_total.ReadOnly = True
+        ' 
+        ' valor_gramo
+        ' 
+        valor_gramo.HeaderText = "valor_gramo"
+        valor_gramo.Name = "valor_gramo"
+        valor_gramo.ReadOnly = True
+        ' 
+        ' broche
+        ' 
+        broche.HeaderText = "broche"
+        broche.Name = "broche"
+        broche.ReadOnly = True
+        ' 
+        ' vbroche
+        ' 
+        vbroche.HeaderText = "vbroche"
+        vbroche.Name = "vbroche"
+        vbroche.ReadOnly = True
         ' 
         ' Registro
         ' 
@@ -2678,20 +2671,6 @@ Partial Class Registro
     Friend WithEvents lst_compra_rep As ComboBox
     Friend WithEvents Label24 As Label
     Friend WithEvents Label25 As Label
-    Friend WithEvents referencia As DataGridViewTextBoxColumn
-    Friend WithEvents idcompra As DataGridViewTextBoxColumn
-    Friend WithEvents nombre As DataGridViewTextBoxColumn
-    Friend WithEvents marca As DataGridViewTextBoxColumn
-    Friend WithEvents cantidad As DataGridViewTextBoxColumn
-    Friend WithEvents peso As DataGridViewTextBoxColumn
-    Friend WithEvents peso_total As DataGridViewTextBoxColumn
-    Friend WithEvents categoria_producto As DataGridViewTextBoxColumn
-    Friend WithEvents valor_unitario As DataGridViewTextBoxColumn
-    Friend WithEvents costo_total As DataGridViewTextBoxColumn
-    Friend WithEvents valor_gramo As DataGridViewTextBoxColumn
-    Friend WithEvents valor_unitario_compra As DataGridViewTextBoxColumn
-    Friend WithEvents broche As DataGridViewTextBoxColumn
-    Friend WithEvents vbroche As DataGridViewTextBoxColumn
     Friend WithEvents btn_trasladar As Button
     Friend WithEvents jt_referencia_traslado As TextBox
     Friend WithEvents GroupBox3 As GroupBox
@@ -2721,4 +2700,17 @@ Partial Class Registro
     Friend WithEvents tipoMayorista As DataGridViewTextBoxColumn
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents btn_act_automatico As Button
+    Friend WithEvents referencia As DataGridViewTextBoxColumn
+    Friend WithEvents idcompra As DataGridViewTextBoxColumn
+    Friend WithEvents nombre As DataGridViewTextBoxColumn
+    Friend WithEvents marca As DataGridViewTextBoxColumn
+    Friend WithEvents cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents peso As DataGridViewTextBoxColumn
+    Friend WithEvents peso_total As DataGridViewTextBoxColumn
+    Friend WithEvents categoria_producto As DataGridViewTextBoxColumn
+    Friend WithEvents valor_unitario As DataGridViewTextBoxColumn
+    Friend WithEvents costo_total As DataGridViewTextBoxColumn
+    Friend WithEvents valor_gramo As DataGridViewTextBoxColumn
+    Friend WithEvents broche As DataGridViewTextBoxColumn
+    Friend WithEvents vbroche As DataGridViewTextBoxColumn
 End Class
