@@ -10,8 +10,7 @@ Public Class Registro
     Dim CamposPircingValidados As Boolean
     Dim conn As MySql.Data.MySqlClient.MySqlConnection
     'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00002.hostgator.co;user=cdcbfeba_adminelite;password=Safrat2583;database=cdcbfeba_goldmanagerelite;port=3306")
-    '("server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_bucely;port=3306")
 
     'Evento personalizado
     Public Event NuevaInsercionRealizada()
@@ -113,7 +112,7 @@ Public Class Registro
             While reader_sucursal.Read()
                 lst_sucursall.Items.Add(reader_sucursal.GetString(0))
             End While
-            lst_sucursall.Items.Insert(0, "Seleccione")
+            'lst_sucursall.Items.Insert(0, "Seleccione")
             lst_sucursall.SelectedIndex = 0
             reader_sucursal.Close()
             '-------------------------------------------------------------------------------------------------------------
@@ -898,7 +897,7 @@ Public Class Registro
             ' Construir la nueva referencia según la lógica establecida
             Dim nueva_referencia As String
             If id_sucursal = 1 Then
-                nueva_referencia = "E" & ultima_referencia
+                nueva_referencia = "B" & ultima_referencia
             ElseIf id_sucursal = 2 Then
                 nueva_referencia = "D" & ultima_referencia
             Else
@@ -1409,8 +1408,7 @@ Public Class Registro
     Public Sub ActualizarPrecioBroche()
         'Dim connectionString As String = "server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager"
 
-        Dim connectionString As String = "server=sh00002.hostgator.co;user=cdcbfeba_adminelite;password=Safrat2583;database=cdcbfeba_goldmanagerelite;port=3306"
-        '"server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306"
+        Dim connectionString As String = "server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_bucely;port=3306"
 
         ' Consulta para obtener el valor de gramoitaly donde ct = 'ic-1'
         Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly_new WHERE ct = 'ir1-2'"
@@ -1707,7 +1705,7 @@ Public Class Registro
                     Dim handle As String = (nombre & "-" & referencia).Replace(" ", "-")
                     Dim title As String = nombre
                     Dim bodyHTML As String = nombre.ToLower()
-                    Dim vendor As String = "Elite Joyería"
+                    Dim vendor As String = "Bucely Joyería"
                     Dim productCategory As String = "Joyería en Ropa y accesorios"
 
                     Dim marca As Integer = reader.GetInt32("marca")

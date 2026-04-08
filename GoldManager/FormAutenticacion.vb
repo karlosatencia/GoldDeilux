@@ -2,9 +2,8 @@
 
 Public Class FormAutenticacion
     'Private conexion As MySqlConnection = New MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
-    'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=shared12.hostgator.co;user=elitejoy_jjaramillo;password=Safra2583*;database=elitejoy_goldmanagerelite;port=3306")
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00002.hostgator.co;user=cdcbfeba_adminelite;password=Safrat2583;database=cdcbfeba_goldmanagerelite;port=3306")
-    '("server=shared20.hostgator.co;user=elitejo1_adminelite;password=Safrat2583;database=elitejo1_goldmanagerelite;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_bucely;port=3306")
+
     Dim formularioRegistro As Registro = CType(Application.OpenForms("Registro"), Registro)
 
     Private Sub FormAutenticacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
