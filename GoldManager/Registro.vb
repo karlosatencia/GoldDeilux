@@ -10,7 +10,8 @@ Public Class Registro
     Dim CamposPircingValidados As Boolean
     Dim conn As MySql.Data.MySqlClient.MySqlConnection
     'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_bucely;port=3306")
+    'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_bucely;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldbyzantina;port=3306")
 
     'Evento personalizado
     Public Event NuevaInsercionRealizada()
@@ -879,8 +880,7 @@ Public Class Registro
             End If
             Using cmdRef As New MySql.Data.MySqlClient.MySqlCommand("SELECT MAX(CAST(SUBSTRING(referencia, 2) AS SIGNED)) 
             FROM productos
-            WHERE sucursal = @idsucursal
-            AND referencia NOT LIKE 'B%';
+            WHERE sucursal = @idsucursal;
             ", conexion)
                 cmdRef.Parameters.AddWithValue("@idsucursal", id_sucursal)
                 Dim resultado As Object = cmdRef.ExecuteScalar()
@@ -1077,8 +1077,7 @@ Public Class Registro
             End If
             Using cmdRef As New MySql.Data.MySqlClient.MySqlCommand("SELECT MAX(CAST(SUBSTRING(referencia, 2) AS SIGNED)) 
             FROM productos
-            WHERE sucursal = @idsucursal
-            AND referencia NOT LIKE 'B%';", conexion)
+            WHERE sucursal = @idsucursal;", conexion)
                 cmdRef.Parameters.AddWithValue("@idsucursal", id_sucursal)
                 Dim resultado As Object = cmdRef.ExecuteScalar()
                 If resultado IsNot DBNull.Value Then
@@ -1408,7 +1407,7 @@ Public Class Registro
     Public Sub ActualizarPrecioBroche()
         'Dim connectionString As String = "server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager"
 
-        Dim connectionString As String = "server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_bucely;port=3306"
+        Dim connectionString As String = "server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldbyzantina;port=3306"
 
         ' Consulta para obtener el valor de gramoitaly donde ct = 'ic-1'
         Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly_new WHERE ct = 'ir1-2'"
@@ -1705,7 +1704,7 @@ Public Class Registro
                     Dim handle As String = (nombre & "-" & referencia).Replace(" ", "-")
                     Dim title As String = nombre
                     Dim bodyHTML As String = nombre.ToLower()
-                    Dim vendor As String = "Bucely Joyería"
+                    Dim vendor As String = "Byzantina Joyería"
                     Dim productCategory As String = "Joyería en Ropa y accesorios"
 
                     Dim marca As Integer = reader.GetInt32("marca")
