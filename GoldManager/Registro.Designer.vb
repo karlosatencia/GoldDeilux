@@ -64,6 +64,7 @@ Partial Class Registro
         rb_hombre = New RadioButton()
         Tab_Consultar = New TabControl()
         TabPage1 = New TabPage()
+        PictureBox3 = New PictureBox()
         rb_matrimonio = New RadioButton()
         Label20 = New Label()
         lst_compra = New ComboBox()
@@ -85,6 +86,7 @@ Partial Class Registro
         Label17 = New Label()
         PictureBox1 = New PictureBox()
         TabPage3 = New TabPage()
+        PictureBox4 = New PictureBox()
         btn_generar_reporte_ingreso = New Button()
         lblProcesando = New Label()
         ProgressBar1 = New ProgressBar()
@@ -98,6 +100,7 @@ Partial Class Registro
         btn_effy = New Button()
         PictureBox2 = New PictureBox()
         TabPage4 = New TabPage()
+        PictureBox5 = New PictureBox()
         GroupBox3 = New GroupBox()
         Label26 = New Label()
         jt_referencia_traslado = New TextBox()
@@ -131,6 +134,7 @@ Partial Class Registro
         vbroche = New DataGridViewTextBoxColumn()
         DataSet1BindingSource = New BindingSource(components)
         TabPage5 = New TabPage()
+        PictureBox6 = New PictureBox()
         Label25 = New Label()
         btn_agregar_compra = New Button()
         btn_cerrar1 = New Button()
@@ -140,6 +144,7 @@ Partial Class Registro
         cantidadproductos = New DataGridViewTextBoxColumn()
         DataSet1BindingSource1 = New BindingSource(components)
         TabPage2 = New TabPage()
+        PictureBox7 = New PictureBox()
         btn_act_automatico = New Button()
         Panel1 = New Panel()
         btn_cancelar = New Button()
@@ -162,6 +167,7 @@ Partial Class Registro
         Label27 = New Label()
         Label29 = New Label()
         Label28 = New Label()
+        PictureBox8 = New PictureBox()
         ComboBox2 = New ComboBox()
         Button2 = New Button()
         TextBox3 = New TextBox()
@@ -175,18 +181,15 @@ Partial Class Registro
         tt_actualizar = New ToolTip(components)
         tt_depurar = New ToolTip(components)
         tt_backup = New ToolTip(components)
-        PictureBox3 = New PictureBox()
-        PictureBox4 = New PictureBox()
-        PictureBox5 = New PictureBox()
-        PictureBox6 = New PictureBox()
-        PictureBox7 = New PictureBox()
-        PictureBox8 = New PictureBox()
         Tab_Consultar.SuspendLayout()
         TabPage1.SuspendLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
+        CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox3.SuspendLayout()
         GroupBox2.SuspendLayout()
         CType(icon_actualizar, ComponentModel.ISupportInitialize).BeginInit()
@@ -194,9 +197,11 @@ Partial Class Registro
         CType(tb_productos, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataSet1BindingSource, ComponentModel.ISupportInitialize).BeginInit()
         TabPage5.SuspendLayout()
+        CType(PictureBox6, ComponentModel.ISupportInitialize).BeginInit()
         CType(tb_compras, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataSet1BindingSource1, ComponentModel.ISupportInitialize).BeginInit()
         TabPage2.SuspendLayout()
+        CType(PictureBox7, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(tb_precios, ComponentModel.ISupportInitialize).BeginInit()
         TabPage6.SuspendLayout()
@@ -204,13 +209,8 @@ Partial Class Registro
         SplitContainer1.Panel1.SuspendLayout()
         SplitContainer1.Panel2.SuspendLayout()
         SplitContainer1.SuspendLayout()
-        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox6, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox7, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox8, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' lst_marca_tabla
@@ -671,6 +671,16 @@ Partial Class Registro
         TabPage1.Text = "Registro"
         TabPage1.UseVisualStyleBackColor = True
         ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
+        PictureBox3.Location = New Point(1220, 655)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(143, 80)
+        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox3.TabIndex = 60
+        PictureBox3.TabStop = False
+        ' 
         ' rb_matrimonio
         ' 
         rb_matrimonio.AutoSize = True
@@ -924,6 +934,16 @@ Partial Class Registro
         TabPage3.Text = "Reportes"
         TabPage3.UseVisualStyleBackColor = True
         ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
+        PictureBox4.Location = New Point(1220, 655)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(143, 80)
+        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox4.TabIndex = 61
+        PictureBox4.TabStop = False
+        ' 
         ' btn_generar_reporte_ingreso
         ' 
         btn_generar_reporte_ingreso.Font = New Font("Mongolian Baiti", 14.25F, FontStyle.Regular, GraphicsUnit.Point)
@@ -1079,6 +1099,16 @@ Partial Class Registro
         TabPage4.TabIndex = 3
         TabPage4.Text = "Consultar productos"
         TabPage4.UseVisualStyleBackColor = True
+        ' 
+        ' PictureBox5
+        ' 
+        PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
+        PictureBox5.Location = New Point(1220, 655)
+        PictureBox5.Name = "PictureBox5"
+        PictureBox5.Size = New Size(143, 80)
+        PictureBox5.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox5.TabIndex = 62
+        PictureBox5.TabStop = False
         ' 
         ' GroupBox3
         ' 
@@ -1383,6 +1413,16 @@ Partial Class Registro
         TabPage5.Text = "Gestionar Compras"
         TabPage5.UseVisualStyleBackColor = True
         ' 
+        ' PictureBox6
+        ' 
+        PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), Image)
+        PictureBox6.Location = New Point(1220, 655)
+        PictureBox6.Name = "PictureBox6"
+        PictureBox6.Size = New Size(143, 80)
+        PictureBox6.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox6.TabIndex = 63
+        PictureBox6.TabStop = False
+        ' 
         ' Label25
         ' 
         Label25.AutoSize = True
@@ -1472,6 +1512,16 @@ Partial Class Registro
         TabPage2.TabIndex = 1
         TabPage2.Text = "Tabla de precios"
         TabPage2.UseVisualStyleBackColor = True
+        ' 
+        ' PictureBox7
+        ' 
+        PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), Image)
+        PictureBox7.Location = New Point(1220, 655)
+        PictureBox7.Name = "PictureBox7"
+        PictureBox7.Size = New Size(143, 80)
+        PictureBox7.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox7.TabIndex = 64
+        PictureBox7.TabStop = False
         ' 
         ' btn_act_automatico
         ' 
@@ -1710,6 +1760,16 @@ Partial Class Registro
         Label28.TabIndex = 1
         Label28.Text = "Identificación:"
         ' 
+        ' PictureBox8
+        ' 
+        PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), Image)
+        PictureBox8.Location = New Point(1220, 655)
+        PictureBox8.Name = "PictureBox8"
+        PictureBox8.Size = New Size(143, 80)
+        PictureBox8.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox8.TabIndex = 65
+        PictureBox8.TabStop = False
+        ' 
         ' ComboBox2
         ' 
         ComboBox2.Font = New Font("Segoe UI Semilight", 12F, FontStyle.Regular, GraphicsUnit.Point)
@@ -1797,66 +1857,6 @@ Partial Class Registro
         ' 
         tt_actualizar.ShowAlways = True
         ' 
-        ' PictureBox3
-        ' 
-        PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), Image)
-        PictureBox3.Location = New Point(1220, 655)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(143, 80)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 60
-        PictureBox3.TabStop = False
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), Image)
-        PictureBox4.Location = New Point(1220, 655)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(143, 80)
-        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox4.TabIndex = 61
-        PictureBox4.TabStop = False
-        ' 
-        ' PictureBox5
-        ' 
-        PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), Image)
-        PictureBox5.Location = New Point(1220, 655)
-        PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(143, 80)
-        PictureBox5.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox5.TabIndex = 62
-        PictureBox5.TabStop = False
-        ' 
-        ' PictureBox6
-        ' 
-        PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), Image)
-        PictureBox6.Location = New Point(1220, 655)
-        PictureBox6.Name = "PictureBox6"
-        PictureBox6.Size = New Size(143, 80)
-        PictureBox6.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox6.TabIndex = 63
-        PictureBox6.TabStop = False
-        ' 
-        ' PictureBox7
-        ' 
-        PictureBox7.Image = CType(resources.GetObject("PictureBox7.Image"), Image)
-        PictureBox7.Location = New Point(1220, 655)
-        PictureBox7.Name = "PictureBox7"
-        PictureBox7.Size = New Size(143, 80)
-        PictureBox7.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox7.TabIndex = 64
-        PictureBox7.TabStop = False
-        ' 
-        ' PictureBox8
-        ' 
-        PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), Image)
-        PictureBox8.Location = New Point(1220, 655)
-        PictureBox8.Name = "PictureBox8"
-        PictureBox8.Size = New Size(143, 80)
-        PictureBox8.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox8.TabIndex = 65
-        PictureBox8.TabStop = False
-        ' 
         ' Registro
         ' 
         AutoScaleDimensions = New SizeF(9F, 16F)
@@ -1869,16 +1869,19 @@ Partial Class Registro
         Margin = New Padding(5, 3, 5, 3)
         Name = "Registro"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Gold Manager - Byzantina"
+        Text = "Gold Manager - Cleo"
         Tab_Consultar.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
         TabPage1.PerformLayout()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         TabPage4.ResumeLayout(False)
         TabPage4.PerformLayout()
+        CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
         GroupBox3.ResumeLayout(False)
         GroupBox3.PerformLayout()
         GroupBox2.ResumeLayout(False)
@@ -1888,10 +1891,12 @@ Partial Class Registro
         CType(DataSet1BindingSource, ComponentModel.ISupportInitialize).EndInit()
         TabPage5.ResumeLayout(False)
         TabPage5.PerformLayout()
+        CType(PictureBox6, ComponentModel.ISupportInitialize).EndInit()
         CType(tb_compras, ComponentModel.ISupportInitialize).EndInit()
         CType(DataSet1BindingSource1, ComponentModel.ISupportInitialize).EndInit()
         TabPage2.ResumeLayout(False)
         TabPage2.PerformLayout()
+        CType(PictureBox7, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         CType(tb_precios, ComponentModel.ISupportInitialize).EndInit()
         TabPage6.ResumeLayout(False)
@@ -1901,13 +1906,8 @@ Partial Class Registro
         SplitContainer1.Panel2.PerformLayout()
         CType(SplitContainer1, ComponentModel.ISupportInitialize).EndInit()
         SplitContainer1.ResumeLayout(False)
-        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox6, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox7, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox8, ComponentModel.ISupportInitialize).EndInit()
+        CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Private Sub lst_tipo_producto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lst_tipo_producto.SelectedIndexChanged
