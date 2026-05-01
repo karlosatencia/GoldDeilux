@@ -94,7 +94,6 @@ Partial Class Registro
         btn_imprimir_reporte = New Button()
         Label24 = New Label()
         lst_compra_rep = New ComboBox()
-        btn_tarifa_precios = New Button()
         btn_compra = New Button()
         btn_shopify = New Button()
         btn_effy = New Button()
@@ -920,7 +919,6 @@ Partial Class Registro
         TabPage3.Controls.Add(btn_imprimir_reporte)
         TabPage3.Controls.Add(Label24)
         TabPage3.Controls.Add(lst_compra_rep)
-        TabPage3.Controls.Add(btn_tarifa_precios)
         TabPage3.Controls.Add(btn_compra)
         TabPage3.Controls.Add(btn_shopify)
         TabPage3.Controls.Add(btn_effy)
@@ -1017,18 +1015,6 @@ Partial Class Registro
         lst_compra_rep.Name = "lst_compra_rep"
         lst_compra_rep.Size = New Size(154, 28)
         lst_compra_rep.TabIndex = 4
-        ' 
-        ' btn_tarifa_precios
-        ' 
-        btn_tarifa_precios.Font = New Font("Microsoft Sans Serif", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point)
-        btn_tarifa_precios.Location = New Point(5, 33)
-        btn_tarifa_precios.Margin = New Padding(5, 3, 5, 3)
-        btn_tarifa_precios.Name = "btn_tarifa_precios"
-        btn_tarifa_precios.Size = New Size(258, 75)
-        btn_tarifa_precios.TabIndex = 3
-        btn_tarifa_precios.Text = "Reporte Actualizar Precios"
-        btn_tarifa_precios.UseVisualStyleBackColor = True
-        btn_tarifa_precios.Visible = False
         ' 
         ' btn_compra
         ' 
@@ -2725,7 +2711,6 @@ Partial Class Registro
     Public WithEvents OFD_depurar As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btn_depurar As Button
     Friend WithEvents Label18 As Label
-    Friend WithEvents btn_tarifa_precios As Button
     Friend WithEvents icon_actualizar As PictureBox
     Friend WithEvents tt_actualizar As ToolTip
     Friend WithEvents tt_depurar As ToolTip

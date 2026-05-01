@@ -2102,68 +2102,7 @@ Public Class Registro
             End Try
         End If
     End Sub
-    Private Sub btn_tarifa_precios_Click(sender As Object, e As EventArgs) Handles btn_tarifa_precios.Click
 
-        Try
-            'Abrir la conexión a la base de datos
-            conexion.Open()
-
-            'Crear un objeto para manejar el archivo de Excel
-            Dim wb As New ClosedXML.Excel.XLWorkbook()
-            Dim ws As IXLWorksheet = wb.Worksheets.Add("Productos")
-
-            'Ejecutar la consulta SQL para obtener los datos de la tabla Productos
-            Dim sql As String = "SELECT id, referencia, valor_unitario FROM productos"
-            Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
-            Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
-
-            'Escribir los encabezados de las columnas en la hoja de Excel
-            ws.Cell(1, 1).Value = "ID artículo Effi *"
-            ws.Cell(1, 2).Value = "ID tarifa de precio Effi *"
-            ws.Cell(1, 3).Value = "Precio antes de impuestos *"
-
-            'Escribir los datos de la tabla Productos en la hoja de Excel
-            Dim row As Integer = 2
-            While reader.Read()
-                'Obtener referencia y manejar los valores NULL
-                Dim referencia As String
-                If IsDBNull(reader("referencia")) OrElse reader("referencia").ToString() = "" Then
-                    referencia = reader("id").ToString() 'Usar el id si referencia es NULL
-                Else
-                    referencia = reader("referencia").ToString()
-                End If
-
-                'Escribir los datos en el archivo de Excel
-                ws.Cell(row, 1).Value = referencia 'Referencia o ID
-                ws.Cell(row, 2).Value = 1
-
-                Dim v_unitario As Decimal = reader.GetDecimal("valor_unitario")
-                ws.Cell(row, 3).Value = v_unitario.ToString()
-
-                row += 1
-            End While
-
-            'Cerrar el lector y la conexión a la base de datos
-            reader.Close()
-            conexion.Close()
-
-            'Guardar el archivo de Excel
-            Dim saveFileDialog1 As New SaveFileDialog()
-            saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
-            saveFileDialog1.Title = "Guardar como"
-            saveFileDialog1.ShowDialog()
-
-            If saveFileDialog1.FileName <> "" Then
-                wb.SaveAs(saveFileDialog1.FileName)
-                MsgBox("Archivo guardado con éxito, recuerde actualizar manualmente el valor de los productos registrados como 'Prenda' ", vbInformation, "Guardado")
-            Else
-                MsgBox("Error al guardar el archivo", vbCritical, "Error")
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Error al obtener datos: " + ex.Message)
-            conexion.Close()
-        End Try
-    End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles icon_actualizar.Click
         jt_referencia.Text = ""

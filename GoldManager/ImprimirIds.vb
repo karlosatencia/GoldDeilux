@@ -1,4 +1,5 @@
-﻿Imports ClosedXML.Excel
+﻿Imports System.Text.RegularExpressions
+Imports ClosedXML.Excel
 Imports ClosedXML.Excel.XLPredefinedFormat
 
 Public Class ImprimirIds
@@ -82,32 +83,139 @@ Public Class ImprimirIds
         Return True
     End Function
 
+    'Private Sub btn_imprimir_ids_Click(sender As Object, e As EventArgs) Handles btn_imprimir_ids.Click
+    '    If ValidarInputs() Then
+    '        ' Cerrar el formulario para que los valores se puedan utilizar en otro formulario
+    '        Me.DialogResult = DialogResult.OK
+
+    '        Try
+    '            'Abrir la conexión a la base de datos
+    '            conexion.Open()
+
+    '            'Crear un objeto para manejar el archivo de Excel
+    '            Dim wb As New ClosedXML.Excel.XLWorkbook()
+    '            Dim ws As IXLWorksheet = wb.Worksheets.Add("Imprimir ids")
+
+    '            'Obtener los valores de jt_desde y jt_hasta
+    '            Dim jtDesde As String = jt_desde.Text
+    '            Dim jtHasta As String = jt_hasta.Text
+
+    '            'Separar el prefijo y el número de jtDesde y jtHasta
+    '            Dim prefixDesde As String = System.Text.RegularExpressions.Regex.Match(jtDesde, "^[A-Za-z]+").Value
+    '            Dim numeroDesde As Integer = Integer.Parse(System.Text.RegularExpressions.Regex.Match(jtDesde, "\d+$").Value)
+    '            Dim prefixHasta As String = System.Text.RegularExpressions.Regex.Match(jtHasta, "^[A-Za-z]+").Value
+    '            Dim numeroHasta As Integer = Integer.Parse(System.Text.RegularExpressions.Regex.Match(jtHasta, "\d+$").Value)
+
+    '            'Construir la consulta SQL
+    '            Dim sql As String = "SELECT referencia, nombre, cantidad FROM productos WHERE referencia REGEXP @regex AND " &
+    '                                "CAST(SUBSTRING(referencia, LENGTH(@prefixDesde) + 1) AS UNSIGNED) BETWEEN @numeroDesde AND @numeroHasta"
+    '            Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
+    '            cmd.Parameters.AddWithValue("@regex", "^" & prefixDesde & "[0-9]+$")
+    '            cmd.Parameters.AddWithValue("@prefixDesde", prefixDesde)
+    '            cmd.Parameters.AddWithValue("@numeroDesde", numeroDesde)
+    '            cmd.Parameters.AddWithValue("@numeroHasta", numeroHasta)
+
+    '            Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+    '            If Not reader.HasRows Then
+    '                MessageBox.Show("No se encontraron registros para el rango especificado.")
+    '                conexion.Close()
+    '                Return
+    '            End If
+
+    '            'Escribir los encabezados de las columnas en la hoja de Excel
+    '            ws.Cell(1, 1).Value = "Código de referencia"
+    '            ws.Cell(1, 2).Value = "Centímetros"
+    '            ws.Cell(1, 3).Value = "Talla"
+    '            ws.Cell(1, 4).Value = "Cantidad"
+
+    '            'Escribir los datos de la tabla Productos en la hoja de Excel
+    '            Dim row As Integer = 2
+    '            While reader.Read()
+    '                ws.Cell(row, 1).Value = reader("referencia").ToString() ' Código de referencia
+    '                'ws.Cell(row, 2).Value = reader("nombre").ToString() ' Valor auxiliar
+
+
+    '                Dim centimetros As String = ""
+    '                Dim talla As String = ""
+    '                Dim nombre As String = ""
+    '                If Not IsDBNull(reader("nombre")) Then
+    '                    nombre = reader("nombre").ToString()
+    '                End If
+    '                ' Usar expresiones regulares para extraer centímetros (e.g., "50 CM")
+    '                Dim regexCm As New System.Text.RegularExpressions.Regex("\b\d+([.,]\d+)?\s*CM\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+    '                Dim matchCm As System.Text.RegularExpressions.Match = regexCm.Match(nombre)
+    '                If matchCm.Success Then
+    '                    centimetros = matchCm.Value
+    '                End If
+
+    '                ' Usar expresiones regulares para extraer la talla (e.g., "TALLA 8 1/2")
+    '                Dim regexTalla As New System.Text.RegularExpressions.Regex("\bTALLA\s+\d+(\s+[1-9]/[1-9])?\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+    '                Dim matchTalla As System.Text.RegularExpressions.Match = regexTalla.Match(nombre)
+    '                If matchTalla.Success Then
+    '                    talla = matchTalla.Value
+    '                End If
+
+    '                ws.Cell(row, 2).Value = centimetros ' Centímetros extraídos
+    '                ws.Cell(row, 3).Value = talla ' Talla extraída
+    '                ws.Cell(row, 4).Value = reader.GetInt32("cantidad") ' Cantidad
+    '                row += 1
+    '            End While
+
+    '            'Cerrar el lector y la conexión a la base de datos
+    '            reader.Close()
+    '            conexion.Close()
+
+    '            'Guardar el archivo de Excel y cerrar la aplicación Excel
+    '            Dim saveFileDialog1 As New SaveFileDialog()
+    '            saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
+    '            saveFileDialog1.Title = "Guardar como"
+    '            saveFileDialog1.ShowDialog()
+
+    '            If saveFileDialog1.FileName <> "" Then
+    '                wb.SaveAs(saveFileDialog1.FileName)
+    '                MsgBox("Archivo guardado con éxito", vbInformation, "Guardado")
+    '            Else
+    '                MsgBox("Error al guardar el archivo", vbCritical, "Error")
+    '            End If
+
+    '        Catch ex As Exception
+    '            MessageBox.Show("Error al obtener datos: " + ex.Message)
+    '            conexion.Close()
+    '        Finally
+    '            ' Cerrar la conexión en el bloque finally para asegurarse de que siempre se cierra
+    '            If conexion.State = ConnectionState.Open Then
+    '                conexion.Close()
+    '            End If
+    '        End Try
+
+
+    '    End If
+    'End Sub
     Private Sub btn_imprimir_ids_Click(sender As Object, e As EventArgs) Handles btn_imprimir_ids.Click
         If ValidarInputs() Then
-            ' Cerrar el formulario para que los valores se puedan utilizar en otro formulario
+
             Me.DialogResult = DialogResult.OK
 
             Try
-                'Abrir la conexión a la base de datos
                 conexion.Open()
 
-                'Crear un objeto para manejar el archivo de Excel
                 Dim wb As New ClosedXML.Excel.XLWorkbook()
                 Dim ws As IXLWorksheet = wb.Worksheets.Add("Imprimir ids")
 
-                'Obtener los valores de jt_desde y jt_hasta
                 Dim jtDesde As String = jt_desde.Text
                 Dim jtHasta As String = jt_hasta.Text
 
-                'Separar el prefijo y el número de jtDesde y jtHasta
+                ' Separar prefijo y número
                 Dim prefixDesde As String = System.Text.RegularExpressions.Regex.Match(jtDesde, "^[A-Za-z]+").Value
                 Dim numeroDesde As Integer = Integer.Parse(System.Text.RegularExpressions.Regex.Match(jtDesde, "\d+$").Value)
+
                 Dim prefixHasta As String = System.Text.RegularExpressions.Regex.Match(jtHasta, "^[A-Za-z]+").Value
                 Dim numeroHasta As Integer = Integer.Parse(System.Text.RegularExpressions.Regex.Match(jtHasta, "\d+$").Value)
 
-                'Construir la consulta SQL
-                Dim sql As String = "SELECT referencia, nombre, cantidad FROM productos WHERE referencia REGEXP @regex AND " &
-                                    "CAST(SUBSTRING(referencia, LENGTH(@prefixDesde) + 1) AS UNSIGNED) BETWEEN @numeroDesde AND @numeroHasta"
+                ' Consulta SQL (ya no usamos peso_total)
+                Dim sql As String = "SELECT referencia, nombre FROM productos WHERE referencia REGEXP @regex AND " &
+                                "CAST(SUBSTRING(referencia, LENGTH(@prefixDesde) + 1) AS UNSIGNED) BETWEEN @numeroDesde AND @numeroHasta"
+
                 Dim cmd As New MySql.Data.MySqlClient.MySqlCommand(sql, conexion)
                 cmd.Parameters.AddWithValue("@regex", "^" & prefixDesde & "[0-9]+$")
                 cmd.Parameters.AddWithValue("@prefixDesde", prefixDesde)
@@ -115,56 +223,77 @@ Public Class ImprimirIds
                 cmd.Parameters.AddWithValue("@numeroHasta", numeroHasta)
 
                 Dim reader As MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+
                 If Not reader.HasRows Then
                     MessageBox.Show("No se encontraron registros para el rango especificado.")
                     conexion.Close()
                     Return
                 End If
 
-                'Escribir los encabezados de las columnas en la hoja de Excel
-                ws.Cell(1, 1).Value = "Código de referencia"
-                ws.Cell(1, 2).Value = "Centímetros"
-                ws.Cell(1, 3).Value = "Talla"
-                ws.Cell(1, 4).Value = "Cantidad"
+                ' Encabezados
+                ws.Cell(1, 1).Value = "Referencia"
+                ws.Cell(1, 2).Value = "Peso"
+                ws.Cell(1, 3).Value = "Centímetros"
+                ws.Cell(1, 4).Value = "Milímetros"
 
-                'Escribir los datos de la tabla Productos en la hoja de Excel
+                ws.Range("A1:D1").Style.Font.Bold = True
+
                 Dim row As Integer = 2
+
                 While reader.Read()
-                    ws.Cell(row, 1).Value = reader("referencia").ToString() ' Código de referencia
-                    'ws.Cell(row, 2).Value = reader("nombre").ToString() ' Valor auxiliar
 
-
-                    Dim centimetros As String = ""
-                    Dim talla As String = ""
                     Dim nombre As String = ""
                     If Not IsDBNull(reader("nombre")) Then
                         nombre = reader("nombre").ToString()
                     End If
-                    ' Usar expresiones regulares para extraer centímetros (e.g., "50 CM")
-                    Dim regexCm As New System.Text.RegularExpressions.Regex("\b\d+([.,]\d+)?\s*CM\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
-                    Dim matchCm As System.Text.RegularExpressions.Match = regexCm.Match(nombre)
+
+                    Dim peso As String = ""
+                    Dim centimetros As String = ""
+                    Dim milimetros As String = ""
+
+                    ' =========================
+                    ' PESO (ej: 3,25 Gr)
+                    ' =========================
+                    Dim regexPeso As New Regex("\b\d+([.,]\d+)?\s*GR\b", RegexOptions.IgnoreCase)
+                    Dim matchPeso = regexPeso.Match(nombre)
+                    If matchPeso.Success Then
+                        peso = matchPeso.Value
+                    End If
+
+                    ' =========================
+                    ' CENTIMETROS (ej: 19 Cm)
+                    ' =========================
+                    Dim regexCm As New Regex("\b\d+([.,]\d+)?\s*CM\b", RegexOptions.IgnoreCase)
+                    Dim matchCm = regexCm.Match(nombre)
                     If matchCm.Success Then
                         centimetros = matchCm.Value
                     End If
 
-                    ' Usar expresiones regulares para extraer la talla (e.g., "TALLA 8 1/2")
-                    Dim regexTalla As New System.Text.RegularExpressions.Regex("\bTALLA\s+\d+(\s+[1-9]/[1-9])?\b", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
-                    Dim matchTalla As System.Text.RegularExpressions.Match = regexTalla.Match(nombre)
-                    If matchTalla.Success Then
-                        talla = matchTalla.Value
+                    ' =========================
+                    ' MILIMETROS (ej: 6 mm)
+                    ' =========================
+                    Dim regexMm As New Regex("\b\d+([.,]\d+)?\s*MM\b", RegexOptions.IgnoreCase)
+                    Dim matchMm = regexMm.Match(nombre)
+                    If matchMm.Success Then
+                        milimetros = matchMm.Value
                     End If
 
-                    ws.Cell(row, 2).Value = centimetros ' Centímetros extraídos
-                    ws.Cell(row, 3).Value = talla ' Talla extraída
-                    ws.Cell(row, 4).Value = reader.GetInt32("cantidad") ' Cantidad
+                    ' Escribir en Excel
+                    ws.Cell(row, 1).Value = reader("referencia").ToString()
+                    ws.Cell(row, 2).Value = peso
+                    ws.Cell(row, 3).Value = centimetros
+                    ws.Cell(row, 4).Value = milimetros
+
                     row += 1
+
                 End While
 
-                'Cerrar el lector y la conexión a la base de datos
                 reader.Close()
                 conexion.Close()
 
-                'Guardar el archivo de Excel y cerrar la aplicación Excel
+                ws.Columns().AdjustToContents()
+
+                ' Guardar archivo
                 Dim saveFileDialog1 As New SaveFileDialog()
                 saveFileDialog1.Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
                 saveFileDialog1.Title = "Guardar como"
@@ -179,14 +308,11 @@ Public Class ImprimirIds
 
             Catch ex As Exception
                 MessageBox.Show("Error al obtener datos: " + ex.Message)
-                conexion.Close()
             Finally
-                ' Cerrar la conexión en el bloque finally para asegurarse de que siempre se cierra
                 If conexion.State = ConnectionState.Open Then
                     conexion.Close()
                 End If
             End Try
-
 
         End If
     End Sub
