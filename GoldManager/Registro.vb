@@ -11,7 +11,7 @@ Public Class Registro
     Dim CamposPircingValidados As Boolean
     Dim conn As MySql.Data.MySqlClient.MySqlConnection
     'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_cleo;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_deilux;port=3306")
 
     'Evento personalizado
     Public Event NuevaInsercionRealizada()
@@ -1407,7 +1407,7 @@ Public Class Registro
     Public Sub ActualizarPrecioBroche()
         'Dim connectionString As String = "server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager"
 
-        Dim connectionString As String = "server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_cleo;port=3306"
+        Dim connectionString As String = "server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_deilux;port=3306"
 
         ' Consulta para obtener el valor de gramoitaly donde ct = 'ic-1'
         Dim queryGramoitaly As String = "SELECT valor FROM gramoitaly_new WHERE ct = 'ir1-2'"
@@ -1704,7 +1704,7 @@ Public Class Registro
                     Dim handle As String = (nombre & "-" & referencia).Replace(" ", "-")
                     Dim title As String = nombre
                     Dim bodyHTML As String = nombre.ToLower()
-                    Dim vendor As String = "Cleo Joyería"
+                    Dim vendor As String = "Deilux Joyería"
                     Dim productCategory As String = "Joyería en Ropa y accesorios"
 
                     Dim marca As Integer = reader.GetInt32("marca")

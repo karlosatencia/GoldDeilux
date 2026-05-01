@@ -1869,7 +1869,7 @@ Partial Class Registro
         Margin = New Padding(5, 3, 5, 3)
         Name = "Registro"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Gold Manager - Cleo"
+        Text = "Gold Manager - Deilux"
         Tab_Consultar.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
         TabPage1.PerformLayout()

@@ -3,7 +3,7 @@ Imports ClosedXML.Excel.XLPredefinedFormat
 
 Public Class ImprimirIds
     'Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_cleo;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_deilux;port=3306")
 
     Private Sub RangoIds_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Establecer el texto predeterminado en los textBoxes

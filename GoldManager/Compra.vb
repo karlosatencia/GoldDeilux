@@ -2,7 +2,7 @@
 Public Class Compra
     'Private conexion As MySqlConnection = New MySqlConnection("server=localhost;user=karlosatencia;password=karlos63527;database=goldmanager")
 
-    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_cleo;port=3306")
+    Private conexion As MySql.Data.MySqlClient.MySqlConnection = New MySql.Data.MySqlClient.MySqlConnection("server=sh00010.hostgator.co;user=carl1020_adminas;password=Safrat2583;database=carl1020_goldmanager_deilux;port=3306")
     Private Sub Compra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.MaximizeBox = False
