@@ -897,7 +897,7 @@ Public Class Registro
             ' Construir la nueva referencia según la lógica establecida
             Dim nueva_referencia As String
             If id_sucursal = 1 Then
-                nueva_referencia = "C" & ultima_referencia
+                nueva_referencia = "D" & ultima_referencia
             ElseIf id_sucursal = 2 Then
                 nueva_referencia = "D" & ultima_referencia
             Else
